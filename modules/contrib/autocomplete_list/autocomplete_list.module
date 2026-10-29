@@ -1,0 +1,19 @@
+<?php
+
+use Drupal\autocomplete_list\Hook\AutocompleteListHooks;
+use Drupal\Core\Hook\Attribute\LegacyHook;
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * @file autocomplete_list.module
+ */
+
+/**
+ * Provides a compatibility shim for hook_help().
+ *
+ * @phpstan-ignore-next-line
+ */
+#[LegacyHook]
+function autocomplete_list_help($route_name, RouteMatchInterface $route_match): ?string {
+  return \Drupal::service(AutocompleteListHooks::class)->help($route_name, $route_match);
+}

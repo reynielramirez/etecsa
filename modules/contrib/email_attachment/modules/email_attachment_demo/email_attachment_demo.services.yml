@@ -1,0 +1,5 @@
+
+services:
+  Drupal\email_attachment_demo\Hook\EmailAttachmentDemoHooks:
+    class: Drupal\email_attachment_demo\Hook\EmailAttachmentDemoHooks
+    autowire: true

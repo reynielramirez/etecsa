@@ -1,0 +1,68 @@
+{% apply spaceless %}
+{% if data %}
+<div class="color-background {{ visibility }}">
+  <div class="container">
+    <div class="section-heading pb-3 pt-3">
+        <h1 class="text-white">{{ 'Utilities and Applications' |t }}</h1>
+    </div>
+    <div class="container pt-2 pb-2 d-none d-xs-none d-sm-none d-md-block d-lg-block">
+      <div class="row ">
+      {% set count = 0 %}
+        {% for res in data %}
+          {% if count == 0 %}
+            <div class="col-md-4 utilidad-items mb-5">
+              {% endif %}
+            {% if  res.get('field_enlace').0.url.external %}
+              {% set target="_blank" %}
+            {% else %}
+                 {% set target=""%}
+            {% endif %} 
+             <a  href="{{ res.get('field_enlace').0.url}}" target="{{target}}" title="{{ res.get('field_enlace').0.title}}">
+              <div class="d-flex align-item-start enlace-aux mb-2">
+                  <div class="pt-1 pr-3">
+                    <img src="{{ file_url(res.get('field_image').entity.uri.value) }}" alt="{{ res.get('field_image').alt}}"/>
+                  </div>
+                  <div>
+                    <h6 class="utilidades-title">{{ res.get('title').value}}</h6>
+                    <div class="word-break utilidades-descrip fa-fac">{{  res.get('field_descripcion').value|raw }}</div>
+                  </div>
+              </div>
+               </a>  
+          {% if count == 2 %}
+            </div>
+            {% set count = 0 %}
+           {% else %}
+          {% set count = count + 1 %}
+          {% endif %}
+       
+        {% endfor %}
+      </div>
+    </div>
+    <div class="d-block d-xs-block d-sm-block d-md-none d-lg-none">
+      <div id="carousel-uti-person" class="owl-carousel owl-carousel-uti-person owl-theme">
+        {% for res in data %}
+            <div class="utilidad-items">
+              {% if  res.get('field_enlace').0.url.external %}
+                {% set target="_blank" %}
+              {% else %}
+                {% set target=""%}
+              {% endif %}
+              <a  href="{{ res.get('field_enlace').0.url}}" target="{{target}}" title="{{ res.get('field_enlace').0.title}}">
+                <div class="enlace-aux mb-2">
+                    <div class="px-2">
+                      <img src="{{ file_url(res.get('field_image').entity.uri.value) }}" alt="{{ res.get('field_image').alt}}"/>
+                    </div>
+                    <div>
+                      <h6 class="utilidades-title">{{ res.get('title').value}}</h6>
+                    </div>
+                </div>
+              </a>
+            </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+{% endif %}
+{% endapply %}
+{{ attach_library('etecsa_persona_module/utility-people') }}

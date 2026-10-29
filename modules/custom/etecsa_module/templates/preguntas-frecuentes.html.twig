@@ -1,0 +1,41 @@
+{% apply spaceless %}
+  {% if data %}
+    <div class="container bg-white">
+      <div class="row">
+        <div class="ml-4">
+          <div class="page-title azuloscuro">
+            <h2>{{'Frequently Asked Questions'|t|upper}}</h2>
+          </div>
+        </div>
+        <div class="select-servoportunidad faqpreg pl-5 pt-3 offset-lg-2">
+          <label>{{"Select:"|t}}  </label>         
+           {{form}}
+        </div>
+      </div> 
+      {% if data %}  
+        <div class="preguntas-frecuentes pb-5 px-5 mt-5">              
+            <div id="accordionAllfaq" class="accordion">
+              {% for key, faq in data %} 
+                  <div class="card{{faq.tema}}{{key}} faq  {{faq.tema}} mt-3 mb-3">
+                    
+                    <div id="heading{{ key }}" class="card-header bg-white" data-toggle="collapse" data-target="#collapse{{ key }}"  aria-controls="collapse{{ key }}">                                            
+                      <div class="position-relative collapsible-link word-break">
+                        <span class="num px-3">{{key+1}}</span>                                            
+                        <p>{{ faq.preg|raw }}</p>                                                  
+                      </div>                                       
+                    </div>
+                    <div id="collapse{{ key }}" aria-labelledby="heading{{ key }}" data-parent="#accordionAllfaq" class="collapse">
+                      <div class="card-body">
+                        <p class="font-weight-light m-0">{{faq.rpta|raw}}</p>
+                      </div>
+                    </div>
+                  </div>
+              {% endfor %}
+            </div>                  
+        </div>
+      {% else %}
+        <p class="pl-5 py-4">{{"There are not items to display"|t}}</p>
+      {% endif %}     
+    </div>
+  {% endif %}
+{% endapply %}  

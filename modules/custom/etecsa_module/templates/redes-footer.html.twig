@@ -1,0 +1,25 @@
+{% apply spaceless %}
+{% if data %}
+<div class="social-networks">
+  <div class="networks-title">
+	  <div class="section-heading-footer py-0 pl-0 col-12  d-lg-none"><h2>{{ "Follow us on our networks"|t }}<h2></div>
+	  <div class="section-heading-footer pt-1 d-none d-lg-block d-sm-none"><h2>{{ "Follow us on our networks"|t }}<h2></div>
+  </div> 
+  <ul class="networks-icons">
+    {% for redesSoc in data %}
+    {% if  redesSoc.field_enlace.0.url.external %}
+      {% set target="_blank" %}
+    {% else %}
+      {% set target=""%}
+    {% endif %}
+      <li class="mr-2">
+        <a href="{{ redesSoc.field_enlace.0.url }}" title="{{ redesSoc.title.value }}" target="{{ target }}">
+		   <img src="{{ file_url(redesSoc.field_imagen_svg.entity.uri.value) }}" alt=""/>
+        </a>
+      </li>
+    {% endfor %}
+    
+  </ul>
+</div>  
+{% endif %}
+{% endapply %}

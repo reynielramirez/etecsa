@@ -1,0 +1,26 @@
+
+<?php
+/**
+ *Theme hook
+ */
+
+use Symfony\Component\PropertyAccess;
+
+function etecsa_header_module_theme($path){
+      return ['etecsa_header'=>[
+          'variables'=>[
+              'titulo'=>'Titulo por defecto',
+              'descripcion'=>'Descripcion por defecto',
+              'siguenos'=>NULL,
+              'sobrenos'=>NULL,
+              'etecsa'=>NULL,
+              'atencion'=>NULL,
+              'data'=>NULL,
+              'data2'=>NULL,
+              'path'=>$path,
+              'attached'=>NULL,
+              ],
+          'template'=>'etecsa-header-module'
+      ],
+  ];
+}

@@ -1,0 +1,34 @@
+{
+    "name": "drupal/email_attachment",
+    "description": "Module to attach files programmatically to emails.",
+    "license": "GPL-2.0-or-later",
+    "type": "drupal-module",
+    "authors": [
+        {
+            "name": "Christian Bläul",
+            "email": "christian@blaeul.de",
+            "homepage": "https://www.drupal.org/u/gogowitsch",
+            "role": "Maintainer"
+        }
+    ],
+    "homepage": "http://drupal.org/project/email_attachment",
+    "support": {
+        "issues": "http://drupal.org/project/email_attachment",
+        "irc": "irc://irc.freenode.org/drupal-contribute",
+        "source": "http://cgit.drupalcode.org/email_attachment"
+    },
+    "require": {
+        "drupal/core": "^10.1 || ^11 || ^12"
+    },
+    "require-dev": {
+        "drupal/core-dev": "^10.1 || ^11 || ^12",
+        "ergebnis/composer-normalize": "^2.52",
+        "mikey179/vfsstream": "^1.6.11"
+    },
+    "config": {
+        "allow-plugins": {
+            "ergebnis/composer-normalize": true
+        },
+        "sort-packages": true
+    }
+}

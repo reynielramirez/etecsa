@@ -1,0 +1,119 @@
+{% apply spaceless %}
+  
+<article{{ attributes.addClass(classes) }}>
+    <div class="container bg-white" >       
+        <div class="row">
+            <div class="ml-4">  
+                <div class="page-title azulclaro">
+                    <h2>{{'News'|t|upper}}</h2>
+                </div>
+            </div>
+            <div class="cmt">  
+                {% if node.field_tipo_de_imagen.value == 'grande' and node.get('field_imagen')|length > 0 %}
+					<img  class="w-100" src="{{ file_url(node.field_imagen.entity.fileuri) }}" alt="">
+				{% elseif node.field_tipo_de_imagen.value == 'pequeña' and node.get('field_imagenn')|length > 0 %}  	
+					<img  class="w-100" src="{{ file_url(node.field_imagenn.entity.fileuri) }}" alt="">
+				{% endif %} 
+            </div>
+            <div class="col-11  pl-xs-3 pr-xs-3 pl-lg-5 pr-lg-5">
+                <div class="noticia pb-4">               
+                    <div class="fecha mt-3">
+                        {% if node.field_promo[0].value== 1 %}
+                        {% set rojo = "rojo"%}
+                        {% else %}    
+                            {% set rojo =""%} 
+                        {% endif %} 
+                        <div class="dia pl-2 pr-2 {{rojo}}">{{node.field_fecha_publicacion_noti[0].value|date('d')}}</div>
+                        <div class="mes-anno pb-2 pt-1">
+                            <span>{{node.field_fecha_publicacion_noti[0].value|date('m')}}</span>
+                            <span>{{node.field_fecha_publicacion_noti[0].value|date('y')}}</span>
+                        </div>
+                        <div class="compartir">
+                            <span class="fa fa-share-alt"></span>
+                            <div class="redesocN nodeN">
+                                <button class="button" data-sharer="facebook" data-title="{{node.label}}" data-url="{{host}}{{ path('entity.node.canonical', {'node': node.nid.value }) }}"><i class="fab fa-facebook-f"></i></button>
+                                <button class="button" data-sharer="twitter" data-title="{{node.label}}"  data-url="{{host}}{{ path('entity.node.canonical', {'node': node.nid.value }) }}"><i class="fab fa-twitter"></i></button>
+                                <button class="button" data-sharer="whatsapp" data-title="{{node.label}}"  data-url="{{host}}{{ path('entity.node.canonical', {'node': node.nid.value }) }}"><i class="fab fa-whatsapp"></i></button>
+                                <button class="button" data-sharer="telegram" data-title="{{node.label}}"  data-url="{{host}}{{ path('entity.node.canonical', {'node': node.nid.value }) }}" data-web=""><i class="fab fa-telegram-plane"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    {% if node.field_documentos[0]|length > 0 %}
+                        <span class="sep-noti"></span>
+                        <div class="custom-download">
+                            <a class="art-link" target="_blank" title="{{ download }}" href="{{file_url(node.get('field_documentos').entity.fileuri)}}"><i class="fa fa-download"></i>{{ 'Documents'|t }}</a>
+                        </div>
+                    {% endif %}
+                    <div class="cuerpo mt-3">
+                        <h5 class="titulo">{{label}} {{content.field_subtitulo[0]}}</h5>
+                        <div class="small fuente word-break pb-2">{{content.field_fuente[0]}}</div>
+                        <div class="word-break">{{ content.field_descripcion[0]|raw }}</div>                
+                    </div>
+                
+                    {% if content.field_apk[0]|length > 0 %}
+                        <div class="apk mb-5">
+                            <h6 class="apk-titulo">{{ node.field_apk[0].entity.title.value  }} {{ 'versión'|t }} {{node.field_apk[0].entity.field_version.value}}</h6>
+                            <div class="apk-linea"></div>
+                            <div class="apk-detalles">
+                                <div class="azul"></div>
+                                <div class="blanco button--aylen">
+                                    <a href="{{ path('entity.node.canonical', {'node': node.field_apk[0].entity.nid.value }) }}">{{ 'Detalles de la aplicación'|t }} </a>
+                                </div>
+                            </div>
+                            <div class="apk-file button--aylen">
+                                <a class="art-link" title="Descargar" href="{{file_url(node.field_apk[0].entity.field_fichero.entity.uri.value)}}">{{ 'Descargar aplicación'|t }}</a>              
+                            </div>
+                        </div>
+                    {% endif %}
+                    {% if node.field_galeria_iv[0]|length > 0 %} 
+                            <div id="carousel-noticias" class="container mb-2 pl-lg-5" style="display:none;">
+                                {% for item in node.get('field_galeria_iv') %}
+                                    {% set filename = item.entity.getFilename() %}
+                                    {% set extension = filename|split('.')|last %}
+                                    {% if extension in ['webm', 'mp4'] %}
+                                        <img alt="" src="{{ file_url('public://galerias/covervideo.png') }}"
+                                        data-type="html5video"
+                                        data-image="{{ file_url('public://galerias/covervideo.png') }}"
+                                        data-videowebm="{{ file_url(item.entity.uri.value) }}"
+                                        data-videomp4="{{ file_url(item.entity.uri.value) }}">
+                                    {% else %}
+                                        <img src="{{ file_url(item.entity.uri.value) }}" data-image="{{ file_url(item.entity.uri.value) }}" class="img-responsive">
+                                    {% endif %}
+                                {% endfor %}
+                            </div>
+                    {% endif %} 
+                    {% if node.field_preguntas_frecuentes|length > 0 %}
+                        <div class="preguntas-frecuentes mb-5 col-12">
+                            <h5 class="titulo preg pt-3">{{'Frequently Asked Questions'|t}}</h5>                    
+                            <div id="accordionExample" class="accordion">
+                                {% for key, item in node.field_preguntas_frecuentes %}   
+                                    <div class="card{{key}} faq mt-3 mb-3">
+                                        <div id="heading{{key}}" class="card-header bg-white" data-toggle="collapse" data-target="#collapse{{key}}" aria-expanded="false" aria-controls="collapse{{key}}">                                            
+                                            <div class="position-relative collapsible-link word-break">
+                                                <span class="num">{{key+1}}</span>                                            
+                                                <p>{{ item.entity.field_faqs.summary|raw }}</p>                                                  
+                                            </div>                                       
+                                        </div>
+                                        <div id="collapse{{ key }}" aria-labelledby="heading{{ key }}" data-parent="#accordionExample" class="collapse">
+                                            <div class="card-body">
+                                                <p class="font-weight-light m-0">{{item.entity.field_faqs.value|raw}}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            </div>                  
+                        </div>  
+                    {% endif %} 
+                </div>                    
+            </div>    
+        </div>    
+    </div>
+</article>
+<div class="mas-noticias mb-5 mt-3">
+    {{ drupal_view('mas_noticias', 'block_1') }}
+</div>
+{% endapply %}
+{{ attach_library('etecsa_subtheme/unitegallery') }}  
+{{ attach_library('etecsa_subtheme/node-noticias') }}
+{{ attach_library('etecsa_module/preguntasftodas-styling') }}

@@ -1,0 +1,18 @@
+<?php
+
+/**
+ * @file
+ * Email attachment demo install.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function email_attachment_demo_install() {
+  $oConfigFactory = \Drupal::configFactory();
+  $oSystemConfig = $oConfigFactory->getEditable('contact.form.feedback');
+  if (!$oSystemConfig->get('recipients')) {
+    $oSystemConfig->set('recipients', ['example@the-domain-name-goes-here.com']);
+    $oSystemConfig->save();
+  }
+}

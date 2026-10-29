@@ -1,0 +1,6 @@
+etecsa_module.etecsa_settings_form:
+  title: 'Configuraciones Etecsa'
+  route_name: etecsa_module.etecsa_settings_form
+  description: 'Configuraciones generales del sitio web'
+  parent: system.admin_config_system
+  weight: 99

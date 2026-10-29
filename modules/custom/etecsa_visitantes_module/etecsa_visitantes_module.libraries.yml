@@ -1,0 +1,13 @@
+planesmovilest-styling:
+  version: VERSION
+  css:
+      theme:
+        css/planesmovilest.min.css: {}
+  js:
+    js/planesmovt.min.js: {}     
+
+planesvisitantes-styling:
+  version: VERSION
+  css:
+      theme:
+        css/planesvisitantes.min.css: {}

@@ -1,0 +1,40 @@
+name: ETECSA Subtheme
+type: theme
+description: 'Tema de Booststrap 4 para ETECSA.'
+core: 8.x
+core_version_requirement: ^9 || ^10
+base theme: classy
+libraries:
+  - etecsa_subtheme/bootstrap
+  - etecsa_subtheme/global-styling
+
+regions:
+  header: 'Header'
+  primary_menu: 'Primary menu'
+  carousel: 'carousel'
+  promocortas: 'Promociones Cortas'
+  enlacesauxiliar: 'Enlaces Auxiliares'
+  breadcrumb: 'Breadcrumb'
+  content: 'Content'
+  hospedaje: 'hospedaje web'
+  intermovil: 'Internet en el Móvil'
+  noticias_persona: 'Noticias (Personas) de ETECSA'
+  planes: 'Planes móviles'  
+  equipos: 'Equipos y Accesorios'
+  servicios: 'Servicios y Oportunidades'
+  noticias_etecsa: 'Noticias de ETECSA'
+  utilidades: 'Utilidades'
+  recargas: 'Recargas online'
+  footer_miempresa: 'Footer Mi Empresa'
+  footer_suscripcion: 'Footer Suscripción'
+  footer_contactos: 'Footer Contactos'
+  footer_formcontactos: 'Footer Formulario de contactos'
+  footer_nosotros: 'Footer SobreNosotros'
+  footer_teayudamos: 'Footer Te ayudamos'
+  footer_publicos: 'Footer Nuestros Públicos'
+  footer_enlaces: 'Footer Enlaces'
+  footer_servicios_terminos: 'Footer Nuestros servicios y Términos legales'
+  footer_redes: 'Footer Redes sociales'
+  footer_copyright: 'Footer copyright'
+  footer_opinion: 'Footer estado de opinion'
+  bottom_float: 'Flotador inferior'

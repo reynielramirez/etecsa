@@ -1,0 +1,11 @@
+parameters:
+    level: 9
+    excludePaths:
+        analyseAndScan:
+            - */tests/*
+            - */node_modules/*
+            - *RoboFile.php*
+            - */vendor/*
+    checkMissingIterableValueType: false
+    ignoreErrors:
+        - '#Function content_moderation_edit_notify_help\(\) has no return type specified.#'

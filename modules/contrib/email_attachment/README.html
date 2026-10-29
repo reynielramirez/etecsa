@@ -1,0 +1,110 @@
+This is a module for developers who want to attach files programmatically to emails sent from Drupal 8+. This module doesn't send emails but rather intercepts emails from other modules. <!--break-->
+
+If an 'attachment' or an 'attachments' key is present in the <code>$params</code> array, it will be converted into an actual MIME attachment. Otherwise, this module doesn't touch the mail.
+
+This module has no configuration options.
+
+<h3 id="requirements">Requirements</h3>
+This module requires Drupal core ^10.1, ^11, or ^12. No additional PHP extensions or contributed modules are needed.
+
+This module hooks into Drupal core's default <code>MailManager</code> via <code>hook_mail_alter()</code>. This module is <b>not compatible</b> with Symfony Mailer, Mailer Plus, DSM+.
+
+<h3 id="installation">Installation</h3>
+Install the module as you <a href="https://www.drupal.org/node/1897420">would normally install</a> a contributed Drupal module.
+
+<h3>Single attachment</h3>
+Example code to put into your module:
+<?php
+      $params = [
+        'attachment' => [
+          'filecontent' =>
+            'Your attachment contents. ' .
+            'You could use file_get_contents() instead of ' .
+            'this string.',
+          'filename' => 'filename_how_' .
+            'recipients_see_it.txt',
+          'filemime' => 'text/plain',
+        ],
+        // further params as needed by your hook_mail
+      ];
+      $mail_manager = \Drupal::service('plugin.manager.mail');
+      $result = $mail_manager->mail($your_module, $your_key, $to, $lang, $params);
+?>
+
+<h3>Multiple attachments</h3>
+If you need to attach more than one file, use the array key 'attachments' instead, and nest your files in an array:
+<?php
+      $params = [
+        'attachments' => [
+          [
+            'filecontent' =>
+              'Your attachment contents. ' .
+              'You could use file_get_contents() instead of this string.',
+            'filename' => 'attached_filename_how_recipients_see_it.txt',
+            'filemime' => 'text/plain',
+          ],
+          [
+            'filecontent' => file_get_contents('temporary://test.pdf'),
+            'filename' => 'Invoice.pdf',
+            'filemime' => 'application/pdf',
+          ],
+        ],
+        // further params as needed by your hook_mail
+      ];
+      $mail_manager = \Drupal::service('plugin.manager.mail');
+      $result = $mail_manager->mail($your_module, $your_key, $to, $lang, $params);
+?>
+
+Files can be binary, too.
+
+The <code>'filemime'</code> key is optional. If it is missing then Drupal's ExtensionMimeTypeGuesser will be used.
+
+The <code>'filecontent'</code> key is optional, if <code>'filename'</code> points to an existing file on the webserver.
+
+<h3 id="inline-attachments">Inline attachments (embedding images in the HTML body)</h3>
+To reference an attachment from within the HTML message body itself, for example to embed a QR code or logo as <code><img src="cid:..."></code> instead of (or in addition to) offering it as a downloadable attachment, add a <code>'cid'</code> key and set <code>'disposition'</code> to <code>'inline'</code>:
+<?php
+      $cid = 'qr-code@example.com';
+      $params = [
+        'attachment' => [
+          'filecontent' => MymoduleElement::getFileString($submission),
+          'filename' => 'qr-code.png',
+          'filemime' => 'image/png',
+          'disposition' => 'inline',
+          'cid' => $cid,
+        ],
+        // further params as needed by your hook_mail
+      ];
+?>
+Then reference the same <code>$cid</code> in the HTML body, without angle brackets:
+<?php
+      $body = '<img alt="QR code" src="cid:' . $cid . '">';
+?>
+
+The <code>'disposition'</code> key is optional and defaults to <code>'attachment'</code>. The <code>'cid'</code> key is optional; without it, no <code>Content-ID</code> header is added and the attachment can't be referenced from the body.
+
+<h3 id="using-hook-mail-alter">Using hook_mail_alter()</h3>
+You can also use the <code>mail_alter</code> hook to insert attachments. The following example is for a hypothetical module called “mymodule”:
+<?php
+// attach a file to submission emails sent by the webform module
+function mymodule_mail_alter(array &$message): void {
+  if (isset($message['module']) && $message['module'] == 'webform') {
+      $message['params']['attachments'][] = [
+        'filecontent' => MymoduleElement::getFileString($message['params']['webform_submission']),
+        'filename' => t('QR code') . '.png',
+        'filemime' => 'image/png',
+      ];
+  }
+}
+?>
+
+<h3 id="examples">Examples</h3>
+For working examples, see the <a href="https://git.drupalcode.org/project/email_attachment/-/tree/8.x-1.x/modules/email_attachment_demo">email_attachment_demo</a> sub-module and the <a href="https://www.drupal.org/project/webform_qr_code_element">webform_qr_code_element</a> contrib module.
+
+<h3 id="maintainer">Maintainer</h3>
+<a href="https://drupal.org/u/gogowitsch">Christian “Gogowitsch” Bläul</a>.
+
+<h3 id="support">Support</h3>
+To submit bug reports and feature suggestions, or to track changes, use the <a href="https://www.drupal.org/project/issues/email_attachment">issue queue</a>.
+
+To say “thank you” or financially support development of this module, you can send a few Euros via PayPal: paypal@blaeul.de or <a href="https://bunq.me/CPBlaul">various other means</a>.

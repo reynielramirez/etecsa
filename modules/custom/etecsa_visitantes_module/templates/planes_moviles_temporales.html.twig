@@ -1,0 +1,26 @@
+{% apply spaceless %}
+	{% if data|length > 0 %}
+		<div class="container {{ visibility }}">
+			<div class="row justify-content-center">
+				<div class="col-md-12 text-center pt-5">
+					<h1 class="block-title-custom">{{ 'Cubaceltur'|t|upper }}</h1>
+					<p class="block-subtitle-custom">{{ 'For your visit in Cuba'|t }}</p>
+				</div>
+				<div class="planesmov col-12 col-sm-12 col-md-10 col-lg-10">
+					<div id="carousel-pmt" class="owl-carousel  owl-carousel-hw mt-5">
+						{% for item in data %}
+							<div class="element prelative">
+								<img src="{{ file_url(item.field_imagen_svg.entity.uri.value) }}">
+								{% if item.field_enlace_mp|length > 0 %}
+									<div class="btn-purchase button--aylen">
+										<a target="_blank" href="{{item.field_enlace_mp.uri|replace({'internal:':''})}}">{{item.field_enlace_mp.title}}</a>
+									</div>
+								{% endif %}
+							</div>
+						{% endfor %}
+					</div>
+				</div>
+			</div>
+		</div>
+	{% endif %}
+{% endapply %}

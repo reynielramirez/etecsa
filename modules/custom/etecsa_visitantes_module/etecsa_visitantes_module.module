@@ -1,0 +1,49 @@
+<?php
+
+use Symfony\Component\PropertyAccess;
+use Drupal\validaciones\Controller\validacionesController;
+/**
+ *Theme hook
+ */
+function etecsa_visitantes_module_theme($path) {
+  return [
+    'planes_moviles_temporales' => [
+      'variables'=> [
+          'titulo'=>'Titulo por defecto',
+          'descripcion'=>'Descripcion por defecto',
+          'data'=>NULL,
+          'path'=>$path,
+          'attached'=>NULL,
+          'visibility' => NULL,
+          ],
+      'template'=>'planes_moviles_temporales'
+    ],
+    'planes-visitantes' => [
+      'variables'=> [
+          'titulo'=>'Titulo por defecto',
+          'descripcion'=>'Descripcion por defecto',
+          'data'=>NULL,
+          'path'=>$path,
+          'attached'=>NULL,
+          'visibility' => NULL,
+          ],
+      'template'=>'planes-visitantes'
+    ],
+    'roaming' => [
+      'variables'=> [
+        'titulo'=>'Titulo por defecto',
+        'descripcion_block'=>'Descripcion por defecto',
+        'data'=>NULL,         
+        'form'=>NULL,
+        'countEspacios'=>NULL,
+        'descripcion'=>NULL,
+        'bandera'=>NULL,
+        'path' => $path,
+        'attached'=>NULL,
+        ],
+      'template'=>'roaming'
+    ],      
+  ];
+}
+      
+    

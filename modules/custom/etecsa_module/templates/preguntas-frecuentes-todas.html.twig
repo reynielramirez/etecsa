@@ -1,0 +1,45 @@
+{% apply spaceless %}
+    <div class="container bg-white pb-5 preg-frec">
+      <div class="row">
+        <div class="ml-4">
+          <div class="azuloscuro page-title">
+            <h2>{{'Frequently Asked Questions'|t|upper}}</h2>
+          </div>
+        </div>
+      </div>
+      <div class="row filtro-faq py-4 m-0 m-md-4 m-lg-4">  
+        <div class="col-12 col-sm-12 col-md-7 col-lg-9 pl-md-5 pl-lg-4">
+         <h5>{{'If you are looking for more frequently asked questions about any service or topic of our Company, look for the specific service and you will find your queries in a simple and fast way.'|t}}</h5>  
+        </div>
+        <div class="col-12 col-sm-12 col-md-3 col-lg-3 offset-lg-0 offset-sm-4 pl-md-2 pb-2 pl-lg-1 pr-lg-4">
+          {{form}}   
+        </div>
+      </div> 
+      <div class="col-12 pl-md-5 pl-lg-5 px-0 pt-2">
+        <h5>{{'Frequently Asked Question about Services or Most Searched Topics.'|t|upper}}</h5>
+      </div>      
+      {% if data %}  
+        <div class="preguntas-frecuentes pb-5 px-0 px-md-5">              
+            <div id="accordionAllfaq" class="accordion">
+              {% for key, faq in data %}  
+                  <div class="card{{key}} faq {{item.tema}} mt-4 mb-4">
+                    <div id="heading{{ key }}" class="card-header bg-white" data-toggle="collapse" data-target="#collapse{{ key }}"  aria-expanded="false" aria-controls="collapse{{ key }}">                                            
+                      <div class="position-relative collapsible-link word-break">
+                        <span class="num px-3">{{key+1}}</span>                                            
+                        <p>{{ faq.preg|raw }}</p>                                                  
+                      </div>                                       
+                    </div>
+                    <div id="collapse{{ key }}" aria-labelledby="heading{{ key }}" data-parent="#accordionAllfaq" class="collapse">
+                      <div class="card-body">
+                        <p class="font-weight-light m-0">{{faq.rpta|raw}}</p>
+                      </div>
+                    </div>
+                  </div>
+              {% endfor %}
+            </div>                  
+        </div>
+      {% else %}
+        <p class="pl-5 py-4">{{"Please, select a topic"|t}}</p>
+      {% endif %}    
+    </div>
+{% endapply %}

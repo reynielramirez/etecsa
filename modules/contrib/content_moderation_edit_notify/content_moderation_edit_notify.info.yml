@@ -1,0 +1,16 @@
+name: Content Moderation Concurrent Edit Notify
+type: module
+description: Notify users if a new revision is saved when editing a moderated content.
+core_version_requirement: ^9 || ^10
+package: Custom
+dependencies:
+  - drupal:node
+  - drupal:filter
+  - drupal:content_moderation
+  - drupal:workflows
+configure: content_moderation_edit_notify.settings
+
+# Information added by Drupal.org packaging script on 2022-07-26
+version: '2.0.0'
+project: 'content_moderation_edit_notify'
+datestamp: 1658870214

@@ -1,0 +1,347 @@
+<?php
+use Drupal\validaciones\Controller\validacionesController;
+use Drupal\core\Url;
+use Drupal\Core\Form\FormStateInterface;
+
+function validaciones_form_alter(&$form,  &$form_state, $form_id)
+{
+  $language =  \Drupal::languageManager()->getCurrentLanguage()->getId();
+  if (strstr($form_id, 'node') && !strstr($form_id, 'node_delete_multiple')) {
+	  if (is_array($form)) {
+		foreach (array_keys($form['actions']) as $action) {
+		  if ($action != 'preview' && isset($form['actions'][$action]['#type']) && $form['actions'][$action]['#type'] === 'submit') {
+			$form['actions'][$action]['#submit'][] = 'validaciones_node_form_submit';
+		  }
+		}  
+	  }
+  }
+  if ( $form_id=="node_noticia_form"||$form_id=="node_noticia_edit_form"||$form_id=="node_noticia_quick_node_clone_form") {
+    $form['field_noticia_resumen']['widget']['0']['value']['#maxlength'] = 200;
+  }
+  if ($form_id == "node_proteccion_al_consumidor_home_form" || $form_id == "node_proteccion_al_consumidor_home_edit_form" || $form_id == "node_proteccion_al_consumidor_home_quick_node_clone_form"||
+      $form_id=="node_info_gen_nues_sedes_form" || $form_id=="node_info_gen_nues_sedes_edit_form" || $form_id=="node_info_gen_nues_sedes_quick_node_clone_form" ||
+      $form_id=="node_red_comercial_form" ||$form_id=="node_red_comercial_edit_form" || $form_id=="node_red_comercial_quick_node_clone_form"||
+      $form_id=="node_revista_tono_pd_form" || $form_id=="node_revista_tono_pd_edit_form" || $form_id=="node_revista_tono_pd_quick_node_clone_form"||
+      $form_id=="node_establecimiento_edit_form"||$form_id=="node_page_form"||$form_id=="node_page_edit_form"|| $form_id=="node_page_quick_node_clone_form"||
+      $form_id=="node_operador_roaming_form"||$form_id=="node_operador_roaming_edit_form" ||$form_id=="node_operador_roaming_quick_node_clone_form"|| 
+      $form_id=="node_promocion_corta_form"||$form_id=="node_promocion_corta_edit_form"||$form_id=="node_promocion_corta_quick_node_clone_form"||
+      $form_id=="node_noticia_form"||$form_id=="node_noticia_edit_form"||$form_id=="node_noticia_quick_node_clone_form"||
+      $form_id=="node_aplicacion_form"||$form_id=="node_aplicacion_edit_form"||$form_id=="node_aplicacion_quick_node_clone_form"||
+      $form_id=="node_consejos_utiles_form"||$form_id=="node_consejos_utiles_edit_form"||$form_id=="node_consejos_utiles_quick_node_clone_form"||
+      $form_id=="node_proteccion_al_consumidor_form"||$form_id=="node_proteccion_al_consumidor_edit_form"||$form_id=="node_proteccion_al_consumidor_quick_node_clone_form"||
+      $form_id=="node_prot_cons_contactos_form"||$form_id=="node_prot_cons_contactos_edit_form"||$form_id=="node_prot_cons_contactos_quick_node_clone_form"||
+      $form_id=="node_descripcion_general_de_espacios__form"||$form_id=="node_descripcion_general_de_espacios__edit_form"||$form_id=="node_descripcion_general_de_espacios__quick_node_clone_form"||
+      $form_id=="node_espacios_publicos_form"||$form_id=="node_espacios_publicos_edit_form"||$form_id=="node_espacios_publicos_quick_node_clone_form"||
+      $form_id=="node_sobre_de_nosotros_form"||$form_id=="node_sobre_de_nosotros_edit_form"||$form_id=="node_sobre_de_nosotros_quick_node_clone_form" ||
+      $form_id=="node_sede_form"||$form_id=="node_sede_edit_form"||$form_id=="node_sede_quick_node_clone_form"||
+      $form_id=="node_divisiones_territoriales_form"||$form_id=="node_divisiones_territoriales_edit_form"||$form_id=="node_divisiones_territoriales_quick_node_clone_form"){
+
+        $form['title']['widget'][0]['value']['#description'] =  \Drupal\Core\Field\FieldFilteredMarkup::create('Admite hasta 120 caracteres.');
+        $form['title']['widget'][0]['value']['#maxlength'] = 120;
+  }
+  if ($form_id=="node_servicio_de_atencion_telefonica_edit_form"||$form_id=="node_servicio_de_atencion_telefonica_form"||$form_id=="node_servicio_de_atencion_telefonica_quick_node_clone_form" ){
+
+        $form['title']['widget'][0]['value']['#description'] =  \Drupal\Core\Field\FieldFilteredMarkup::create('Admite hasta 60 caracteres.');
+        $form['title']['widget'][0]['value']['#maxlength'] = 60;
+  }
+  if ($form_id=="node_oportunidad_edit_form"||$form_id=="node_oportunidad_form"||$form_id=="node_oportunidad_quick_node_clone_form"||
+  $form_id=="node_solucion_edit_form"||$form_id=="node_solucion_form"||$form_id=="node_solucion_quick_node_clone_form"){
+
+    $form['title']['widget'][0]['value']['#description'] =  \Drupal\Core\Field\FieldFilteredMarkup::create('Admite hasta 23 caracteres.');
+    $form['title']['widget'][0]['value']['#maxlength'] = 23;
+}
+  if ($form_id=="node_sobre_nos_topics_form" || $form_id=="node_sobre_nos_topics_edit_form"||$form_id=="node_sobre_nos_topics_quick_node_clone_form"){
+
+    $form['title']['widget'][0]['value']['#description'] =  \Drupal\Core\Field\FieldFilteredMarkup::create('Admite hasta 35 caracteres.');
+    $form['title']['widget'][0]['value']['#maxlength'] = 35;
+  }
+  if ($form_id=="node_asistente_virtual_form" || $form_id=="node_asistente_virtual_edit_form"|| $form_id=="node_asistente_virtual_quick_node_clone_form"
+  || $form_id=="node_cart_flotante_form" || $form_id=="node_cart_flotante_edit_form"||$form_id=="node_cart_flotante_quick_node_clone_form"){
+
+    $form['title']['widget'][0]['value']['#description'] =  \Drupal\Core\Field\FieldFilteredMarkup::create('Admite hasta 50 caracteres.');
+    $form['title']['widget'][0]['value']['#maxlength'] = 50;
+  }
+  if($form_id=="node_promocion_form" ||$form_id=="node_promocion_edit_form"){
+    $form['#validate'][] = 'fecha_validate';
+  }
+  if ($form_id == "node_aplicacion_form" || $form_id == "node_aplicacion_edit_form" || $form_id == "node_aplicacion_quick_node_clone_form" || $form_id=="node_divisiones_territoriales_form" ||
+    $form_id=="node_divisiones_territoriales_edit_form" || $form_id=="node_noticia_form"|| $form_id=="node_noticia_edit_form" || 
+    $form_id=="node_consejos_utiles_form" || $form_id=="node_consejos_utiles_edit_form" ||$form_id=="node_consejos_utiles_quick_node_clone_form"||
+    $form_id=="node_promocion_form" ||$form_id=="node_promocion_edit_form"|| $form_id=="node_promocion_quick_node_clone_form"||
+    $form_id=="node_promocion_corta_form"||$form_id=="node_promocion_corta_edit_form"||$form_id=="node_promocion_corta_quick_node_clone_form"||    
+    $form_id=="node_sede_form"||$form_id=="node_sede_edit_form"||$form_id=="node_sobre_nos_topics_form"||
+    $form_id=="node_sobre_nos_topics_edit_form"||$form_id=="node_sobre_nos_topics_quick_node_clone_form"||$form_id=="node_enlaces_redes_sociales_form"||
+    $form_id=="node_enlaces_redes_sociales_edit_form"||$form_id=="node_enlace_auxiliar_form"||
+    $form_id=="node_enlace_auxiliar_edit_form"||$form_id=="node_enlace_auxiliar_quick_node_clone_form"||$form_id=="node_revista_tono_pd_form"||
+    $form_id=="node_revista_tono_pd_edit_form"||$form_id=="node_revista_tono_pd_quick_node_clone_form"||$form_id=="node_servicio_de_atencion_telefonica_form"||$form_id=="node_servicio_de_atencion_telefonica_quick_node_clone_form"||
+    $form_id=="node_servicio_de_atencion_telefonica_edit_form"||$form_id=="node_cart_flotante_quick_node_clone_form"
+    ||$form_id=="node_cart_flotante_form"||$form_id=="node_cart_flotante_edit_form"||$form_id=="node_equipo_quick_node_clone_form"
+    ||$form_id=="node_equipo_form"||$form_id=="node_equipo_edit_form"||/*$form_id=="node_preguntas_frecuentes_quick_node_clone_form"
+    ||$form_id=="node_preguntas_frecuentes_form"||$form_id=="node_preguntas_frecuentes_edit_form"||*/$form_id=="node_solucion_quick_node_clone_form"
+    ||$form_id=="node_solucion_form"||$form_id=="node_solucion_edit_form"||$form_id=="node_oportunidad_quick_node_clone_form"
+    ||$form_id=="node_oportunidad_form"||$form_id=="node_oportunidad_edit_form") {
+    $form['#validate'][] = 'campo_unico_validate';
+  } 
+  if ($form_id == 'contact_message_feedback_form') {
+      $form['field_nombre']['#attributes']['autocomplete'] = 'off';
+      $form['field_correo_electronico']['#attributes']['autocomplete'] = 'off';
+      $form['field_telefono']['#attributes']['autocomplete'] = 'off';
+      $form['field_nombre']['und'][0]['value']['#attributes']['placeholder'] = 'Nombre';
+      $form['field_correo_electronico']['#attributes']['placeholder'] = 'Correo';
+      $form['field_telefono']['#attributes']['placeholder'] = 'Teléfono';
+      
+  }
+  if ($form_id == 'contact_message_quejas_y_reclamaciones_form') {
+    $form['field_nombre_qr']['widget']['0']['value']['#placeholder'] = t('Allow 50 characters');
+    $form['field_primer_apellido_qr']['widget']['0']['value']['#placeholder'] = t('Allow 50 characters');
+    $form['field_segundo_apellido']['widget']['0']['value']['#placeholder'] = t('Allow 50 characters');
+    $form['field_direccion_postal_qr']['widget']['0']['value']['#placeholder'] = t('Allow 120 characters');
+    $form['field_correo_electronico_qr']['widget']['0']['value']['#placeholder'] = t('user@domain');
+    $form['field_correo_electronico_qr']['#attributes']['autocomplete'] = 'off';
+    $form['field_servicio_telefonico_de_loc']['widget']['0']['value']['#placeholder'] = t('Allow 15 characters');
+    $form['field_servicio_afectado']['widget']['0']['value']['#placeholder'] = t('Allow 120 characters');
+  }
+  if($form_id == "node_cart_flotante_form" || $form_id == "node_cart_flotante_edit_form"){
+    $form['#validate'][] = 'cant_nodes_validate';   
+  }
+  if (strpos($form_id, 'node_') !== FALSE) {
+      // Add a cancel button.
+      $form['actions']['cancel'] = [
+        '#type' => 'submit',
+        '#value' => t('Cancel'),
+        '#access' => TRUE,
+        '#weight' => 15,
+        '#attributes' => ['onclick' => 'if(!confirm("¿Está seguro que desea cancelar?")){return false;}'],
+        '#submit' => ['validaciones_form_cancel'],
+        '#limit_validation_errors' => [],
+      ];
+    }
+
+    if ($form_id == 'taxonomy_vocabulary_form' || $form_id == 'taxonomy_overview_terms') {
+      // Add a cancel button.
+      $form['actions']['cancel'] = [
+        '#type' => 'submit',
+        '#value' => t('Cancel'),
+        '#access' => TRUE,
+        '#weight' => 15,
+        '#attributes' => ['onclick' => 'if(!confirm("¿Está seguro que desea cancelar?")){return false;}'],
+        '#submit' => ['seven_taxform_cancel'],
+        '#limit_validation_errors' => [],
+      ];
+    }
+
+    if ($form_id == 'taxonomy_overview_vocabularies') {
+      // Add a cancel button.
+      $form['actions']['cancel'] = [
+        '#type' => 'submit',
+        '#value' => t('Cancel'),
+        '#access' => TRUE,
+        '#weight' => 15,
+        '#attributes' => ['onclick' => 'if(!confirm("¿Está seguro que desea cancelar?")){return false;}'],
+        '#submit' => ['seven_taxformes_cancel'],
+        '#limit_validation_errors' => [],
+      ];
+    }
+
+    if (strpos($form_id, 'taxonomy_term_') !== FALSE) {
+      // Add a cancel button.
+      $form['actions']['cancel'] = [
+        '#type' => 'submit',
+        '#value' => t('Cancel'),
+        '#access' => TRUE,
+        '#weight' => 15,
+        '#attributes' => ['onclick' => 'if(!confirm("¿Está seguro que desea cancelar?")){return false;}'],
+        '#submit' => ['seven_taxform_cancel'],
+        '#limit_validation_errors' => [],
+      ];
+    }
+
+    if ($form_id == 'comment_comment_delete_form') {
+      // Add a cancel button.
+      $form['actions']['cancel'] = [
+        '#type' => 'submit',
+        '#value' => t('Cancel'),
+        '#access' => TRUE,
+        '#weight' => 15,
+        '#attributes' => ['onclick' => 'if(!confirm("¿Está seguro que desea cancelar?")){return false;}'],
+        '#submit' => ['seven_comment_delete_form_cancel'],
+        '#limit_validation_errors' => [],
+      ];
+    }
+
+    if ($form_id == 'comment_comment_form' && \Drupal::currentUser()->isAuthenticated()) {
+      // Add a cancel button.
+      $form['actions']['cancelcomment'] = [
+        '#type' => 'submit',
+        '#value' => t('Cancel'),
+        '#access' => TRUE,
+        '#weight' => 15,
+        '#attributes' => ['onclick' => 'if(!confirm("¿Está seguro que desea cancelar?")){return false;}'],
+        '#submit' => ['seven_comment_form_cancel'],
+        '#limit_validation_errors' => [],
+      ];
+
+    if ($form_id == 'user_form' || $form_id == 'user_register_form') {
+      // Add a cancel button.
+      $form['actions']['cancel'] = [
+        '#type' => 'submit',
+        '#value' => t('Cancel'),
+        '#access' => TRUE,
+        '#weight' => 15,
+        '#attributes' => ['onclick' => 'if(!confirm("¿Está seguro que desea cancelar?")){return false;}'],
+        '#submit' => ['seven_user_form_cancel'],
+        '#limit_validation_errors' => [],
+      ];
+    }
+  }
+
+  if ($form_id == 'node_divisiones_territoriales_form'|| $form_id == 'node_divisiones_territoriales_edit_form') {
+        $form['#validate'][] = 'correo_validate';
+  }
+}
+function validaciones_node_form_submit(&$form, $form_state) {
+  $form_state->setRedirect('system.admin_content');
+}
+function validaciones_form_cancel(&$form, $form_state) {
+  return $form_state->setRedirect('system.admin_content');
+}
+
+function seven_user_form_cancel(&$form, $form_state) {
+  return $form_state->setRedirect('entity.user.collection');
+}
+
+function seven_taxformes_cancel(&$form, $form_state) {
+  return $form_state->setRedirect('system.admin_structure');
+
+}
+
+function seven_taxform_cancel(&$form, $form_state) {
+  return $form_state->setRedirect('entity.taxonomy_vocabulary.collection');
+
+}
+
+function seven_comment_delete_form_cancel(&$form, $form_state) {
+  return $form_state->setRedirect('comment.admin');
+}
+
+function seven_comment_form_cancel(&$form, $form_state) {
+  return $form_state->setRedirect('comment.admin');
+}
+
+
+function cant_nodes_validate($form, $form_state) {
+    $val=new ValidacionesController();
+    $node = $form_state->getFormObject()->getEntity();      
+    $nid=$node->nid->value;
+    $cliente=$form_state->getValue('field_tipo_de_clientes');
+    if(!empty($cliente[0]['target_id'])){
+      $countCart=$val->Cant_cartFlotantes($nid,$cliente[0]['target_id']);
+     
+      if($countCart>=4){     
+        $form_state->setErrorByName('field_tipo_de_clientes',t('Solo se admiten 4 carts flotantes para el tipo de cliente seleccionado.'));
+      }
+    }
+    
+}   
+function correo_validate($form, $form_state) {
+  $val=new ValidacionesController();
+  $correo=$form_state->getValue('field_correodt');   
+  if(!empty($correo[0]['value'])){
+    $validC=$val->ValidarCorreo($correo[0]['value']);
+    if (!$validC) {
+      $form_state->setErrorByName("field_correodt", t('El campo Correo electrónico debe tener el formato: usuario@dominioddd. '));
+  }
+  }
+  
+}  
+function campo_unico_validate($form, $form_state) {
+  $val=new ValidacionesController();
+  $node = $form_state->getFormObject()->getEntity();
+  $typeName = $node->getType();
+  $nid=$node->nid->value; 
+  $campo="title";
+  $nombre = $form_state->getValue('title');
+  $valor=$nombre[0]['value'];
+  $fieldName = $node->title->getFieldDefinition()->getLabel();
+
+  if($typeName=="preguntas_frecuentes"){
+      $tema = $form_state->getValue('field_tema');
+      $valor=$tema[0]['target_id'];
+      $campo = "field_tema";
+      $fieldName = $node->field_tema->getFieldDefinition()->getLabel();
+      $cliente = $form_state->getValue('field_tipo_de_clientes');
+      $cliente=$cliente[0]['target_id'];
+      
+      $count=$val->CampoUnico($typeName,$campo,$valor,$nid,$cliente,null); 
+      
+  }
+  elseif($typeName=="oportunidad"){
+    $oportunidad = $form_state->getValue('field_tipo_servoportunidades');
+    $oportunidad=$oportunidad[0]['value'];
+    $cliente = $form_state->getValue('field_tipo_de_clientes');
+    $cliente=$cliente[0]['target_id'];
+    $count=$val->CampoUnico($typeName,$campo,$valor,$nid,$cliente,$oportunidad); 
+    
+}
+  elseif($typeName=="noticia"||$typeName=="cart_flotante"||$typeName=="promocion_corta"||$typeName=="solucion"){
+      $cliente = $form_state->getValue('field_tipo_de_clientes');
+      $cliente=$cliente[0]['target_id'];
+      $count=$val->CampoUnico($typeName,$campo,$valor,$nid,$cliente,null);
+  }
+  else{
+    $count=$val->CampoUnico($typeName,$campo,$valor,$nid,null,null);
+  }
+   
+    if ($count>0) {
+      $form_state->setErrorByName($campo, t('El campo '. $fieldName.' es único, el valor especificado ya se encuentra  en uso.'));
+    }
+ 
+}   
+function fecha_validate(&$form, $form_state) {
+  $fecha_fin=$form_state->getValue('field_fecha_fin')[0]['value'];
+  $fecha_inicio=$form_state->getValue('field_fechainicio')[0]['value'];
+  if ($fecha_fin < $fecha_inicio) {
+    $form_state->setErrorByName('field_fecha_fin_de_la_promocion', t('La fecha fin de la Promoción debe ser igual o mayor que su fecha de inicio.'));
+  }
+}  
+
+function validaciones_file_validate($file) {
+  $size= $file->getSize();
+  $errors = array();
+  if($file){
+    if($size<=0){
+      $errors[] = t("El tamaño del archivo debe ser mayor que 0 byte.");
+    }
+  }
+  return $errors;
+}
+
+function validaciones_cron()
+{
+    $fecha_actual=date("Y-m-d");
+  
+    $nids = \Drupal::entityQuery("node")->accessCheck(FALSE)    ->condition('type', 'noticia')
+    ->condition('field_promo', 1)
+    ->condition('field_fecha_fin_de_la_promocion', $fecha_actual,"<")
+    ->execute();   
+    $storage_handler = \Drupal::entityTypeManager()->getStorage("node");
+    $nodes = \Drupal\node\Entity\Node::loadMultiple($nids);
+
+    $nidsO = \Drupal::entityQuery("node")->accessCheck(FALSE)    ->condition('type', 'oportunidad')
+    ->condition('field_tipo_servoportunidades', 'oportunidad')
+    ->condition('field_fecha_fin_de_la_promocion', $fecha_actual,"<")
+    ->execute();   
+    $nodes+=\Drupal\node\Entity\Node::loadMultiple($nidsO);
+
+    foreach ($nodes as $node)
+    {       
+      $node->setPublished(false);
+      $node->set('moderation_state', "archivado");
+      $node->save();
+     
+    }
+    
+    
+}
+
+

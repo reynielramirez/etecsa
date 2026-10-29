@@ -1,0 +1,18 @@
+{% apply spaceless %}
+	<div class="row no-gutters d-block-p d-sm-block-p d-md-none d-lg-none cardmobile">
+		{% if data %}
+			{% for card in data %}
+				<div class="col text-align-center {{cliente}}">
+					<a target="_blank" href="{{ card.field_enlace.0.url }}" class="card-enlace" title="{{ card.title.value }}">
+						<img src="{{ file_url(card.field_imagen_svg.entity.uri.value) }}" class="img-responsive">
+						<p style="color: white;">{{ card.title.value }}</p>
+					</a>
+				</div>
+			{% endfor %}
+		{% endif %}
+		<div class="col text-align-center {{cliente}} accesibilidad">
+			<div id="accessibility" class="load" lang="{{ language }}" ></div> 
+			<p style="color: white;">{{ "Accessibility"|t }}</p>
+		</div>
+	</div>
+{% endapply %}

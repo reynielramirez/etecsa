@@ -1,0 +1,80 @@
+{% apply spaceless %}
+	{% if data|length > 0 %}
+		<div class="paquetes-bolsas">
+			<div class="row">
+				<div class="ml-4">
+					<div class="page-title azulclaro">
+						<h2>{{ 'Our plans'|t|upper }}</h2>
+					</div>
+				</div>
+				<div class="offset-lg-2 offset-md-5 offset-sm-4 pl-4 pqmt">
+					<div class="paquete-filtro">
+						<label>
+							{{ 'Select:'|t }}</label>
+						<select name="combo" id="combo">
+							<option value="todos">{{"All"|t}}</option>
+							{% for item in data %}
+								<option value="{{ item.tipo|replace({' ':''}) }}">{{ item.tipo }}</option>
+							{% endfor %}
+						</select>
+					</div>
+				</div>
+			</div>
+			{% for key1,item in data %}
+				<div id="seccion-{{item.tipo}}" class="row no-gutters px-1 justify-content-center {{item.tipo|replace({' ':''})}} items">
+					<div class="title col-12 ml-0 ml-md-4 ml-lg-4">
+						<h4>{{ item.tipo |upper }}</h4>
+					</div>
+					{% for key2,cat in item.categorias %}
+						<div class="subtitle col-12 ml-0 ml-sm-0 ml-md-4">
+							<h4>{{ cat.name |upper }}</h4>
+						</div>
+						<div class="subtitle col-12 ml-0  ml-sm-0 ml-md-4">
+							{% if cat.subtitulo %}
+								<p>{{ cat.subtitulo }}</p>
+							{% endif %}
+						</div>
+						{% for pqte in cat.pqtes %}
+							<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 prelative text-center mb-2">
+								<div class="element position-relative">
+									<div>
+										<img src="{{ file_url(pqte.svg) }}">
+										{% if pqte.enlace|length > 0 %}
+											<div class="btn-purchase button--aylen">
+												<a target="_blank" href="{{pqte.enlace|replace({'internal:':''})}}">{{pqte.enlaceText}}</a>
+											</div>
+										{% endif %}
+									</div>
+								</div>
+							</div>						
+						{% endfor %}
+						{% if cat.description %}
+						    {% set key = key1 ~ '-' ~ key2 %}
+							<div id="accordion-{{ key }}" class="faq accordion col-12 pb-3">
+								<div class="card mt-3 mb-3">
+									<div id="heading-{{ key }}" class="card-header bg-white" data-toggle="collapse" data-target="#collapse-{{ key }}" aria-expanded="false" aria-controls="collapse-{{ key }}">
+										<div class="position-relative collapsible-link word-break">
+											<p>{{ 'Something you should know'|t }}</p>
+										</div>
+									</div>
+									<div id="collapse-{{key}}" aria-labelledby="heading-{{key}}" data-parent="#accordion-{{key}}" class="collapse">
+										<div class="card-body p-2">
+											<p class="font-weight-light m-0">{{cat.description|raw}}</p>
+										</div>
+									</div>
+								</div>
+							</div>
+						{% endif %}
+					{% endfor %}
+				</div>
+				<div class="line"></div>
+			{% endfor %}
+			<div class="preg-frecuentes mt-4 position-relative">
+				<div style="display: inline-block;margin-bottom:1rem;"><span>{{'In case you have any question about our bundles, packages or plans, please visit:'|t}}</span></div>
+				<div class="btn-purchase button--aylen">
+					<a href="{{ path('etecsa.faqtodas',{'clientef': cliente }) }}">{{ 'Frequently Asked Questions'|t|upper}}</a>
+				</div>
+			</div>
+		</div>
+	{% endif %}
+{% endapply %}

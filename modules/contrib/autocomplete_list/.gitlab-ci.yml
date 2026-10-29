@@ -1,0 +1,33 @@
+# Drupal.org's maintained CI jobs for contributed modules.
+include:
+  - project: $_GITLAB_TEMPLATES_REPO
+    ref: $_GITLAB_TEMPLATES_REF
+    file:
+      - '/includes/include.drupalci.main.yml'
+      - '/includes/include.drupalci.variables.yml'
+      - '/includes/include.drupalci.workflows.yml'
+
+variables:
+  _TARGET_DRUPAL: 11.2
+  _TARGET_PHP: 8.3
+  _PHPUNIT_CONCURRENT: 1
+  OPT_IN_TEST_PREVIOUS_MAJOR: 1
+  OPT_IN_TEST_PREVIOUS_MINOR: 1
+  OPT_IN_TEST_NEXT_MINOR: 1
+  OPT_IN_TEST_MAX_PHP: 1
+  SKIP_ESLINT: 1
+  SKIP_STYLELINT: 1
+  SKIP_CSPELL: 1
+
+composer-lint:
+  allow_failure: false
+
+phpcs:
+  allow_failure: false
+  script:
+    - vendor/bin/phpcs --standard=Drupal,DrupalPractice src tests
+
+phpstan:
+  allow_failure: false
+  before_script:
+    - composer require --dev drush/drush

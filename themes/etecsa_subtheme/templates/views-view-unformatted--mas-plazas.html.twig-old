@@ -1,0 +1,49 @@
+{#
+/**
+ * @file
+ * Theme override to display a view of unformatted rows.
+ *
+ * Available variables:
+ * - title: The title of this group of rows. May be empty.
+ * - rows: A list of the view's row items.
+ *   - attributes: The row's HTML attributes.
+ *   - content: The row's content.
+ * - view: The view object.
+ * - default_row_class: A flag indicating whether default classes should be
+ *   used on rows.
+ *
+ * @see template_preprocess_views_view_unformatted()
+ */
+#}
+{% spaceless %}
+	<div class="container pz-content bg-white">
+		<div class="row pz-content-data px-3 pl-lg-5 pr-lg-5">
+			<div class="page-title azulclaro">
+				<h2>{{'More Places in calls'|t|upper}}</h2>
+			</div>
+			<div style="margin: 25px 0;" class="row">
+				{% for key,row in rows %}
+					<div class="col-4 col-xs-12 container-plaza">
+						<div class="item-plaza">
+							<h4 class="title-page title-plaza">
+								{{ view.style_plugin.getField(key, 'title')|striptags }}
+							</h4>
+							<div class="resumen">
+								{{ view.style_plugin.getField(key, 'field_resumen_largo')|raw }}
+							</div>
+							{% set nid = row.content['#row']._entity.nid.value %}
+							<div style="text-align: center; padding: 25px 10px 10px;">
+								<div class="btn-more-plaza button--aylen">
+									<a href="{{ path('entity.node.canonical', {'node': nid }) }}">
+										{{ 'More information'|t|upper }}</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				{% endfor %}
+			</div>
+		</div>
+	</div>
+
+
+{% endspaceless %}

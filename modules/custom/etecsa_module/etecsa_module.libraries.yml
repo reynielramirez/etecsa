@@ -1,0 +1,201 @@
+contactos-styling:
+  version: VERSION
+  css:
+      theme:
+        css/contactos.min.css: {}
+        
+preguntasf-styling:
+  version: VERSION
+  css:
+      theme:
+        css/preguntas-frecuentes.min.css: {}
+  js:
+    js/preguntas-frecuentes.min.js: {}
+
+preguntasftodas-styling:
+  version: VERSION
+  css:
+      theme:
+        css/preguntas-frecuentes.min.css: {}
+
+nosotros-styling:
+  version: VERSION
+  css:
+     theme:
+        css/nosotros.min.css: {}
+  js:
+    js/nosotros.min.js: {}    
+
+rcomercial-styling:
+  version: VERSION
+  css:
+    theme:
+      css/rcomercial.min.css: {}
+      css/preguntas-frecuentes.min.css: {}
+
+enlaces-tpocis-styling:
+  version: VERSION
+  css:
+    theme:
+      css/enlaces-topics.min.css: {}
+  js:
+    js/enlaces-topics.min.js: {}
+
+salas-styling:
+  version: VERSION
+  css:
+    theme:
+      css/salas.min.css: {}
+      css/preguntas-frecuentes.min.css: {}
+
+pconsumidor-styling:
+  version: VERSION
+  css:
+    theme:
+      css/pconsumidor.min.css: {}
+      css/preguntas-frecuentes.min.css: {}
+
+carousel-styling:
+  version: VERSION
+  css:
+    theme:
+      css/carousel.min.css: {}
+  js:
+    js/carousel.min.js: {}
+
+promcortas-styling:
+  version: VERSION
+  css:
+    theme:
+      css/promcortas.min.css: {}
+
+promcortasmovil-styling:
+  version: VERSION
+  css:
+    theme:
+      css/promcortasmovil.min.css: {}
+
+noticias-styling:
+  version: VERSION
+  css:
+    theme:
+      css/noticias.min.css: {}
+      css/compartir.min.css: {}
+
+equipos-accesorios-styling:
+  version: VERSION
+  css:
+    theme:
+      css/equipacces.min.css: {}
+  js:
+    js/equipos.min.js: {}    
+
+card-styling:
+  version: VERSION
+  css:
+    theme:
+      css/card.min.css: {}
+
+card-movil-styling:
+  version: VERSION
+  css:
+    theme:
+      css/cardmovil.min.css: {}
+  js:
+    js/cardmovil.min.js: {}
+
+hospweb-styling:
+  version: VERSION
+  css:
+    theme:
+      css/hospweb.min.css: {}
+  js:
+    js/hospweb.js: {}
+
+menu-equipos-styling:
+  version: VERSION
+  js:
+    js/mequipos.min.js: {}
+
+hospweball-styling:
+  version: VERSION
+  css:
+    theme:
+      css/hospweb.min.css: {}
+      css/preguntas-frecuentes.min.css: {}
+  js:
+    js/hospweball.min.js: {}    
+
+serv-oport-styling:
+  version: VERSION
+  css:
+      theme:
+        css/servoport.min.css: {}
+  js:
+    js/servoport.min.js: {}      
+
+servoportall-styling:
+  version: VERSION
+  css:
+      theme:
+        css/servoport.min.css: {}
+        css/servoportall.min.css: {}
+  js:
+    js/servoport.min.js: {} 
+
+internet-movil-styling:
+  version: VERSION
+  css:
+    theme:
+      css/intermovil.min.css: {}
+  js:
+    js/hospweb.min.js: {}     
+
+paquete-page-styling:
+  version: VERSION
+  css:
+    theme:
+      css/paquete.min.css: {}
+  js:
+    js/paquete.min.js: {}     
+
+revista-styling:
+  version: VERSION
+  css:
+    theme:
+      css/revista.min.css: {}
+
+aclientes-styling:
+  version: VERSION
+  css:
+    theme:
+      css/aclientes.min.css: {}      
+  js:
+    js/aclientes.min.js: {} 
+
+compartir-styling:
+  version: VERSION
+  css:
+    theme:
+      css/compartir.min.css: {}
+
+plaza-styling:
+  version: VERSION
+  css:
+    theme:
+      css/plaza.min.css: {}
+
+hitos-styling:
+  version: VERSION
+  css:
+    theme:
+      css/hitos.min.css: {}
+
+digital-certificate:
+  version: VERSION
+  css:
+    theme:
+      css/digital-certificate.min.css: {}
+  js:
+    js/digital-certificate.min.js: {}
+    js/pagination-min.js: {} 

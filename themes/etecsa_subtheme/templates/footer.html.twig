@@ -1,0 +1,87 @@
+<section id="footer-section">
+	<div class="panel-back">
+		<div class="items-left">
+			<div class="mi-empresa">
+				{% if page.footer_miempresa %}
+					{{page.footer_miempresa}}
+				{% endif %}
+			</div>
+			<div class="panel-front">
+				<div class="panel-front-container">
+					<div class="links">
+						<div class="links-col">
+							{% if page.footer_nosotros %}
+								{{page.footer_nosotros}}
+							{% endif %}
+							<div class="space"></div>
+							{% if page.footer_servicios_terminos %}
+								{{page.footer_servicios_terminos}}
+							{% endif %}
+						</div>
+						<div class="links-col">
+							{% if page.footer_teayudamos %}
+								{{page.footer_teayudamos}}
+							{% endif %}
+							<div class="space"></div>
+							{% if page.footer_publicos %}
+								{{page.footer_publicos}}
+							{% endif %}
+						</div>
+						<div class="links-col">
+							{% if page.footer_enlaces %}
+								{{page.footer_enlaces}}
+							{% endif %}
+						</div>
+					</div>
+					<div class="networks">
+						{% if page.footer_redes %}
+							{{page.footer_redes}}
+						{% endif %}
+					</div>
+					<div id="desktop-copyright">
+						{% include '@etecsa_subtheme/copyright.html.twig' %}
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="items-right">
+			<div class="subscribe footer-item">
+			    <h2>{{ 'Subscribe!' |t }}</h2>
+				<div class="field-content">
+					{{ 'If you want to receive information about our new services and products.' |t }}
+				</div>
+				{% if page.footer_suscripcion %}
+					{{page.footer_suscripcion}}
+				{% endif %}
+			</div>
+			<div class="feedback-form footer-item">
+				{% if page.footer_formcontactos %}
+					{{page.footer_formcontactos}}
+				{% endif %}
+				<div class="texto-etecsa pt-2 col-6">
+					<p>{{"ETECSA's working team will promptly process the information and will dispense with comments and offensive or inappropriate content."|t}}.</p>
+				</div>
+			</div>
+			<div class="contact footer-item">
+				{% if page.footer_contactos %}
+					{{page.footer_contactos}}
+				{% endif %}
+			</div>
+			{% if page.footer_opinion %}
+			<div class="status-opinion footer-item">
+				<div class="opinion">
+					<span class="action">
+						<svg focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"></path></svg>
+					</span>
+					<div class="opinion-form">
+						{{page.footer_opinion}}						
+					</div>
+				</div>
+			</div>
+			{% endif %}
+		</div>
+	</div>
+	<div id="mobil-copyright">
+		{% include '@etecsa_subtheme/copyright.html.twig' %}
+	</div>
+</section>

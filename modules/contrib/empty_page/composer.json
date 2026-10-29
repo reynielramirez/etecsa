@@ -1,0 +1,11 @@
+{
+  "name": "drupal/empty_page",
+  "description": "A simple empty page solution. Assists in creating empty menu callbacks mostly used for pages that only consist of blocks.",
+  "type": "drupal-module",
+  "license": "GPL-2.0-or-later",
+  "homepage": "https://www.drupal.org/project/empty_page",
+  "support": {
+      "issues": "https://www.drupal.org/project/issues/empty_page",
+      "source": "https://git.drupalcode.org/project/empty_page"
+  }
+}

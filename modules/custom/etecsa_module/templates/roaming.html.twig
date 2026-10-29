@@ -1,0 +1,15 @@
+{% for pais, operadores in data %}
+  <h3>{{ pais }} ({{ countEspacios[pais] }})</h3>
+
+  <ul>
+    {% for item in operadores %}
+      <li>
+        <strong>{{ item.operador }}</strong><br>
+        {{ item.servicios|raw }}<br>
+        <a href="{{ item.enlace }}" target="_blank">Ver operador</a>
+      </li>
+    {% endfor %}
+  </ul>
+{% endfor %}
+
+{{ form }}

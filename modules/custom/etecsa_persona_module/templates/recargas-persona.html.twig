@@ -1,0 +1,43 @@
+{% apply spaceless %}
+  {% if data %}
+    <div class="sesion-recargas {{ visibility }}">
+      <div class="container white">
+          <div class="row">
+              <div class="col-md-12 section-heading pb-2">
+              <h1>{{ 'Online Top-ups' |t }}</h1>
+            </div>
+          </div>
+        <div class= "mt-2 mb-2 pb-2">
+          <div class="row no-gutters">
+            {% set count = 0 %}
+            {% for res in data %}
+              {% if count == 0 %}
+                <div class="col-md-4">
+              {% endif %}
+              <div class="enlace-aux mb-3 pb-2">
+                <div class="d-flex align-items-center">
+                  <img class="img-fluid" src="{{ file_url(res.get('field_image').entity.uri.value) }}"
+                       alt="{{ res.get('field_image').alt }}"/>
+                  {% if  res.get('field_enlace').0.url.external %}
+                    {% set target="_blank" %}
+                  {% else %}
+                       {% set target="" %}
+                  {% endif %}        
+                  
+                  <a class="recarga-title pl-1" href="{{ res.get('field_enlace').0.url}}"
+                     target="{{target}}">{{ res.get('field_enlace').0.title }}</a>
+                </div>
+              </div>
+              {% if count == 2 %}
+                </div>
+                {% set count = 0 %}
+              {% else %}
+                {% set count = count + 1 %}
+              {% endif %}
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+  {% endif %}
+{% endapply %}

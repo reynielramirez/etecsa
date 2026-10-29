@@ -1,0 +1,38 @@
+<?php
+
+use Symfony\Component\PropertyAccess;
+use Drupal\validaciones\Controller\validacionesController;
+/**
+ *Theme hook
+ */
+function etecsa_empresa_module_theme($path) {
+  return [
+    'planes_moviles_pospagos' => [
+      'variables'=> [
+          'titulo'=>'Titulo por defecto',
+          'descripcion'=>'Descripcion por defecto',
+          'data'=>NULL,
+          'planes'=>NULL,
+          'path'=>$path,
+          'attached'=>NULL,
+          'visibility' => NULL,
+          ],
+      'template'=>'planes_moviles_pospagos'
+    ],
+    'planes_moviles_pospagos_all' => [
+      'variables'=> [
+          'titulo'=>'Titulo por defecto',
+          'descripcion'=>'Descripcion por defecto',
+          'data'=>NULL,
+          'planes'=>NULL,
+          'cliente'=>NULL,
+          'pregunta'=>NULL,
+          'path'=>$path,
+          'attached'=>NULL,
+          ],
+      'template'=>'planes_moviles_pospagos_all'
+    ],
+  ];
+}
+      
+    

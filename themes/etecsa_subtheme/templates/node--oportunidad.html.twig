@@ -1,0 +1,111 @@
+{% apply spaceless %}
+{% if node.field_oport_rec[0]|length > 0 %}
+    {% set margin="mb-3" %}
+{% else%}
+    {% set margin="mb-5" %}    
+{% endif %}
+<article{{ attributes.addClass(classes) }}>
+    <div class="container bg-white {{margin}}">
+        <div class="row">
+            <div class="ml-4">
+                <div class="page-title nodeso azulclaro">
+                    <h2 class="upper">{{content.field_tipo_servoportunidades[0]}}</h2>
+                </div>
+            </div>
+            
+            {% if node.field_tipo_de_imagen.value == 'grande' and node.field_imagen.value|length > 0 %}
+                {% set img = file_url(node.field_imagen.entity.uri.value) %}
+            {% elseif node.field_tipo_de_imagen.value == 'pequeña' and node.field_imagenn.value|length > 0 %}  
+                {% set img = file_url(node.field_imagenn.entity.uri.value) %}
+            {% endif %} 
+            
+            {% if img %}
+                <div class="cmt">
+                    <img  class="w-100" src="{{ img }}" alt="">
+                </div>   
+                {% if clienteId == 116 %}
+                    <div class="sep col-lg-5 col-md-4 ml-5 d-lg-block d-md-block d-none"></div> 
+                    <div class="offset-lg-7 offset-md-6  pl-4 d-lg-block d-none select-servoportunidad pt-3">
+                        <label>{{"Select:"|t}}  </label>
+                        <select name="servoportunidad" id="edit-servoportunidadAll">   
+                                {% if countServ > 0 and countOport > 0 %}
+                                    <option value="todos">{{"All"|t}}</option>
+                                {% endif %}
+                                {% if countServ > 0  %}
+                                    <option value="servicio">{{"Services"|t}}</option>
+                                {% endif %}	
+                                {% if countOport > 0 %}
+                                    <option value="oportunidad">{{"Opportunities"|t}}</option>
+                                {% endif %}
+                        </select>
+                    </div> 
+                {% endif %} 
+            {% else %}
+                {% if clienteId == 116 %}
+                    <div class="offset-lg-4 pl-4 d-lg-block d-none select-servoportunidad pt-3">
+                        <label>{{"Select:"|t}}  </label>
+                        <select name="servoportunidad" id="edit-servoportunidadAll">   
+                                {% if countServ > 0 and countOport > 0 %}
+                                    <option value="todos">{{"All"|t}}</option>
+                                {% endif %}
+                                {% if countServ > 0  %}
+                                    <option value="servicio">{{"Services"|t}}</option>
+                                {% endif %}	
+                                {% if countOport > 0 %}
+                                    <option value="oportunidad">{{"Opportunities"|t}}</option>
+                                {% endif %}
+                        </select>
+                    </div> 
+                {% endif %} 
+            {% endif %}  
+            
+                
+        
+        </div>
+        <div class="row">
+            <div class="oportunidad mb-3">
+                    <div class="title pl-5 mb-2 mt-4">                       
+                        <h4>{{ label }} {{ content.field_subtitulo[0] }}</h4>
+                    </div>
+                    <div class="col-12  pl-lg-5 pr-lg-5 ">
+                        <div class="word-break pl-3 ">{{ content.field_descripcion[0]|raw }}</div>
+                    </div>
+            </div>
+        </div>
+        {% if node.field_faq[0]|length > 0 %}
+        <div class="row justify-content-center cborder-top">
+            <div class="row faq oportunidad pb-5 pt-5">
+                <div class="texto">
+                    <p >{{ 'May Check:'|t }} </p>
+                </div>
+                <div class="btn-purchase-faq button--aylenfaq">
+                    <a href="{{ path('etecsa.faq', {'faq': node.nid.value }) }}">{{ 'Frequently Asked Questions'|t|upper}} </a>
+				</div>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+    {% if node.field_oport_rec[0]|length > 0 %}
+        <div class="container bg-white mb-5 pb-5">
+            <h4 class="titulopor pt-3 pb-3">{{'We recommend other opportunities'|t}}</h4>
+            <div id="carousel-oportnode" class="owl-carousel owl-carousel-servoport owl-theme">
+                {% for item in node.field_oport_rec %} {% set resumen = item.entity.field_descripcion.value|render|striptags|trim %}
+                <a href="{{ path('entity.node.canonical', {'node': item.entity.nid.value }) }}">
+                    <div class="servoport-item">
+                        <div class="servoport-img-item">
+                            <img src="{{ file_url(item.entity.field_image.entity.fileuri) }}" alt="{{ item.entity.field_image.entity.alt}}" />
+                        </div>
+                        <div class="text">
+                            <h4 class="servoport-title node-title-servoport">{{item.entity.field_titulo.value}}</h4>
+                            <h5 class="servoport-subtitle pt-2">{{ item.entity.field_subtitulo.value}}</h5>
+                            <div class="servoport-resumen  pl-4 pr-4 word-break">{{ (resumen|length >150 ? resumen|slice(0, 151)|split(' ')|slice(0, -1)|join(' ') ~ '&hellip; ' : resumen)|raw }}</div>
+                        </div>
+                    </div>
+                </a>
+                {% endfor %}
+            </div>
+        </div>
+    {% endif %}
+</article>    
+{% endapply %} 
+{{ attach_library('etecsa_module/servoportall-styling') }}

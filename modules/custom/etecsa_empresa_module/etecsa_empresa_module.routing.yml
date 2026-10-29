@@ -1,0 +1,7 @@
+empresa.pmpall:
+  path: '/empresas/planes-moviles-pospagos'
+  defaults:
+    _controller: 'Drupal\etecsa_empresa_module\Controller\EmpresaController::getAllPlanes'
+    _title: 'Postpaid Mobile Plans'
+  requirements:
+    _permission: 'access content' 

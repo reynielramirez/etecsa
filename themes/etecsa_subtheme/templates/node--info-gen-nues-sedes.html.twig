@@ -1,0 +1,97 @@
+{% apply spaceless %}
+	<article{{attributes.addClass(classes)}}>
+		<div class="container page-content bg-white mb-5 pb-5">
+			<div class="row">				
+          		<div class="ml-4">
+					<div class="page-title azuloscuro" >
+						<h2>{{ 'About us'|t|upper }}</h2>
+					</div>					
+				</div>
+				<div class="cmt">
+					{% if node.get('field_imagen')|length > 0 %}
+						<img  class="w-100" src="{{ file_url(node.field_imagen.entity.fileuri) }}" alt="">
+					{% endif %}
+				</div>
+				{% if node.get('field_imagen')|length > 0 %}
+						<div class="sep col-lg-6 col-md-4 ml-5 d-lg-block d-md-block d-none"></div>
+						<div class="offset-lg-7 offset-md-6  select-enlacetopic pb-3">
+							{{ drupal_block('etecsa_menusn_block', wrapper=false) }}
+						</div>
+					{% else %}
+						<div class="offset-lg-4 offset-md-3">
+							{{ drupal_block('etecsa_menusn_block', wrapper=false) }}
+						</div>
+					{% endif %}				
+				<div class="col-12 px-0">
+					
+					<div class="row">
+						<div class="col-11 pl-5  pr-2 px-xs-2">
+							<h4 class="title pl-5">{{'Our headquarters'|t}}</h2>
+							<div class="word-break pl-5">{{ content.field_descripcion[0]|raw }}</div>
+						</div>
+					</div>
+					<div class="row pl-5 pr-5 px-xs-2">
+						{% for item in node.field_sedes_ref %}
+							{% if item.entity.hastranslation(language) %}
+								{% set entity = item.entity.translation(language) %}
+							{% else %}
+								{% set entity = item.entity %}
+							{% endif %}
+							{% if item.entity.title.value == "Presidencia" %}
+								{% set col="col-12"%}
+							{% else %}
+								{% set col="col-lg-6 col-sm-12"%}
+							{% endif %}
+							<div class="sedes {{col}} pl-5 pr-3 mt-3 mb-3">
+								<h5 class="titulo">{{entity.title.value}}</h5>
+								<div class="word-break">{{entity.field_direccion.value|raw }}</div>
+								{% if entity.field_telefono.value %}
+									<div class="word-break d-lg-block d-none">
+										<label class="">{{"Telephone number"|t}}:</label>
+										{{entity.field_telefono.value|raw }}
+									</div>
+								{% endif %}
+								<a class="d-lg-none d-sm-block" href="tel:{{entity.field_telefono.value}}">{{entity.field_telefono.value|raw }}</a>
+
+							</div>
+						{% endfor %}
+					</div>
+					<h4 class="py-2 ml-3 mr-3 text-align-center border-bottom titulo">{{'Territorial Divisions'|t}}</h2>
+					<div class="row my-3 mx-5">
+						{% for item in node.field_divisiones_territoriales %}
+							{% if item.entity.hastranslation(language) %}
+								{% set entity = item.entity.translation(language) %}
+							{% else %}
+								{% set entity = item.entity %}
+							{% endif %}
+							<div
+								class="row divts col-lg-6 col-md-6 col-sm-12 col-12 my-2">
+								{# <div class="row no-gutters"> #}
+								<div class="col-12 col-sm-12 col-md-7 col-lg-7  mt-2 ">
+									<img class="img-divt" src="{{ file_url(entity.field_imagen.entity.fileuri) }}" alt="">
+								</div>
+								<div class="divt-cuerpo col-lg-5 col-md-5 col-sm-12 col-12 mt-2 px-0">
+									<h5 class="titulo">{{entity.title.value}}</h5>
+									<div class="word-break">{{entity.field_direccion.value|raw }}</div>
+									{% if entity.field_telef|length > 0 %}
+										<div class="word-break d-lg-block d-sm-none">
+											<label class="mr-1">{{"Telephone number"|t}}:</label>
+											{{entity.field_telef.value|raw }}</div>
+										<a class="d-lg-none d-sm-block" href="tel:{{entity.field_telef.value}}">{{entity.field_telef.value|raw }}</a>
+
+									{% endif %}
+									{% if entity.field_correodt|length > 0 %}
+										<div class="word-break">
+											<label class="mr-1">{{"E-mails"|t}}:</label>
+											<a href="mailto:{{entity.field_correodt.value|raw }}">{{entity.field_correodt.value|raw }}</a>
+										</div>
+									{% endif %}
+								</div>
+							</div>
+							{# </div>    #}
+						{% endfor %}
+					</div>
+				</div>
+			</article>
+		{% endapply %}
+		{{ attach_library('etecsa_subtheme/node-sedes') }}

@@ -1,0 +1,35 @@
+# @see https://github.com/EdgedesignCZ/phpqa/blob/master/.phpqa.yml
+phpcs:
+    standard:
+        - Drupal
+        - DrupalPractice
+    ignoreWarnings: true
+    reports:
+        cli:
+            - full
+        file:
+            checkstyle: checkstyle.xml
+phpmd:
+    standard: .phpmd.xml
+phpcpd:
+    minLines: 5
+    minTokens: 70
+phpstan:
+    memoryLimit: null
+phpqa:
+    analyzedDirs: ./
+    tools: phpcs:0,phpmd:0,phpstan:0,parallel-lint:0
+    ignoredDirs: "node_modules,vendor,tests"
+    ignoredFiles: "*RoboFile.php"
+    report: false
+    output: cli
+    verbose: false
+    execution: parallel
+    extensions:
+        - php
+        - inc
+        - module
+        - install
+        - test
+        - profile
+        - theme

@@ -1,0 +1,12 @@
+name: 'Autocomplete List'
+type: module
+description: 'Provide widget for entity reference autocomplete list style'
+core_version_requirement: ^10.3 || ^11 || ^12
+package: 'Fields'
+dependencies:
+  - drupal:field
+
+# Information added by Drupal.org packaging script on 2026-09-25
+version: '2.0.0-rc6'
+project: 'autocomplete_list'
+datestamp: 1790349958

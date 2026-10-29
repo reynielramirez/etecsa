@@ -1,0 +1,10 @@
+name: 'Session Limit'
+description: 'Limit simultaneous user sessions.'
+core_version_requirement: ^10 || ^11
+type: module
+configure: session_limit.config_form
+
+# Information added by Drupal.org packaging script on 2026-07-27
+version: '3.0.0-beta2'
+project: 'session_limit'
+datestamp: 1785172192

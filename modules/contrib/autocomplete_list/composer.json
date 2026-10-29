@@ -1,0 +1,7 @@
+{
+  "name": "drupal/autocomplete_list",
+  "description": "Provide widget for entity reference autocomplete list style.",
+  "type": "drupal-module",
+  "homepage": "https://www.drupal.org/project/autocomplete_list",
+  "license": "GPL-2.0-or-later"
+}

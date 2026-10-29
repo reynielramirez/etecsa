@@ -1,0 +1,131 @@
+{#
+/**
+ * @file views-bootstrap-grid.html.twig
+ * Default simple view template to display Bootstrap Grids.
+ *
+ *
+ * - columns: Contains rows grouped by columns.
+ * - rows: Contains a nested array of rows. Each row contains an array of
+ *   columns.
+ * - column_type: Contains a number (default Bootstrap grid system column type).
+ *
+ * @ingroup views_templates
+ */
+#}
+{%
+  set classes = [
+    'views-view-grid',
+    'mview-content',
+    'pb-5',
+  ]
+%}
+<style>
+	.card {
+		border: none;
+	}
+	.blanco a {
+		text-transform: uppercase;
+	}
+	body {
+		background-color: #CCCCCC !important;
+	}
+	.mview-content {
+		background-color: #fff;
+	}
+</style>
+<div id="{{ id }}" {{ attributes.addClass(classes) }}>
+	<div class="container">
+		<div class="row">
+			<div class="ml-4">
+				<div class="page-title azuloscuro">
+					<h2>{{'Equipment and accessories'|t|upper}}</h2>
+				</div>
+			</div>
+			<div class="offset-md-6 offset-sm-4 offset-lg-2 pl-md-4 pl-lg-4">
+				{{ drupal_block('etecsa_menu_equipos_block', wrapper=false) }}
+			</div>
+			<div class="col-12 pt-2">{% set url = url('<current>')['#markup'] %}
+			{% set a = '/todos' in url or '/all' in url? 'y' : 'n' %}
+			{% if a == 'n' %} 
+				<h4 class="page-subtitlev px-3">{{ view.style_plugin.getField(0, 'field_tipo_de_equipos') }}</h4>
+			{% else %}
+				<h4 class="page-subtitlev px-3">{{ 'All'|t }}</h4>
+			{% endif %}
+			</div>
+			<div class="d-none d-xs-none d-sm-none d-md-block d-lg-block px-4" style="width: 100%;">
+				<div class="row no-gutters">
+					{% for key,row in rows %}
+						<div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-3 custompad">
+							<div class="card text-center equipos-a">
+								<div class="card-body-equipos">
+									{% if view.style_plugin.getField(key, 'field_nuevo')|striptags == 1 %}
+										<div class="nuevo">
+											<span>{{ 'New'|t|upper }}</span>
+										</div>
+									{% endif %}
+									<img class="eq-ratio" src="{{ (view.style_plugin.getField(key, 'field_image')|striptags ) }}">
+									<h5 class="card-title-marca">
+										<span>{{ view.style_plugin.getField(key, 'field_marca')|striptags }}</span>
+									</h5>
+									<h5 class="card-title-modelo">
+										<span>{{ view.style_plugin.getField(key, 'field_modelo') }}</span>
+									</h5>
+									<div class="sub"></div>
+									<div class="precio">
+										<span class="monto">{{ view.style_plugin.getField(key, 'field_precio') }}</span>
+										<span class="moneda">{{ view.style_plugin.getField(key, 'field_moneda') }}</span>
+									</div>
+								</div>
+								<div class="ebtn">
+									<div class="blanco button--aylen">
+										{{ view.style_plugin.getField(key, 'view_node') }}
+									</div>
+									<div class="azul"></div>
+								</div>
+							</div>
+						</div>
+					{% endfor %}
+				</div>	
+			</div>	
+			<div class="d-block d-sm-block d-md-none d-lg-none px-4" style="width: 100%;">
+				<div class="row justify-content-center">
+					<div class="sesion-equipos-accesorios col-12">
+						<div id="carousel-eq-mobile" class="owl-carousel owl-carousel-eq-mobile mt-3">
+							{% for key,item in rows %}
+								<div class="card text-center equipos-a">
+									<div class="card-body-equipos">
+										{% if view.style_plugin.getField(key, 'field_nuevo')|striptags == 1 %}
+											<div class="nuevo">
+												<span>{{ 'New'|t|upper }}</span>
+											</div>
+										{% endif %}
+										<img class="eq-ratio" src="{{ (view.style_plugin.getField(key, 'field_image')|striptags ) }}">
+										<h5 class="card-title-marca">
+											<span>{{ view.style_plugin.getField(key, 'field_marca')|striptags }}</span>
+										</h5>
+										<h5 class="card-title-modelo">
+											<span>{{ view.style_plugin.getField(key, 'field_modelo') }}</span>
+										</h5>
+										<div class="sub"></div>
+										<div class="precio">
+											<span class="monto">{{ view.style_plugin.getField(key, 'field_precio') }}</span>
+											<span class="moneda">{{ view.style_plugin.getField(key, 'field_moneda') }}</span>
+										</div>
+									</div>
+									<div class="ebtn">
+										<div class="blanco button--aylen">
+											{{ view.style_plugin.getField(key, 'view_node') }}
+										</div>
+										<div class="azul"></div>
+									</div>
+								</div>
+							{% endfor %}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+{{ attach_library('etecsa_subtheme/node-equipos') }}

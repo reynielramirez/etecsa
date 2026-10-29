@@ -1,0 +1,11 @@
+name: Empty Page
+description: A simple empty page solution. Assists in creating empty menu callbacks mostly used for pages that only consist of blocks.
+package: Other
+type: module
+core_version_requirement: ^8.8 || ^9 || ^10 || ^11
+configure: empty_page.administration
+
+# Information added by Drupal.org packaging script on 2025-05-21
+version: '4.0.0'
+project: 'empty_page'
+datestamp: 1747813896

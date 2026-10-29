@@ -1,0 +1,8 @@
+accessibility:
+  css:
+    theme:
+      css/accessibility.min.css: {}
+  js:
+    js/accessibility.min.js: {}
+  dependencies:
+    - core/jquery

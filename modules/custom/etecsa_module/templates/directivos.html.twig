@@ -1,0 +1,76 @@
+{% apply spaceless %}  
+    {% if data %}
+    <div class="container page-content bg-white">
+            <div class="row">
+                <div class="ml-4">
+                    <div class="page-title azuloscuro">
+                        <h2>{{'About us'|t|upper}}</h2>
+                    </div>
+                </div>
+				
+				{% set content = texto.0 %}
+				{% if content.field_tipo_imagen.value == 'grande' and content.field_imagen_grande.value|length > 0 %}
+				  {% set img = file_url(content.field_imagen_grande.entity.uri.value) %}
+				{% elseif content.field_tipo_imagen.value == 'pequeña' and content.field_imagen_pequena.value|length > 0 %}  
+				  {% set img = file_url(content.field_imagen_pequena.entity.uri.value) %}
+				{% endif %} 
+				
+				{% if img %}
+					<div class="cmt">
+						<img  class="w-100" src="{{ img }}" alt="">
+					</div>   
+					<div class="sep col-lg-5 col-md-4 ml-5 d-lg-block d-md-block d-none"></div>        
+					<div class="offset-lg-7 offset-md-6  select-enlacetopic pb-3">
+					  {{ drupal_block('etecsa_menusn_block', wrapper=false) }}
+					</div>
+				{% else %}
+					<div class="offset-lg-4 offset-md-3  select-enlacetopic">
+					  {{ drupal_block('etecsa_menusn_block', wrapper=false) }}
+					</div>	
+				{% endif %} 	
+					
+				<div class="col-12  mt-3 mb-3 px-md-5 px-lg-5 px-3">
+					<h4 class="title">{{texto.0.get('title').value}}</h4>
+					<div class="word-break">{{ texto.0.get('field_descripcion_espacios').value|raw }}</div>
+				</div>
+            </div>   
+			{% for directivos in data %}
+			    <div class="row line-separador"></div>
+				<h4 class="title col-12" style="margin-left: 19px;">{{ directivos.tax }}</h4>
+				<div class="directivos-territoriales row mt-3 justify-content-center">                            
+					{% for res in directivos.list %}
+						<div class="col-md-3 col-sm-6">
+							<div class="card directivo-item">
+								<div class="directivo-img">
+									<img src="{{ file_url(res.field_imagen_svg.entity.uri.value) }}"alt=""/>
+								</div>
+								<div class="directivos-text">
+									<div class="infor">
+										{% if res.field_telefon|length>0 %}
+											<i class="fa fa-phone-alt custom-icon dir d-lg-inline-block d-none" title="{{ res.field_telefon.value }}"></i>
+											<a class="d-lg-none d-sm-inline-block" href="tel:{{ res.field_telefon.value }}">
+													<i class="fa fa-phone-alt custom-icon dir " ></i>
+											</a>
+										{% endif %} 
+										{% if res.field_correodir|length>0 %}
+											<a href="mailto:{{res.field_correodir.value }}" title="{{res.field_correodir.value }}">
+											<i class="fa fa-envelope custom-icon dir"></i></a> 
+										{% endif %} 
+										{% if res.field_enlacedir|length>0 %}
+											{% for item in res.field_enlacedir %}
+												<a href="{{ item.url }}" target="_blank">
+													<i class="fab {{ item.title }} custom-icon dir" ></i>
+												</a>
+											{% endfor %} 
+										{% endif %} 
+									</div>
+								</div>
+							</div>
+						</div>
+					{% endfor %}
+				</div>
+			{% endfor %}
+                        
+    </div>
+    {% endif %}
+{% endapply %}

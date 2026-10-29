@@ -1,0 +1,19 @@
+langcode: es
+status: true
+dependencies:
+  theme:
+    - seven_desoft
+id: seven_desoft_primary_local_tasks
+theme: seven_desoft
+region: header
+weight: 0
+provider: null
+plugin: local_tasks_block
+settings:
+  id: local_tasks_block
+  label: 'Primary tabs'
+  provider: core
+  label_display: '0'
+  primary: true
+  secondary: false
+visibility: {  }

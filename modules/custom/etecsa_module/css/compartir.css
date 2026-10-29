@@ -1,0 +1,98 @@
+.redesocN.nodeN{
+  position: absolute;
+  z-index: 9;
+  top: 3.5rem;
+  display: none;
+  left: .1rem;
+}
+
+.compartir-1 .redesocN {
+  position: absolute;
+  z-index: 9;
+  display: none;
+  top: 2rem;
+  left: 0.3rem;
+}
+.redesocN a{
+  color:#0099CC;
+}
+.compartir-1:hover .redesocN{
+  display: inline-block;
+}
+.compartir:hover .redesocN{
+  display: inline-flex;
+}
+.redesocN.nodeN button{
+  margin-left: 5px;
+  margin-top: 5px;
+  background: #09c;
+  width: 28px !important;
+  height: 28px;
+  color: #fff;
+  border-radius: 100%;
+  padding: .1rem;
+  display: block;
+  text-align: center;
+  font-size: .8rem;
+  box-shadow: none;
+  border: none;
+  cursor: pointer;
+}
+.block-compartir .compartir{
+  text-align: center;
+  cursor: pointer;
+  float: left;
+  background-color: #ccc;
+  color: #09c!important;
+  padding: 10px!important;
+  margin-left: -8px;
+  border: 1px solid;
+  width: 40px!important;
+  height: 40px!important;
+  margin-top: 1rem;
+}
+.block-compartir {
+  position: absolute;
+  margin-block: 3.2rem;
+  z-index: 10;
+}
+.block-1 {
+  margin: 0px 5rem;
+}
+.compartir:hover .redesocN.nodeN{
+  display: inline-block;
+}
+
+.block-compartir-1 > div.compartir-1 {
+  background-color: #ccc;
+  color: #09C;
+  position: absolute;
+  top: 5.7rem;
+  width: 100%;
+  height: 35px;
+  text-align: center;
+  cursor: pointer;
+  padding-top: .4rem;
+}
+
+.redesocN button{
+  margin-left: 5px;
+  margin-top: 5px;
+  background: #09c;
+  width: 24px !important;
+  height: 24px;
+  color: #fff;
+  border-radius: 100%;
+  padding: .1rem;
+  display: block;
+  text-align: center;
+  font-size: .8rem;
+  box-shadow: none;
+  border: none;
+  cursor: pointer;
+}
+@media (max-width: 768px) {
+  .block-1 {
+    margin: 0;
+  }
+}

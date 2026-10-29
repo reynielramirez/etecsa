@@ -1,0 +1,10 @@
+name: 'Accessibility'
+description: 'Extends the Accessibility Javascript plugin to add simple accessibility to the website.'
+core_version_requirement: ^8 || ^9 || ^10
+package: Accessibility
+type: module
+configure: accessibility.settings
+
+# Information added by Drupal.org packaging script on 2023-02-21
+version: '2.1.0'
+project: 'accessibility'

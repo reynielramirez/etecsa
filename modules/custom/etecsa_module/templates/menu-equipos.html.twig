@@ -1,0 +1,27 @@
+
+{% apply spaceless %}
+ {% if data %}
+	{% if language =="es" %}
+		{% set text="/equipos-accesorios/"%}
+    {% set param="todos"%}
+	{% else %}
+		{% set text="/equipment-accessories/"%}
+    {% set param="all"%}
+	{% endif %}
+	{% if cliente =="personas" or  cliente =="people" %}			
+		{% set cpath = base_path ~ language ~ text %}
+	{% else %}
+		{% set cpath = base_path ~ language ~ "/" ~ cliente ~ text %}
+	{% endif %} 
+  <div class="enlaces-filtro">
+      <label> {{'Select:'|t}}</label>
+      <select name="enlaces-topics" id="enlaces-topics" class="enlaces-topics">
+        {% for item in data %}
+            {% set val= item|replace({'á':'a','é':'e','í':'i','ó':'o','ú':'u',' ':'-'})%}
+            <option value="{{ cpath ~ val|lower}}">{{item}}</option>
+        {% endfor %}
+        <option value="{{ cpath ~ param }}">{{'All'|t}}</option>
+      </select>      
+  </div>
+{% endif %}
+{% endapply %}

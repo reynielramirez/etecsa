@@ -1,0 +1,73 @@
+{% apply spaceless %}
+  
+    <div class="container bg-white">
+        <div class="row">
+          <div class="ml-4">
+            <div class="page-title azuloscuro">
+              <h2 class="upper">{{descripcion.0.title.value}}</h2>
+            </div>
+          </div>
+		  
+		  {% set content = descripcion.0 %}
+		  {% if content.field_tipo_imagen.value == 'grande' and content.field_imagen_grande.value|length > 0 %}
+			{% set img = file_url(content.field_imagen_grande.entity.uri.value) %}
+		  {% elseif content.field_tipo_imagen.value == 'pequeña' and content.field_imagen_pequena.value|length > 0 %}  
+			{% set img = file_url(content.field_imagen_pequena.entity.uri.value) %}
+		  {% endif %} 
+		
+		  {% if img %}
+			<div class="cmt">
+				<img  class="w-100" src="{{ img }}" alt="">
+			</div>   
+		  {% endif %} 
+
+         <div class="col-12 word-break pl-5 pb-3 pt-4">{{ descripcion.0.field_descripcion_espacios.value|raw }}</div> 
+          <div class="col-11 select-salasespacios roaming mb-3 mx-md-5 mx-lg-5 mx-2">
+              {{form}}
+          </div>        
+        </div>
+      {% if data %}
+        <div class="salas-espacios pb-5 px-0 px-md-5 px-lg-5">              
+          <div id="accordionExample" class="accordion">
+            {% set num = 0 %}   
+            {% if bandera %}
+              {% set expanded = "true"%}
+              {% set show = "show"%}
+            {% else %}  
+              {% set expanded = "false"%} 
+              {% set show = ""%}
+            {% endif %}    
+            {% for keys, items in data %} 
+  
+              <div class="card{{num}} mt-3 mb-3">
+                  <div id="heading{{ num }}" class="card-header bg-white py-2 {{show}}" aria-expanded="{{expanded}}" data-toggle="collapse" data-target="#collapse{{ num }}" aria-controls="collapse{{ num }}">                                            
+                      <div class="position-relative collapsible-link word-break">
+                      <span class="roaming" style="">{{countEspacios[keys]}}</span>
+                        
+                      <p class="titleProv ml-4">{{keys}}</p>  
+                    </div>                                       
+                  </div>                   
+                  <div id="collapse{{ num }}" aria-labelledby="heading{{ num }}" data-parent="#accordionExample" class="collapse {{show}}">
+                    <div class="card-body p-0 p-md-4 p-lg-4">
+                      {% if data|length >0 %} 
+                        <div class="row">
+                          {% for key, item in items %}  
+                            <div class="element col-12 col-sm-12 col-md-6 col-lg-6 mb-2">
+                                <h5 class="azulclaro-salas mt-2 ml-2 ml-md-3 ml-lg-3">{{item.operador}}</h5>     
+                                <div class="mb-0 ml-2 ml-md-4 ml-lg-4">{{item.servicios|raw}}</div>
+                            </div>        
+                          {% endfor %}                        
+                      {% endif %}
+                    </div> 
+                  </div>
+              </div>  
+              {% set num = num+1 %}    
+            {% endfor %} 
+          </div>         
+        </div>
+      {% else %}
+        <p class="pl-5 py-4">{{"There are not items to display"|t}}</p>
+      {% endif %}  
+    </div>        
+  
+{% endapply %}  

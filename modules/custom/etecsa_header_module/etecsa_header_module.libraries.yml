@@ -1,0 +1,6 @@
+etecsa-header-styling:
+  version: VERSION
+  css:
+      theme:
+        css/etecsa_header_module.min.css: {}
+

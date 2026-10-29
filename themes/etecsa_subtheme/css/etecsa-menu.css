@@ -1,0 +1,350 @@
+/* Personas */
+#superfish-main li:nth-child(1) a[href$='/es'] ~ ul,
+#superfish-main li:nth-child(1) a[href$='/en'] ~ ul {
+    background-color: #006699;
+    margin-top: 12px;
+}
+#superfish-main li.sf-depth-1 > a[href$='/es'],
+#superfish-main li.sf-depth-1 > a[href$='/en'],
+#superfish-main li.sf-depth-1 > a[href*='empresas'],
+#superfish-main li.sf-depth-1 > a[href*='emprendedores'],
+#superfish-main li.sf-depth-1 > a[href*='visitantes'],
+#superfish-main li.sf-depth-1 > a[href*='companies'],
+#superfish-main li.sf-depth-1 > a[href*='entrepreneurs'],
+#superfish-main li.sf-depth-1 > a[href*='visitors']  {
+    padding-top: 1.3rem;
+}
+#superfish-main li.sf-depth-1.sfHover > a[href$='/es'],
+#superfish-main li.sf-depth-1.sfHover > a[href$='/en']{
+    background-color: #00ccff;
+    font-weight: bold;
+    color: #006;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 88% 83%, 0 83%);
+    height: 75px !important;
+}
+#superfish-main li.sf-depth-1.sfHover > a[href*='empresas'],
+#superfish-main li.sf-depth-1.sfHover > a[href*='companies']{
+    background-color: #ff9966;
+    font-weight: bold;
+    color: #006;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 88% 83%, 0 83%);
+    height: 75px !important;
+}
+#superfish-main li.sf-depth-1.sfHover > a[href*='emprendedores'],
+#superfish-main li.sf-depth-1.sfHover > a[href*='entrepreneurs']{
+    background-color: #99cc33;
+    font-weight: bold;
+    color: #006;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 88% 83%, 0 83%);
+    height: 75px !important;
+}
+#superfish-main li.sf-depth-1.sfHover > a[href*='visitantes'],
+#superfish-main li.sf-depth-1.sfHover > a[href*='visitors']{
+    background-color: #ff99ff;
+    font-weight: bold;
+    color: #006;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 88% 83%, 0 83%);
+    height: 75px !important;
+}
+#superfish-main li.sf-depth-1 a[href$='/es'] ~ ul > li.sfHover,
+#superfish-main li.sf-depth-1 a[href$='/en'] ~ ul > li.sfHover,
+#superfish-main li.sf-depth-1 a[href*='empresas'] ~ ul > li.sfHover,
+#superfish-main li.sf-depth-1 a[href*='emprendedores'] ~ ul > li.sfHover,
+#superfish-main li.sf-depth-1 a[href*='visitantes'] ~ ul > li.sfHover,
+#superfish-main li.sf-depth-1 a[href*='companies'] ~ ul > li.sfHover,
+#superfish-main li.sf-depth-1 a[href*='entrepreneurs'] ~ ul > li.sfHover,
+#superfish-main li.sf-depth-1 a[href*='visitors'] ~ ul > li.sfHover  {
+    position: relative;
+    left: -3px;
+    width: 101%;
+}
+#superfish-main li.sf-depth-1 a[href$='/es'] ~ ul li.sfHover,
+#superfish-main li.sf-depth-1 a[href$='/en'] ~ ul li.sfHover {
+    background-color: #00ccff!important;
+}
+#superfish-main li.sf-depth-1 a[href$='/es'] ~ ul li.sfHover > span,
+#superfish-main li.sf-depth-1 a[href$='/en'] ~ ul li.sfHover > span {
+    color: #006;
+    font-weight: bold;
+}
+#superfish-main li.sf-depth-1 a[href$='/es'] ~ ul li.sf-no-children,
+#superfish-main li.sf-depth-1 a[href$='/en'] ~ ul li.sf-no-children {
+    background-color: #006699!important;
+}
+#superfish-main li.sf-depth-1 a[href*='empresas'] ~ ul li.sfHover,
+#superfish-main li.sf-depth-1 a[href*='companies'] ~ ul li.sfHover {
+    background-color: #ff9966!important;
+}
+#superfish-main li.sf-depth-1 a[href*='empresas'] ~ ul li.sfHover > span,
+#superfish-main li.sf-depth-1 a[href*='companies'] ~ ul li.sfHover > span{
+    color: #006;
+    font-weight: bold;
+}
+#superfish-main li.sf-depth-1 a[href*='empresas'] ~ ul li.sf-no-children,
+#superfish-main li.sf-depth-1 a[href*='companies'] ~ ul li.sf-no-children {
+    background-color: #cc3300!important;
+}
+#superfish-main li.sf-depth-1 a[href*='emprendedores'] ~ ul li.sfHover,
+#superfish-main li.sf-depth-1 a[href*='entrepreneurs'] ~ ul li.sfHover {
+    background-color: #99cc33!important;
+}
+#superfish-main li.sf-depth-1 a[href*='emprendedores'] ~ ul li.sfHover > span,
+#superfish-main li.sf-depth-1 a[href*='entrepreneurs'] ~ ul li.sfHover > span{
+    color: #006;    
+    font-weight: bold;
+}
+#superfish-main li.sf-depth-1 a[href*='emprendedores'] ~ ul li.sf-no-children,
+#superfish-main li.sf-depth-1 a[href*='entrepreneurs'] ~ ul li.sf-no-children {
+    background-color: #336600!important;
+}
+#superfish-main li.sf-depth-1 a[href*='visitantes'] ~ ul li.sfHover,
+#superfish-main li.sf-depth-1 a[href*='visitors'] ~ ul li.sfHover {
+    background-color: #ff99ff!important;
+}
+#superfish-main li.sf-depth-1 a[href*='visitantes'] ~ ul li.sfHover > span,
+#superfish-main li.sf-depth-1 a[href*='visitors'] ~ ul li.sfHover > span{
+    color:#006;
+    font-weight: bold;
+}
+#superfish-main li.sf-depth-1 a[href*='visitantes'] ~ ul li.sf-no-children,
+#superfish-main li.sf-depth-1 a[href*='visitors'] ~ ul li.sf-no-children {
+    background-color: #993399!important;
+    
+}
+#superfish-main li.sf-depth-1 a[href$='/es'] ~ ul li.sf-no-children a:hover,
+#superfish-main li.sf-depth-1 a[href$='/en'] ~ ul li.sf-no-children a:hover,
+#superfish-main li.sf-depth-1 a[href$='/es'] ~ ul li.sf-no-children span:hover,
+#superfish-main li.sf-depth-1 a[href$='/en'] ~ ul li.sf-no-children span:hover{
+    background-color: #00ccff;
+    font-weight: bold;
+}
+#superfish-main li.sf-depth-1 a[href*='empresas'] ~ ul li.sf-no-children a:hover,
+#superfish-main li.sf-depth-1 a[href*='empresas'] ~ ul li.sf-no-children span:hover,
+#superfish-main li.sf-depth-1 a[href*='companies'] ~ ul li.sf-no-children a:hover,
+#superfish-main li.sf-depth-1 a[href*='companies'] ~ ul li.sf-no-children span:hover{
+    background-color: #ff9966;
+    font-weight: bold;
+}
+#superfish-main li.sf-depth-1 a[href*='emprendedores'] ~ ul li.sf-no-children a:hover,
+#superfish-main li.sf-depth-1 a[href*='emprendedores'] ~ ul li.sf-no-children span:hover,
+#superfish-main li.sf-depth-1 a[href*='entrepreneurs'] ~ ul li.sf-no-children a:hover,
+#superfish-main li.sf-depth-1 a[href*='entrepreneurs'] ~ ul li.sf-no-children span:hover{
+    background-color: #99cc33;
+    font-weight: bold;
+}
+#superfish-main li.sf-depth-1 a[href*='visitantes'] ~ ul li.sf-no-children a:hover,
+#superfish-main li.sf-depth-1 a[href*='visitantes'] ~ ul li.sf-no-children span:hover,
+#superfish-main li.sf-depth-1 a[href*='visitors'] ~ ul li.sf-no-children a:hover,
+#superfish-main li.sf-depth-1 a[href*='visitors'] ~ ul li.sf-no-children span:hover{
+    background-color: #ff99ff;
+    font-weight: bold;
+}
+ul.sf-menu li:nth-child(1).sfHover .aftermenu,
+ul.sf-menu li:nth-child(2).sfHover .aftermenu,
+ul.sf-menu li:nth-child(3).sfHover .aftermenu,
+ul.sf-menu li:nth-child(4).sfHover .aftermenu {
+    display: none;
+}
+#superfish-main .sf-depth-1{
+    height: 60px;
+    color: #fff;
+    text-transform: uppercase;
+}
+.aftermenu {
+    background-color:#003399;
+    clip-path: polygon(95% 0, 100% 0, 100% 100%, 20% 100%, 95% 80%);
+    content: '';
+    width: 15px;
+    height: 45px;
+    top: 15px;
+    position: absolute;
+    right: 0px;
+}
+ul.sf-menu span, 
+ul.sf-menu span.nolink{
+    padding: 1em 1em 5px 1.5em;
+    width: 100%;
+    display: block;
+}
+
+#superfish-main li:nth-child(1).sf-depth-1 > a, 
+#superfish-main li:nth-child(1).sf-depth-1 > span, 
+#superfish-main li:nth-child(1).sf-depth-1 > span.nolink{
+    padding: 1.4em;
+}
+#superfish-main a,
+#superfish-main span {
+    cursor: pointer;
+    color: white;
+}
+.sf-depth-1 a[href$='/es'] ~ ul li.menuparent:after,
+.sf-depth-1 a[href$='/en'] ~ ul li.menuparent:after,
+.sf-depth-1 a[href*='empresas'] ~ ul li.menuparent:after,
+.sf-depth-1 a[href*='emprendedores'] ~ ul li.menuparent:after,
+.sf-depth-1 a[href*='visitantes'] ~ ul li.menuparent:after,
+.sf-depth-1 a[href*='companies'] ~ ul li.menuparent:after,
+.sf-depth-1 a[href*='entrepreneurs'] ~ ul li.menuparent:after,
+.sf-depth-1 a[href*='visitors'] ~ ul li.menuparent:after
+ {
+    content: '';
+    height: 10px;
+    width: 10px;
+    display: block;
+    float: right;
+    clip-path: polygon(100% 0%, 0% 100%, 100% 100%);
+}
+.sf-depth-1 a[href$='/es'] ~ ul li.menuparent:after,
+.sf-depth-1 a[href$='/en'] ~ ul li.menuparent:after{
+    background: #006699;
+}
+.sf-depth-1 a[href*='empresas'] ~ ul li.menuparent:after,
+.sf-depth-1 a[href*='companies'] ~ ul li.menuparent:after {
+    background: #ff6600;
+}
+.sf-depth-1 a[href*='emprendedores'] ~ ul li.menuparent:after,
+.sf-depth-1 a[href*='entrepreneurs'] ~ ul li.menuparent:after{
+    background: #669900;
+}
+.sf-depth-1 a[href*='visitantes'] ~ ul li.menuparent:after,
+.sf-depth-1 a[href*='visitors'] ~ ul li.menuparent:after{
+    background: #cc66cc;
+}
+
+.sf-depth-1 a[href$='/es'] ~ ul li.menuparent,
+.sf-depth-1 a[href$='/en'] ~ ul li.menuparent {
+    border-bottom: 1px solid #00CCFF;
+}
+.sf-depth-1 a[href*='empresas'] ~ ul li.menuparent,
+.sf-depth-1 a[href*='companies'] ~ ul li.menuparent {
+    border-bottom: 1px solid #ff6600;
+}
+.sf-depth-1 a[href*='emprendedores'] ~ ul li.menuparent,
+.sf-depth-1 a[href*='entrepreneurs'] ~ ul li.menuparent
+ {
+    border-bottom: 1px solid #669900;
+}
+.sf-depth-1 a[href*='visitantes'] ~ ul li.menuparent,
+.sf-depth-1 a[href*='visitors'] ~ ul li.menuparent {
+    border-bottom: 1px solid #cc66cc;
+}
+#superfish-main li:nth-child(1).sf-depth-3.menuparent.sfHover,
+#superfish-main li:nth-child(2).sf-depth-3.menuparent.sfHover,
+#superfish-main li:nth-child(3).sf-depth-3.menuparent.sfHover,
+#superfish-main li:nth-child(4).sf-depth-3.menuparent.sfHover {
+    width: 100%;
+}
+
+#superfish-main li:nth-child(1).sf-depth-3.menuparent.sfHover a.sf-depth-3 {
+    background-color: #00CCFF;
+    width: 96%;
+    color: #000066;
+} 
+
+.sf-depth-1 ul li:nth-child(1).menuparent:hover::after{
+    background: transparent;
+}
+
+#superfish-main li[class^='sf-depth-'].sf-no-children a:hover,
+#superfish-main li[class^='sf-depth-'].sf-no-children span:hover,
+#superfish-main li.sf-depth-3.menuparent ul a:hover {
+    width: 101%;
+    color: #006;
+}
+#superfish-main li:nth-child(1).sf-depth-3.menuparent ul a:hover {
+    background-color: #0099CC;
+}
+#superfish-main li:nth-child(2).sf-depth-3.menuparent ul a:hover {
+    background-color: #ff6600;
+}
+#superfish-main li:nth-child(3).sf-depth-3.menuparent ul a:hover {
+    background-color: #669900;
+}
+#superfish-main li:nth-child(4).sf-depth-3.menuparent ul a:hover {
+    background-color: #cc66cc;
+}
+#superfish-main li:nth-child(1).sf-depth-3.menuparent li {
+margin-left: 0px;
+width: 100%;
+}
+#superfish-main  li.sf-depth-1 a[href$='/es'] ~ ul .sf-depth-2.menuparent ul,
+#superfish-main  li.sf-depth-1 a[href$='/en'] ~ ul .sf-depth-2.menuparent ul {
+    background-color: #006699;
+    margin-left: 3px;
+    text-transform: initial;
+}
+#superfish-main  li.sf-depth-1 a[href*='empresas'] ~ ul .sf-depth-2.menuparent ul,
+#superfish-main  li.sf-depth-1 a[href*='companies'] ~ ul .sf-depth-2.menuparent ul {
+    background-color: #cc3300;
+    margin-left: 3px;
+    text-transform: initial;
+}
+#superfish-main li.sf-depth-1 a[href*='emprendedores'] ~ ul .sf-depth-2.menuparent ul,
+#superfish-main li.sf-depth-1 a[href*='entrepreneurs'] ~ ul .sf-depth-2.menuparent ul {
+    background-color: #336600;
+    margin-left: 3px;
+    text-transform: initial;
+}
+#superfish-main li.sf-depth-1 a[href*='visitantes'] ~ ul .sf-depth-2.menuparent ul,
+#superfish-main li.sf-depth-1 a[href*='visitors'] ~ ul .sf-depth-2.menuparent ul {
+    background-color: #993399;
+    margin-left: 3px;
+    text-transform: initial;
+}
+.m-active-l0-p{
+    background-color: #00CCFF !important;
+}
+.m-active-l0-em {
+    background-color: #ff9966 !important;
+}
+.m-active-l0-vis{
+    background-color: #ff99ff !important;
+}
+.m-active-l0-emp{
+    background-color: #99cc33 !important;
+}
+
+.m-active-l0-p,
+.m-active-l0-em,
+.m-active-l0-vis,
+.m-active-l0-emp {
+    color: #000066 !important;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 88% 83%, 0 83%);
+    height: 75px !important;
+    font-weight: bold;
+}
+  
+  /* Empresas */
+#superfish-main li.sf-depth-1:nth-child(2) a[href*='empresas'] ~ ul,
+#superfish-main li.sf-depth-1:nth-child(2) a[href*='companies'] ~ ul{
+    background-color: #cc3300;
+    margin-top: 12px;
+}
+  /* Emprendedores */
+#superfish-main li.sf-depth-1:nth-child(3) a[href*='emprendedores'] ~ ul,
+#superfish-main li.sf-depth-1:nth-child(3) a[href*='entrepreneurs'] ~ ul {
+    background-color: #336600;
+    margin-top:  12px;
+}
+  /* Visitantes */
+#superfish-main li.sf-depth-1:nth-child(4) a[href*='visitantes'] ~ ul,
+#superfish-main li.sf-depth-1:nth-child(4) a[href*='visitors'] ~ ul {
+    background-color: #993399;
+    margin-top:  12px;
+}
+@media (max-width: 576px) {
+    .m-active-l0-p, .m-active-l0-em, .m-active-l0-vis, .m-active-l0-emp {
+        font-weight: normal !important;
+        height: 50px !important;
+        clip-path: none !important;
+      }
+    .sfm .sf-depth-1 a[href$='/es'] ~ ul li.menuparent:after,
+    .sfm .sf-depth-1 a[href$='/en'] ~ ul li.menuparent:after,
+    .sfm .sf-depth-1 a[href*='empresas'] ~ ul li.menuparent:after,
+    .sfm .sf-depth-1 a[href*='emprendedores'] ~ ul li.menuparent:after,
+    .sfm .sf-depth-1 a[href*='visitantes'] ~ ul li.menuparent:after,
+    .sfm .sf-depth-1 a[href*='companies'] ~ ul li.menuparent:after,
+    .sfm .sf-depth-1 a[href*='entrepreneurs'] ~ ul li.menuparent:after,
+    .sfm .sf-depth-1 a[href*='visitors'] ~ ul li.menuparent:after  {
+        background: transparent;
+    }
+}

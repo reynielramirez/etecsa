@@ -1,0 +1,190 @@
+#block-bloqueparaplanesmovilespospagos{
+    margin-top:30px;
+}
+.planesmov li a {
+    padding: 6px 50px;
+    font-size: 25px;
+    color: #000066;
+  
+  }
+  .planesmov li a.active, .nav-tabs .nav-link:hover {
+    border-bottom: 5px solid !important;
+    font-weight: bold !important;
+  }
+  .planesmov li a.active {
+    color: #006 !important;
+    border-color: #fff #fff #006 !important;
+    background-color: transparent !important;
+  }
+  .nav-tabs .nav-link:hover {
+    color: #0099CC !important;
+    border-color: #fff #fff #0099CC !important;
+  }  
+  .owl-carousel-pmp .owl-stage {
+    display: flex!important;
+    align-items: flex-end!important;
+  }
+  
+  
+  .owl-carousel-pmp .owl-item img
+   {
+    width: auto!important;
+    height: 100%;
+  }
+
+  [id^='seccion-'] .title h4{
+    font-weight: bold;
+    color: #006;
+  }
+  [id^='seccion-']{
+    padding: 0px 5rem;
+    margin: 2rem 0;
+  }
+  .pmp{
+    padding: 5px 15px;
+    margin-bottom: 3rem;
+  }
+  
+.line {
+  width: 100%;
+  border-bottom: 1px solid #006;
+}
+.hw .paquete-filtro select {
+  height: 45px;
+  width: 230px;
+  color: #0099CC;
+  font-style: italic;
+  border: 1px solid #0099CC;
+  font-size: 18px; 
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  padding-left: 10px;
+  background-image: url('../../../../themes/etecsa_subtheme/images/arrow_azul.svg');
+  background-repeat: no-repeat;
+  background-position: center right 10px;
+  background-size: cover;
+  background-size: 18px;
+}
+.hw .paquete-filtro select option{
+  font-size: 18px;
+}
+.hw .paquete-filtro {
+  text-align: center;
+  margin-top: 5px;
+  color: #0099CC;
+  float: right;
+}
+.hw .paquete-filtro label {
+  font-style: italic;
+  font-size: 20px;
+  margin-right: 10px;
+}
+.hw .preg-frecuentes {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+.hw .preg-frecuentes span{
+  font-style: italic;
+  margin-right: 15px;
+  font-size: 18px;
+  color: #006;
+  text-decoration: none;
+}
+.hw .preg-frecuentes a {
+  color: #fff;
+  text-decoration: none;
+}
+.card-header.collapsed::before, .card-header[aria-expanded='false']::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  border-bottom: 16px solid #ccc;
+  border-left: 18px solid #fff;
+}
+.card-header[aria-expanded='false'] .collapsible-link::before {
+  transform: rotate(180deg);
+}
+.collapsible-link::before {
+  content: '';
+  width: 14px;
+  height: 2px;
+  background: #003366;
+  position: absolute;
+  top: calc(50% - 1px);
+  right: 1rem;
+  display: block;
+  transition: all 0.3s;
+}
+.collapsible-link::after {
+  content: '';
+  width: 2px;
+  height: 14px;
+  background: #003366;
+  position: absolute;
+  top: calc(50% - 7px);
+  right: calc(1rem + 6px);
+  display: block;
+  transition: all 0.3s;
+}
+.card-header {
+  border-radius: 0!important;
+  clip-path: polygon(100% 0, 100% 70%, 98% 100%, 0 100%, 0 0);
+  border: 1px solid rgba(0,0,0,.125);
+}
+.card-header[aria-expanded='true'] .collapsible-link::after, .card0 [aria-expanded=''] .collapsible-link::after {
+  transform: rotate(90deg) translateX(-1px);
+}
+.collapse.show > div::after {
+  background: #ccc;
+  content: "";
+  width: 19px;
+  height: 1px;
+  position: absolute;
+  transform: rotateZ(-42deg);
+  transform-origin: bottom right;
+  right: 0px;
+  bottom: 12px;
+}
+.card-header[aria-expanded='true'] {
+  clip-path: none;
+}
+.card-header p {
+  margin: 0px;
+}
+.card {
+  border: none !important;
+}
+.collapse.show {
+  clip-path: polygon(100% 0, 100% 77%, 98% 100%, 0 100%, 0 0);
+  position: relative;
+  border: 1px solid rgba(0,0,0,.125);
+}
+.hw {
+  background-color: #fff;
+  padding: 5px 15px;
+  margin-bottom: 3rem;
+}
+.hw .preg-frecuentes .btn-purchase {
+  text-align: center;
+  width:230px;
+  background-color: #39c;
+  position: relative;
+  bottom: 0;
+  padding: 12px;
+  clip-path: polygon(100% 0,100% 31px,94.22% 98.16%,0 100%,0 0);
+  cursor: pointer;
+  display: inline-block;
+}
+.hw .preg-frecuentes .button--aylen::before {
+  background: #006;
+}
+@media(max-width: 576px) {
+  .hw .paquete-filtro {
+    margin-left: 2rem;
+  }
+  .offset-lg-3 {
+    width: 90%;
+  }
+}

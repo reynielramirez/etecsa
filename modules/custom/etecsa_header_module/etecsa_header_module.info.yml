@@ -1,0 +1,7 @@
+name: ETECSA header Module
+type: module
+description: Modulo para el header para el sitio de etecsa.
+package: etecsa
+core: 8.x
+core_version_requirement: ^9 || ^10
+

@@ -1,0 +1,5 @@
+accessibility.configuration:
+  title: 'Accessibility'
+  route_name: 'accessibility.settings'
+  parent: system.admin_config_ui
+  weight: -5

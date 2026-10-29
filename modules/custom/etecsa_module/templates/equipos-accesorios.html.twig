@@ -1,0 +1,212 @@
+{% apply spaceless %}
+{% if language =="es" %}
+	{% set text = "/equipos-accesorios" %}
+	{% set param="/todos"%}
+{% else %}
+	{% set text = "/equipment-accessories" %}
+	{% set param="/all"%}
+{% endif %}
+
+{% if cliente =="inicio" %}			
+	{% set cpath = base_path ~ language ~ text ~ param %}
+{% else %}
+	{% set cpath = base_path ~ language ~"/"~ cliente ~ text ~ param %}
+{% endif %}
+
+{% if data|length > 0 %}
+<div class="container {{ visibility }}" id="block-equipos-accesorios-persona">
+	<div class="row justify-content-center">
+		<div class="col-md-12 text-center">
+			<h1 class="block-title-custom">{{ 'EQUIPMENT AND ACCESSORIES '|t|upper }}</h1>
+			<p class="block-subtitle-custom">{{ 'Available in our offices'|t }}</p>
+		</div>
+
+		<div class="sesion-equipos-accesorios col-12">
+
+			{# ================= TABS ================= #}
+			<ul class="nav nav-tabs equipos-accesorios d-none d-md-flex" id="myTab" role="tablist">
+				{% set cont = 1 %}
+				{% for keys,item in data %}
+					<li class="nav-item">
+						<a class="nav-link {{ loop.first ? 'active' : '' }}" 
+						   data-toggle="tab" 
+						   href="#tabeq{{cont}}" 
+						   role="tabpanel">
+						   {{keys}}
+						</a>
+					</li>
+					{% set cont = cont+1 %}
+				{% endfor %}
+
+				<li class="nav-item">
+					<a class="nav-link" id="todos-tab" href="{{ cpath }}">
+						{{ 'all'|t|upper }}
+					</a>
+				</li>
+			</ul>
+
+			{# ================= CONTENIDO MD / LG ================= #}
+			<div class="tab-content d-none d-md-block" id="myTabContent">
+				{% set cont = 1 %}
+				{% for keys,item in data %}
+					<div class="tab-pane fade show {{ loop.first ? 'active' : '' }}" 
+						 id="tabeq{{cont}}" 
+						 role="tabpanel">
+
+						{% set total = item|length %}
+
+						{# ===== SI HAY MAS DE 4 → CAROUSEL ===== #}
+						{% if total > 4 %}
+							<div id="carousel-eq-{{cont}}" class="owl-carousel owl-carousel-eq mt-5">
+								{% for eq in item %}
+									<div class="card text-center equipos-a">
+											<div class="card-body-equipos">
+												{% if eq.field_nuevo.value == 1 %}
+													<div class="nuevo">
+														<span>{{ 'New'|t|upper }}</span>
+													</div>
+												{% endif %}
+												<img class="eq-ratio" src="{{ file_url(eq.field_image.entity.uri.value) }}">
+												<h5 class="card-title-marca">
+													<span>{{ eq.marca }}</span>
+												</h5>
+												<h5 class="card-title-modelo">
+													<span>{{ eq.modelo }}</span>
+												</h5>
+												<div class="sub"></div>
+												<div class="precio">
+													<span class="monto">{{ eq.field_precio.value }} </span>
+													<span class="moneda"> {{ eq.field_moneda.value|upper }}</span>
+												</div>
+											</div>
+											<div class="ebtn">
+												<div class="blanco button--aylen">
+													<a href="{{ path('entity.node.canonical', {'node': eq.nid.value }) }}">{{ 'See details'|t|upper }}</a>
+												</div>
+												<div class="azul"></div>
+											</div>
+									</div>
+								{% endfor %}
+							</div>
+
+						{# ===== SI HAY 4 O MENOS → GRID ===== #}
+						{% else %}
+
+							{# Columnas dinámicas #}
+							{% if total == 6 %}
+								{% set col = 12 %}
+							{% elseif total == 2 %}
+								{% set col = 6 %}
+							{% elseif total == 3 %}
+								{% set col = 4 %}
+							{% else %}
+								{% set col = 3 %}
+							{% endif %}
+
+							<div class="row mt-5 justify-content-center">
+								{% for eq in item %}
+									<div class="col-12 col-md-{{col}} mb-4 d-flex">
+										<div class="text-center equipos-a w-100">
+											<div class="card-body-equipos">
+
+												{% if eq.field_nuevo.value == 1 %}
+													<div class="nuevo">
+														<span>{{ 'New'|t|upper }}</span>
+													</div>
+												{% endif %}
+
+												<img class="eq-ratio" src="{{ file_url(eq.field_image.entity.uri.value) }}">
+
+												<h5 class="card-title-marca">
+													<span>{{ eq.marca }}</span>
+												</h5>
+
+												<h5 class="card-title-modelo">
+													<span>{{ eq.modelo }}</span>
+												</h5>
+
+												<div class="sub"></div>
+
+												<div class="precio">
+													<span class="monto">{{ eq.field_precio.value }}</span>
+													<span class="moneda">{{ eq.field_moneda.value|upper }}</span>
+												</div>
+											</div>
+
+											<div class="ebtn">
+												<div class="blanco button--aylen">
+													<a href="{{ path('entity.node.canonical', {'node': eq.nid.value }) }}">
+														{{ 'See details'|t|upper }}
+													</a>
+												</div>
+												<div class="azul"></div>
+											</div>
+										</div>
+									</div>
+								{% endfor %}
+							</div>
+						{% endif %}
+
+					</div>
+					{% set cont = cont+1 %}
+				{% endfor %}
+			</div>
+
+			{# ================= MOBILE (SE MANTIENE IGUAL) ================= #}
+			<div class="d-block d-md-none">
+				<div id="carousel-eq-todos" class="owl-carousel owl-carousel-todos mt-3">
+					{% for keys,item in data %}
+						{% for eq in item %}
+							<div class="card text-center equipos-a">
+								<div class="card-body-equipos">
+
+									{% if eq.field_nuevo.value == 1 %}
+										<div class="nuevo">
+											<span>{{ 'New'|t|upper }}</span>
+										</div>
+									{% endif %}
+
+									<img class="eq-ratio" src="{{ file_url(eq.field_image.entity.uri.value) }}">
+
+									<h5 class="card-title-marca">
+										<span>{{ eq.marca }}</span>
+									</h5>
+
+									<h5 class="card-title-modelo">
+										<span>{{ eq.modelo }}</span>
+									</h5>
+
+									<div class="sub"></div>
+
+									<div class="precio">
+										<span class="monto">{{ eq.field_precio.value }}</span>
+										<span class="moneda">{{ eq.field_moneda.value|upper }}</span>
+									</div>
+								</div>
+
+								<div class="ebtn">
+									<div class="blanco button--aylen">
+										<a href="{{ path('entity.node.canonical', {'node': eq.nid.value }) }}">
+											{{ 'See details'|t|upper }}
+										</a>
+									</div>
+									<div class="azul"></div>
+								</div>
+							</div>
+						{% endfor %}
+					{% endfor %}
+				</div>
+
+				<div class="text-align-center cmb">
+					<a class="moreOport-link" href="{{ cpath }}">
+						{{ 'all'|t|upper }} 
+						<i class="flaticon-next-1 more"></i>
+					</a>
+				</div>
+			</div>
+
+		</div>
+	</div>
+</div>
+{% endif %}
+{% endapply %}

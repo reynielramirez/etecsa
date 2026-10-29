@@ -1,0 +1,6 @@
+name: ETECSA Visitantes Module
+type: module
+description: Modulo Visitantes para el sitio de etecsa.
+package: etecsa
+core: 8.x
+core_version_requirement: ^9 || ^10

@@ -1,0 +1,24 @@
+<style type="text/css" media="screen">
+	.my-close label {
+    font-family: "MyriadPro-SemiboldCondIt";
+    color: #fff;
+    font-size: 1.2rem;
+    position: relative;
+    right: 12rem;
+}
+</style>
+{% if data %}
+    <a class="enlaceV" title="{{ data.0.title.value }}" target="_blank" {% if behaviour == 2 %}
+    href="{{ data.0.field_enlaceav.0.url }}" {% endif %}>
+        <span class="position-absolute pl-3 text-nowrap d-flex overflow-hidden">{{ data.0.title.value }}</span>
+        <div id="asistenteVirtual" class="itemcard etecsaAzulO d-flex overflow-hidden">
+            <img src="{{ file_url(data.0.field_imagen_svg.entity.uri.value) }}" class="img-responsive p-2">
+        </div>  
+    </a>
+    {% if behaviour == 1 %} 
+    <div id="frame-asistente" class="hidden" style="right: 0; position: fixed; z-index: 2147483647; max-height: 400px !important; bottom: 0; visibility: visible; min-width: 320px; height: 100% !important; opacity: 1;">
+        <div class="my-close col-12"><a class="link-close"><i class="fa fa-times"></i></a> </div>
+        <iframe class="drift-frame-chat" scrolling="no" title="undefined" allow="autoplay; encrypted-media; fullscreen;" style="background: transparent none repeat scroll 0% 0%; width: 100% !important; height: 100%; border: medium none;" src="{{ data.0.field_enlaceav.0.url }}" frameborder="0"></iframe>
+    </div>
+    {% endif %}
+{% endif %}

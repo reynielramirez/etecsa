@@ -1,0 +1,215 @@
+etecsa.faq:
+  path: '/preguntas-frecuentes'
+  defaults:
+    _controller: 'Drupal\etecsa_module\Controller\EtecsaController::getPreguntasF'
+    _title: 'Frequent questions'
+  requirements:
+    _permission: 'access content'
+
+etecsa.faqtodas:
+  path: '/preguntas-mas-frecuentes'
+  defaults:
+    _controller: 'Drupal\etecsa_module\Controller\EtecsaController::getPreguntasFTodas'
+    _title: 'More Frequent Questions'
+  requirements:
+    _permission: 'access content'
+  
+etecsa.nosotros:
+  path: '/nosotros'
+  defaults:
+    _controller: 'Drupal\etecsa_module\Controller\NosotrosController::sobreNosotros'
+    _title: 'About Us'
+  requirements:
+    _permission: 'access content'
+    
+etecsa.red:
+  path: '/nosotros/red-comercial'
+  defaults:
+    _controller: 'Drupal\etecsa_module\Controller\NosotrosController::redComercial'
+    _title: 'Commercial network'
+  requirements:
+    _permission: 'access content'
+
+etecsa.salasespacios:
+  path: '/salas-espacios-publicos'
+  defaults:
+    _controller:  'Drupal\etecsa_module\Controller\EtecsaController::getSalasEspacios'
+    _title: 'Navigation rooms and public spaces'
+  requirements:
+    _permission: 'access content'
+
+etecsa.page404:
+  path: '/pagina-no-encontrada'
+  defaults:
+    _controller: 'Drupal\etecsa_module\Controller\EtecsaController::getPage404'
+    _title: 'Page not found'
+  requirements:
+    _permission: 'access content'
+
+etecsa.page403:
+  path: '/pagina-acceso-denegado'
+  defaults:
+    _controller: 'Drupal\etecsa_module\Controller\EtecsaController::getPage403'
+    _title: 'Access denied'
+  requirements:
+    _permission: 'access content'
+
+etecsa.pconsumidor:
+  path: '/proteccion-consumidor/niveles-atencion'
+  defaults:
+    _controller: 'Drupal\etecsa_module\Controller\NosotrosController::pConsumidor'
+    _title: 'Care Levels'
+  requirements:
+    _permission: 'access content'
+
+etecsa.solucionestecempresa:
+  path: '/empresas/soluciones-tecnologicas'
+  defaults:
+    _controller: 'Drupal\etecsa_module\Controller\EtecsaController::getSolucTec'
+    _title: 'Technological Solutions'
+  requirements:
+    _permission: 'access content'
+
+etecsa.solucionestecemp:
+  path: '/emprendedores/soluciones-tecnologicas'
+  defaults:
+    _controller: 'Drupal\etecsa_module\Controller\EtecsaController::getSolucTec'
+    _title: 'Technological Solutions'
+  requirements:
+    _permission: 'access content'
+
+etecsa.hospweballempresa:
+  path: '/empresas/hospedajes-web'
+  defaults:
+    _controller: 'Drupal\etecsa_module\Controller\EtecsaController::getAllSO'
+    _title: 'Web Hosting'
+  requirements:
+    _permission: 'access content'  
+
+etecsa.hospweballemprendedor:
+  path: '/emprendedores/hospedajes-web'
+  defaults:
+    _controller: 'Drupal\etecsa_module\Controller\EtecsaController::getAllSO'
+    _title: 'Web Hosting'
+  requirements:
+    _permission: 'access content'     
+
+etecsa.servoportpersonas:
+  path: '/servicios-oportunidades'
+  defaults:
+    _controller: 'Drupal\etecsa_module\Controller\EtecsaController::getServOport'
+    _title: 'Services and Opportunities'
+  requirements:
+    _permission: 'access content' 
+
+etecsa.servoportvisitantes:
+  path: '/visitantes/servicios-oportunidades'
+  defaults:
+    _controller: 'Drupal\etecsa_module\Controller\EtecsaController::getServOport'
+    _title: 'Opportunities'
+  requirements:
+    _permission: 'access content' 
+
+etecsa.paquete:
+  path: '/paquetes-bolsas'
+  defaults:
+    _controller: 'Drupal\etecsa_module\Controller\EtecsaController::getPaquetes'
+    _title: 'Plans, Bags and Packages'
+  requirements:
+    _permission: 'access content'
+
+etecsa.paquetemp:
+  path: '/emprendedores/paquetes-bolsas'
+  defaults:
+    _controller: 'Drupal\etecsa_module\Controller\EtecsaController::getPaquetes'
+    _title: 'Plans, Bags and Packages'
+  requirements:
+    _permission: 'access content' 
+
+etecsa.revista:
+  path: '/nosotros/publicaciones'
+  defaults:
+    _controller: 'Drupal\etecsa_module\Controller\NosotrosController::getRevistaTono'
+    _title: 'Publications'
+  requirements:
+    _permission: 'access content'
+
+etecsa.atenciontelefonica:
+  path: '/nosotros/centro-atencion-telefonica'
+  defaults:
+    _controller: 'Drupal\etecsa_module\Controller\NosotrosController::getCentroAT'
+    _title: 'Call Centers'
+  requirements:
+    _permission: 'access content' 
+
+etecsa.atencionclientes:
+  path: '/atencion-clientes'
+  defaults:
+    _controller: 'Drupal\etecsa_module\Controller\EtecsaController::atencionClientes'
+    _title: 'Customer Care'
+  requirements:
+    _permission: 'access content'    
+
+etecsa.directivos:
+  path: '/nosotros/estructura-organizativa'
+  defaults:
+    _controller: 'Drupal\etecsa_module\Controller\NosotrosController::getDirectivos'
+    _title: 'Organization al Executive'
+  requirements:
+    _permission: 'access content'
+
+etecsa_module.customer_support_form:
+  path: '/etecsa_module/form/customer_support'
+  defaults:
+    _form: '\Drupal\etecsa_module\Form\CustomerSupportForm'
+    _title: 'CustomerSupportForm'
+  requirements:
+    _access: 'TRUE'
+etecsa_module.etecsa_settings_form:
+  path: '/admin/config/etecsa_module/etecsasettings'
+  defaults:
+    _form: '\Drupal\etecsa_module\Form\EtecsaSettingsForm'
+    _title: 'EtecsaSettingsForm'
+  requirements:
+    _permission: 'access administration pages'
+  options:
+    _admin_route: TRUE
+
+etecsa_module.transfermovil_download_before:
+  path: '/sites/default/files/aplicaciones/transfermovil_0.apk'
+  defaults:
+    _controller: 'Drupal\etecsa_module\Controller\EtecsaController::descargaTransfermovilAnterior'
+    _title: 'Descargar Transfermovil'
+  requirements:
+    _permission: 'access content'
+
+etecsa_module.prov_form:
+  path: '/etecsa_module/form/prov'
+  defaults:
+    _form: '\Drupal\etecsa_module\Form\ProvForm'
+    _title: 'ProvForm'
+  requirements:
+    _access: 'TRUE'
+
+etecsa.plazas:
+  path: '/nosotros/plazas'
+  defaults:
+    _controller: 'Drupal\etecsa_module\Controller\NosotrosController::getPlaza'
+    _title: 'Places in calls'
+  requirements:
+    _permission: 'access content'
+etecsa.hitos:
+  path: '/nosotros/hitos-de-la-historia'
+  defaults:
+    _controller: 'Drupal\etecsa_module\Controller\NosotrosController::getHitos'
+    _title: 'Milestones in History'
+  requirements:
+    _permission: 'access content'
+
+etecsa.certificados:
+  path: '/empresas/certificados-digitales'
+  defaults:
+    _controller: 'Drupal\etecsa_module\Controller\EtecsaController::certificadoDigital'
+    _title: 'Digital Certificates'
+  requirements:
+    _permission: 'access content'

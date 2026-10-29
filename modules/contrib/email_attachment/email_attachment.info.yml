@@ -1,0 +1,9 @@
+name: Email Attachment Helper
+type: module
+description: Allows module developers to send emails with MIME attachments using the default MailManager.
+core_version_requirement: ^10.1 || ^11 || ^12
+
+# Information added by Drupal.org packaging script on 2026-08-09
+version: '8.x-1.7'
+project: 'email_attachment'
+datestamp: 1786281111

@@ -1,0 +1,29 @@
+<div class="container d-none d-xs-none d-sm-none d-md-block d-lg-block" >
+  <div id="header-container" class="row">
+    <div>
+      <label class="title-e">{{etecsa}}</label>
+    </div>
+    <div class="header-item">
+      <a href="{{path('etecsa.atencionclientes')}}" class="title-atencion float-left">{{ atencion }}</a>
+      <div class="float-left separador"></div>
+      <a href="{{ path('etecsa.nosotros') }}" class="title-sobrenos float-left">{{ sobrenos }}</a>
+    </div>
+    <div class="header-item">
+      {% set text= 'Search content'%}
+      <form id="searchForm" class="form-inline" accept-charset="UTF-8" method="get" action="{{ base_path }}{{language}}/search/resultados" data-drupal-form-fields="edit-keys">
+            <input id="edit-keys" type="search" value="" placeholder="{{text |t}}" name="keys" data-drupal-selector="edit-keys" class="form-control size-search">
+            <button class="btn btn-info btn-searchs" type="submit"><i class="fas fa-search"></i></button>
+      </form>      
+    </div class="header-item">
+    <div>
+      <ul>
+        <li><a href="https://www.tienda.etecsa.cu/visitantes/home?login=true" target="_blank" alt=""><span class="title-mi-cuenta">{{ 'My Acount'|t }}</span></a></li>
+      </ul>
+    </div>
+    <div class="header-item">
+      <ul> 
+        <li class="alternadordeidioma">{{ drupal_entity('block', 'alternadordeidioma', check_access=false) }}</li>
+      </ul>
+    </div>
+  </div>
+</div>

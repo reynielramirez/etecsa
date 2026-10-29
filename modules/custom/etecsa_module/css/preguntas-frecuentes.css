@@ -1,0 +1,233 @@
+body {
+    background-color: #CCCCCC !important;
+  }
+.preg{
+    font-style: normal;
+    margin-left: 0;
+  }
+  .num{
+    background: #ccc;
+    color: #003366;
+    margin-right: .5rem;
+    max-width: 45px;
+    text-align: center;
+    padding: 10px;
+    font-family: "MyriadPro-BlackCond";
+    font-size: 1.1rem;
+    position: relative;
+    word-break: initial;
+  }
+  .preguntas-frecuentes .card-body,
+  .preguntas-frecuentes .card-header,
+  .salas-espacios .card-body,
+  .salas-espacios .card-header{
+    border: 1px solid #CCC;
+    position: relative;
+  }
+  .card-header {
+    padding:0 !important;
+    border-radius: 0!important;
+}
+  
+  .card-header[aria-expanded='true']{
+    clip-path:none;
+}
+  .collapsible-link::before {
+    content: '';
+    width: 14px;
+    height: 2px;
+    background: #003366;
+    position: absolute;
+    top: calc(50% - 1px);
+    right: 1rem;
+    display: block;
+    transition: all 0.3s;
+  }
+  .atte .collapse.show::before {
+    content: '';
+    position: absolute;
+    bottom: 1px;
+    right: 0;
+    border-bottom: 21px solid #ccc;
+    border-left: 20px solid #fff;
+}
+  
+  .collapsible-link {
+    color:#3399CC;
+    display: flex;
+    text-decoration: none !important;
+  }
+  .collapsible-link p {
+    margin: auto 0;
+    padding-right: 1.6rem;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+    font-family: "MyriadPro-SemiboldSemiCn";
+    font-size: 1.1rem;
+  }
+  .collapsible-link::after {
+    content: '';
+    width: 2px;
+    height: 14px;
+    background: #003366;
+    position: absolute;
+    top: calc(50% - 7px);
+    right: calc(1rem + 6px);
+    display: block;
+    transition: all 0.3s;
+  }
+  
+  .card-header[aria-expanded='true'] .collapsible-link::after,
+  .card0 [aria-expanded=''] .collapsible-link::after{
+    transform: rotate(90deg) translateX(-1px);
+  }
+  
+  .card-header[aria-expanded='false'] .collapsible-link::before{
+    transform: rotate(180deg);
+  }
+.filtro{
+    float: right;
+}
+#temas {
+    height: 40px;
+    width: 210px;
+    border: 1px solid #0099CC;
+    color: #0099CC;
+    font-weight: bold;
+    font-size: 1.5rem;
+    font-family: "MyriadPro-Light";
+    -moz-appearance:none; /* Firefox */
+    -webkit-appearance:none; /* Safari and Chrome */
+    appearance:none;
+    float: right;
+}
+.filtro::after {
+    content: '>';
+    font: 1.5rem "MyriadPro-Light";
+    color: #0099CC;
+    -webkit-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    transform: rotate(90deg);
+    right: 3rem;
+    top: 1.3rem;
+    position: absolute;
+    pointer-events: none;
+    font-weight: 700;
+}
+.filtro label {
+    font-style: italic;
+    font-size: 20px;
+    margin-right: 10px;
+    color: #0099CC;
+}
+.form-item-clientes,
+.form-item-temas
+{
+  position: relative;
+  height: 4rem;
+}
+.form-item-clientes::before{  
+  right: 80px;
+  top: 22px;
+}
+.form-item-temas::before{  
+  right: 80px;
+}
+.form-item-temasfaq::after {
+  right: 1.5rem !important;
+}
+.form-item-clientes::after,
+.form-item-temas::after{
+  right: -11rem !important;
+  top: -2.7rem !important;
+  color: #fff !important;
+}
+#edit-temas,
+#edit-clientes{
+  background: #0099CC!important;
+  border: 1px solid #fff!important;
+  text-transform: none!important;
+  margin-bottom: .5rem!important;
+  color:#fff !important;
+  width:205px!important;
+  background-image: url('../images/arrow_blanco.svg')!important;
+  background-repeat: no-repeat!important;;
+  background-position: center right 10px!important;;
+  background-size: cover!important;;
+  background-size: 18px!important;;
+  
+}
+
+.filtro-faq{
+  background-color: #0099CC;
+  color: #fff;
+  clip-path: polygon(100% 0px, 99.78% 90%, 97.78% 99.61%, 0px 100%, 0px 0px);
+}
+.preguntas-frecuentes h4{
+  color: #000066;
+  font-family: "MyriadPro-BoldSemiCn";
+}
+
+#pregfrecuentessubmit,
+#paisfiltroform input[type='submit'] {
+  float: right;
+  width: 60%;
+  background: #006;
+  color:#fff;
+  text-transform: uppercase;
+  clip-path: polygon(0 0, 100% 0, 100% 26px, 92% 100%, 0 100%, 0 100%);
+  padding: .5rem;
+  margin-top: .5rem;
+  border: none;
+  cursor:pointer;
+}
+#paisfiltroform input[type='submit'] {
+  width: 120px;
+  margin-top: 0;
+  float: none;
+  margin-left: 15px;
+  padding: 0.6rem;
+  clip-path: polygon(0 0, 100% 0, 100% 30px, 92% 100%, 0 100%, 0 100%);
+}
+.paisfiltroform div.form-item {
+  display: inline-block;
+}
+.paisfiltroform div.form-item label {
+  font-size: 20px;
+  color: #fff;
+  margin-right: 15px;
+}
+.faqpreg:after{
+  right: -1.5rem !important;
+  top: 1.4rem !important;
+}
+.faq-page .btn-purchase {
+  text-align: center;
+  width: 190px;
+  background-color: #39c;
+  position: relative;
+  bottom: 0;
+  padding: 12px;
+  clip-path: polygon(100% 0,100% 31px,94.22% 98.16%,0 100%,0 0);
+  cursor: pointer;
+  display: inline-block;
+}
+.faq-page .button--aylen::before {
+  background: #006;
+}
+
+@media (max-width: 765px) {
+  #pregfrecuentessubmit{
+    float: left;
+    width: 30%;
+  }
+  
+  .form-item-clientes::after, .form-item-temas::after {
+    right: 2rem !important;
+    top: .3rem !important;
+  }
+  .filtro-faq {
+    clip-path: polygon(100% 0px, 99.92% 16.56rem, 96.36% 99.61%, 0px 100%, 0px 0px);
+}
+}

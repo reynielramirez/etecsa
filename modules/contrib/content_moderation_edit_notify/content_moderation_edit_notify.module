@@ -1,0 +1,54 @@
+<?php
+
+/**
+ * @file
+ * Contains content_moderation_edit_notify.module.
+ */
+
+use Drupal\content_moderation_edit_notify\Hook\NodeFormAlter;
+use Drupal\Core\Entity\EntityForm;
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\node\NodeInterface;
+
+/**
+ * Implements hook_help().
+ */
+function content_moderation_edit_notify_help(string $route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the content_moderation_edit_notify module.
+    case 'help.page.content_moderation_edit_notify':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Notify users if a new revision is saved when editing a moderated node.') . '</p>';
+      $output .= '<h3>' . t('Implementation') . '</h3>';
+      $output .= '<p>' . t('At interval an ajax request is made while editing a moderated node to check if the current revision is outdated. If so, a message is printed before the form and the save button so the editor can take any action before saving and overriding any change.') . '</p>';
+      $output .= '<p>' . t('If the concurrent revision is saved in a published state, a Drupal constraint will bring an error when saving the form, this module just alert before saving for this.<br>If the concurrent revision is not moved in a published state, the current revision will replace any changes made on the concurrent one. This is where this module bring a message to alert the editor for this use case.') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+/**
+ * Implements hook_form_BASE_FORM_ID_alter() for node entities.
+ */
+function content_moderation_edit_notify_form_node_form_alter(array &$form, FormStateInterface $form_state, string $form_id): void {
+  // Alter only node edit forms.
+  if (FALSE === strpos($form_id, '_edit_form')) {
+    return;
+  }
+  /** @var \Drupal\Core\Entity\EntityForm $form_object */
+  $form_object = $form_state->getFormObject();
+  if (!$form_object instanceof EntityForm) {
+    return;
+  }
+  // Get and load our node to work with.
+  $node = $form_object->getEntity();
+  if (!$node instanceof NodeInterface) {
+    return;
+  }
+  \Drupal::service('class_resolver')
+    ->getInstanceFromDefinition(NodeFormAlter::class)
+    ->alter($form, $node);
+}

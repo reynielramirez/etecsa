@@ -1,0 +1,82 @@
+.card-flotante {
+	text-align: center; padding-top: 2rem;
+}
+.card-flotante .item {
+	float: left;
+	margin: 0 20px;
+}
+
+.card-flotante-home{
+	height: 120px;
+	border-left: 1px solid white;
+ }
+.Personas,
+.People{
+	background-color: #0099cc;
+ }
+.Empresas,
+.Companies{
+	background-color: #ff6600;
+ } 
+ .Visitantes,
+ .Visitors{
+	background-color: #cc66cc;
+ }
+ .Emprendedores,
+ .Entrepreneurs {
+	background-color:#99cc33;
+ }
+
+ .cardmobile .open-accessibility {
+    margin-bottom: 0 !important;
+    margin-right: 0!important; 
+}
+
+.cardmobile #accessibility {
+	padding-top: 6px !important;
+}
+
+.cardmobile #open-accessibility {
+	min-width: 25px !important;
+}
+
+.cardmobile .accesibilidad {
+	background-color: #006;
+	margin-top: -6px;
+}
+
+.cardmobile .open-accessibility-container {
+    border: none !important;
+	margin: 0 auto;
+    background-color: unset !important;
+}
+
+.cardmobile .open-accessibility-expand-button,
+.cardmobile .open-accessibility-expand-button svg {
+	padding-top: 0 !important;
+    margin-left: 0 !important;
+}
+
+@media (max-width: 767px) {
+	.cardmobile .open-accessibility-collapsed .open-accessibility-container {
+		width: 50px !important;
+		height: 50px !important;
+	}
+	.cardmobile .open-accessibility-expand-button,
+    .cardmobile .open-accessibility-expand-button svg {
+		width: 50px !important;
+		height: 50px !important;
+	}
+}
+  
+@media (max-width: 576px) {
+	.cardmobile .open-accessibility-collapsed .open-accessibility-container {
+		width: 30px !important;
+		height: 30px !important;
+	}
+	.cardmobile .open-accessibility-expand-button,
+    .cardmobile .open-accessibility-expand-button svg {
+		width: 30px !important;
+		height: 30px !important;
+	}
+}

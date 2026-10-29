@@ -1,0 +1,14 @@
+.enlaces-filtro label {
+  font-style: italic;
+  font-size: 20px;
+  margin-right: 10px;
+  color: #0099CC;
+  margin-top: 5px;
+}
+.enlaces-filtro {
+  margin-top: 15px;
+  position: relative;
+}
+.select-enlacetopic .enlaces-filtro::before{
+  right: 0.8rem!important;
+}

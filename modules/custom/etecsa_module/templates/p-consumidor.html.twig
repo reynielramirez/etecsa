@@ -1,0 +1,121 @@
+{% apply spaceless %}
+    
+        {% set node = data['pconsumidor'] %}
+        {% set contactos = data['contactos'] %}
+        <style type="text/css" media="screen">
+            body {
+                background-color: #CCCCCC !important;
+            }
+        </style>
+        <div class="container page-content bg-white">
+            <div class="row">
+                <div class="ml-4">
+                    <div class="page-title azuloscuro">
+                        <h2 class="upper">{{ node.get('title').value}}</h2>
+                    </div>
+                </div>
+               <div class="offset-lg-2 pl-md-4 pl-lg-4 select-menu">
+                    {{ drupal_block('etecsa_menupc_block', wrapper=false) }}
+                </div>
+                <div class="col-12 col-sm-12 col-md-10 col-lg-10 pc-content-data offset-md-1 offset-lg-1">
+                    {% if data %}
+                        <div class="mt-3">
+                        {{ node.get('field_resumen_y_descripcion').value|raw }}
+                        </div>
+                    {% endif %}
+                </div>
+                
+                <div class="col-12 col-sm-12 col-md-10 col-lg-10 form-pms offset-md-1 offset-lg-1">
+                    <h2 class="pb-2 text-align-center">{{ "Province's Levels"|t }}</h2>
+                    {{ form }}
+                </div>
+                
+                {% if contactos %}                    
+                    <div class="col item-provincia px-1 px-md-5 px-lg-5">
+                        <div id="pConsumidor" class="accordion px-1 px-md-4 px-lg-4">
+                            {% set num = 0 %}
+                            {% set count = 1 %}
+                            {% if bandera %}
+                                {% set expanded = "true"%}
+                                {% set show = "show"%}
+                            {% else %}  
+                                {% set expanded = "false"%} 
+                                {% set show = ""%}
+                            {% endif %} 
+                            {% for keys,pro in contactos %}
+                                <div class="card-{{ num }} mt-3 mb-3">
+                                    <div id="heading-{{ num }}"
+                                        class="card-header bg-white {{ show }} py-2" data-toggle="collapse"
+                                        data-target="#collapse-{{ num }}" aria-expanded="{{ expanded }}"
+                                        aria-controls="collapse{{ num }}">
+                                        <div class="position-relative collapsible-link word-break">
+                                            <span class="titleProv ml-4">{{ keys }}</span>
+                                        </div>
+                                    </div>
+                                    <div id="collapse-{{ num }}"
+                                        aria-labelledby="heading-{{ num }}" data-parent="#pConsumidor"
+                                        class="collapse {{ show }} ">
+                                        <div class="card-body px-2 px-md-4 py-2">
+                                            {% set dd = pro.muns %}
+                                            {% set totalxpro = 0 %}
+                                            {% for key, el in dd %}
+                                                {% set bb = el.tipo %}
+                                                <div class="title pl-md-4 pl-lg-4 pl-0 pr-1 cardMun">
+                                                    <h5 class="titleMun">{{ key}}
+                                                        <span class="float-right">{{ el.cantidad_contacto }}</span>
+                                                     </h5>
+                                                </div>
+                                                {% set totalxpro = 0 %}                                                                                    
+                                                <div class="my-2">
+                                                    {% for k, item in bb %}
+                                                        <h5 class="ml-0 ml-md-4 ml-lg-4 px-2 titleTipo">{{ k }}</h5>
+                                                        {% set cc = item.contactos %}
+                                                        {% for itemc in cc %}
+                                                            <div class="item row py-3 mx-2">
+                                                                <div class="col-3 col-sm-3 col-md-1 col-lg-1 px-0">
+                                                                    <div class="text-center contact-level">
+                                                                        <p style="text-transform: uppercase"
+                                                                        class="pt-1">{{ 'level'|t }}</p>
+                                                                        <span class="number">{{ loop.index }}</span>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-9 col-sm-12 col-md-6 col-lg-6">
+                                                                    <p>{{ itemc.cargo }}</p>
+                                                                    <p>{{ itemc.direccion }}</p>
+                                                                    <p class="d-lg-block d-none"></p><span>{{ 'Tel.: '|t }}</span>{{ itemc.telefono }}</p>
+                                                                    <a class="d-lg-none d-sm-block" href="tel:{{itemc.telefono }}">{{itemc.telefono}}</a>
+                                                                    <div>
+                                                                        <span>{{ 'Mail: '|t }}</span>
+                                                                        <a href="mailto:{{ itemc.correo }}">{{ itemc.correo }}</a>
+                                                                    </div>
+                                                                    <p class="d-block d-sm-block d-md-none d-lg-none">{{ itemc.horario }}</p>
+                                                                </div>
+                                                                <div class="col-12 col-sm-12 col-md-4 col-lg-4 offset-md-1 offset-lg-1 px-0 d-none d-sm-none d-md-block d-lg-block">
+                                                                    <p>{{ itemc.horario }}</p>
+                                                                </div>
+                                                            </div>
+                                                            {% if not loop.last %}
+                                                                <div class="cborderEsp"></div>
+                                                            {% endif %}
+                                                        {% endfor %}
+                                                    {% endfor %}
+                                                </div>    
+                                            {% endfor %}  
+                                        </div>
+                                    </div>
+                                </div>
+                                {% set num = num + 1 %}
+                            {% endfor %}    
+                        </div>
+                    </div>                    
+                {% else %}
+                    <p class="offset-lg-1 pl-5 py-4">{{"There are not items to display"|t}}</p>
+                {% endif %} 
+                {% if node.get('field_resumen_y_descripcion').summary %}
+                    <div class="col-12 col-sm-12 col-md-10 col-lg-10 pc-content-data mt-3 mb-5 offset-md-1 offset-lg-1">
+                        {{ node.get('field_resumen_y_descripcion').summary|raw }}
+                    </div>
+                {% endif %}
+            </div>
+        </div>    
+{% endapply %}

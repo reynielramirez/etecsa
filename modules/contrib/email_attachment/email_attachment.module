@@ -1,0 +1,152 @@
+<?php
+
+/**
+ * @file
+ * Contains hook implementation to add MIME-based attachment to email.
+ */
+
+use Drupal\Core\Hook\Attribute\LegacyHook;
+use Drupal\email_attachment\Hook\EmailAttachmentHooks;
+use Drupal\Component\Transliteration\PhpTransliteration;
+use Drupal\Core\File\Exception\FileNotExistsException;
+
+/**
+ * Implements hook_mail_alter().
+ *
+ * Check if attachment was specified in message params.
+ */
+#[LegacyHook]
+function email_attachment_mail_alter(array &$message) {
+  \Drupal::service(EmailAttachmentHooks::class)->mailAlter($message);
+}
+
+/**
+ * Do the actual work.
+ *
+ * @param array $message
+ *   From hook.
+ *
+ * @internal
+ */
+function _email_attachment_convert_to_multipart(array &$message) {
+  $params = $message['params'];
+  $uid = "qd-" . md5("Drupal" . uniqid(time(), TRUE));
+
+  $aHeaders = &$message['headers'];
+  $sOrigContentType = $aHeaders['Content-Type'];
+  $aHeaders['Content-Type'] = "multipart/mixed; boundary=\"$uid\"";
+
+  $lines = "This is a multi-part message in MIME format.\r\n";
+  $lines .= "--$uid\r\n";
+  $lines .= "Content-Type: $sOrigContentType \r\n\r\n";
+  $lines .= wordwrap(implode('', $message['body'])) . "\r\n\r\n";
+
+  if (!empty($params['attachments'])) {
+    if (!is_array($params['attachments'])) {
+      throw new InvalidArgumentException("[attachments] doesn't have the right structure.");
+    }
+    foreach ($params['attachments'] as $aAttachment) {
+      $lines .= _email_attachment_add_attachment($uid, $aAttachment);
+    }
+  }
+  if (!empty($params['attachment'])) {
+    $lines .= _email_attachment_add_attachment($uid, $params['attachment']);
+  }
+  $lines .= "--$uid--";
+
+  $message['body'] = [$lines];
+}
+
+/**
+ * Generate string to attach on email.
+ *
+ * @param string $uid
+ *   the MIME separator.
+ * @param array $aAttachment
+ *   A structure on what to attach. Supports an optional 'cid' key to set
+ *   a Content-ID header, and an optional 'disposition' key ('attachment'
+ *   or 'inline', defaulting to 'attachment') to allow referencing the
+ *   attachment from the message body, e.g. via '<img src="cid:...">'.
+ *
+ * @return string
+ *   Base64 representation of provided attachment.
+ *
+ * @internal
+ */
+function _email_attachment_add_attachment($uid, array $aAttachment): string {
+  if (empty($aAttachment['filename'])) {
+    throw new InvalidArgumentException("Attachment doesn't have the right structure. The 'filename' array element must not be empty.");
+  }
+
+  if (empty($aAttachment['filecontent'])) {
+    if (!is_file($aAttachment['filename'])) {
+      throw new FileNotExistsException("Attachment doesn't have the right structure. Specify the 'filecontent' array element or let 'filename' point to a valid file.");
+    }
+    $aAttachment['filecontent'] = file_get_contents($aAttachment['filename']);
+  }
+
+  $sFileContent = $aAttachment['filecontent'];
+  $sChunkedAttachment = chunk_split(base64_encode($sFileContent));
+
+  $transliteration = new PhpTransliteration();
+  $filename = $transliteration->transliterate($aAttachment['filename']);
+  $sMailAttachmentFriendlyName = basename($filename);
+
+  if (empty($aAttachment['filemime'])) {
+    if (is_file($aAttachment['filename'])) {
+      /** @var \Drupal\Core\File\MimeType\MimeTypeGuesser $guesser */
+      $guesser = \Drupal::service('file.mime_type.guesser');
+      $aAttachment['filemime'] = $guesser->guessMimeType($filename);
+    }
+    else {
+      /** @var Drupal\Core\File\MimeType\ExtensionMimeTypeGuesser $extGuesser */
+      $extGuesser = \Drupal::service('file.mime_type.guesser.extension');
+      $aAttachment['filemime'] = $extGuesser->guessMimeType($filename);
+    }
+    if (empty($aAttachment['filemime'])) {
+      $aAttachment['filemime'] = 'application/octet-stream';
+    }
+  }
+
+  $disposition = $aAttachment['disposition'] ?? 'attachment';
+
+  $lines = "--$uid\r\n";
+  $lines .= "Content-Type: $aAttachment[filemime];\r\n" .
+    _email_attachment_encode_header_rfc_2184('name', $sMailAttachmentFriendlyName);
+  if (!empty($aAttachment['cid'])) {
+    $lines .= "Content-ID: <$aAttachment[cid]>\r\n";
+  }
+  $lines .= "Content-Transfer-Encoding: base64\r\n";
+  $lines .= "Content-Disposition: $disposition;\r\n" .
+    _email_attachment_encode_header_rfc_2184('filename', $sMailAttachmentFriendlyName);
+  $lines .= "\r\n" . $sChunkedAttachment . "\r\n\r\n";
+
+  return $lines;
+}
+
+/**
+ * Helper to encode filename.
+ *
+ * @internal
+ */
+function _email_attachment_encode_header_rfc_2184($name, $value) {
+  $lines = str_split($value, 64 - strlen($name));
+  foreach ($lines as $i => $line) {
+    $lines[$i] = "   $name*$i=\"" . $line . "\"";
+  }
+  return implode(";\r\n", $lines) . "\r\n";
+}
+
+/**
+ * Implements hook_module_implements_alter().
+ */
+function email_attachment_module_implements_alter(array &$implementations, string $hook) {
+  if ($hook == 'mail_alter') {
+    // Let our hook run last so that other modules can add attachments using
+    // the 'params' key. See the file 'email_attachment_demo.module' for an
+    // example.
+    $hookInit = $implementations['email_attachment'];
+    unset($implementations['email_attachment']);
+    $implementations['email_attachment'] = $hookInit;
+  }
+}

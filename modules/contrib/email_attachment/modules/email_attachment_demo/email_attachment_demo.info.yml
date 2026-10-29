@@ -1,0 +1,18 @@
+name: Email Attachment Demo Module
+type: module
+description: |
+  This module is not meant to be used, as it is just an example.
+  It should showcase how you would use the "email_attachment" module.
+
+  This module enables the 'Contact test module' which sets up an example contact
+  form.
+package: Testing
+core_version_requirement: ^10.1 || ^11 || ^12
+dependencies:
+  - drupal:contact_test
+  - email_attachment:email_attachment
+
+# Information added by Drupal.org packaging script on 2026-08-09
+version: '8.x-1.7'
+project: 'email_attachment'
+datestamp: 1786281111

@@ -1,0 +1,28 @@
+{% apply spaceless %}
+<article{{ attributes.addClass(classes) }}>
+    <div class="container bg-white mb-5" >       
+        <div class="row">
+            <div class="ml-3">  
+                <div class="page-title azulclaro pr-2 pl-4">
+                    <h2>{{'"Tono" Magazine'|t|upper}}</h2>
+                </div>
+            </div>    
+            <div class=" revista col-12  pl-3 pr-3">               
+                <div class="fecha mt-3">
+                    <div class="dia">{{node.field_fecha_publicacion[0].value|date('Y')}}</div>
+                    <div class="mes-anno tono">
+                        <span>{{'Edition'|t}}</span>
+                        <span>{{node.field_fecha_publicacion[0].value|date('m')}}</span>
+                    </div>
+                </div>
+                <div class="cuerpo mt-3">
+                    <h5 class="titulo">{{label}}</h5>
+                    <div class="small fuente word-break">{{content.field_subtitulo[0]}}</div>
+                    <div class="word-break">{{ content.field_descripcion[0]|raw|striptags }}</div>                
+                </div>                
+            </div>    
+        </div>    
+    </div>
+</article>
+{% endapply %}  
+{{ attach_library('etecsa_subtheme/node-noticias') }}

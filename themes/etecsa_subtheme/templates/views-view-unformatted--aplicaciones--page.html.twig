@@ -1,0 +1,66 @@
+{#
+/**
+ * @file
+ * Theme override to display a view of unformatted rows.
+ *
+ * Available variables:
+ * - title: The title of this group of rows. May be empty.
+ * - rows: A list of the view's row items.
+ *   - attributes: The row's HTML attributes.
+ *   - content: The row's content.
+ * - view: The view object.
+ * - default_row_class: A flag indicating whether default classes should be
+ *   used on rows.
+ *
+ * @see template_preprocess_views_view_unformatted()
+ */
+#}
+{% apply spaceless %}
+	<div class="container bg-white">
+		<div class="row">
+			<div class="ml-4">
+				<div class="page-title apk azuloscuro">
+					<h2>{{'Applications'|t|upper}}</h2>
+				</div>
+			</div>
+		</div>
+		<div class="row px-md-5 px-lg-5 pb-5 px-3 mt-3 justify-content-center">
+			{% for key,row in rows %}
+				<div class="col-md-4 col-lg-3 col-sm-6 col-12 mb-4 apks">
+					<div class="card card-apk ">
+						<div class="cuerpo-apk">
+							<div class="icono-apk">{{ view.style_plugin.getField(key, 'field_imagen_apk') }}</div>
+							{% set nueva = view.style_plugin.getField(key, 'field_nueva')|striptags %}
+							{% if  nueva == 1 %}
+								<div class="nuevo nuevo-apks">
+									<span>{{ 'New version'|t|upper }}</span>
+								</div>
+							{% endif %}
+							<div class="title-apk todas word-break text-align-center">{{ view.style_plugin.getField(key, 'title') }}</div>
+							<div class="encabezado todas word-break text-align-center">{{"Version"|t}}
+								{{ view.style_plugin.getField(key, 'field_version') }}</div>
+							<div class="descripcion todas word-break text-align-center">{{ view.style_plugin.getField(key, 'field_sub_app')|raw }}</div>
+						</div>
+					</div>
+          <div class="apk-detalles todas">
+            <div class="azul"></div>
+            <div class="blanco button--aylen">
+              {% set nid = row.content['#row']._entity.nid.value %}
+              <a href="{{ path('entity.node.canonical', {'node': nid }) }}">
+                <span>{{'See details'|t|upper}}
+                </span>
+              </a>
+            </div>
+          </div>
+          <div class="sep-noti todas col-9 mt-1"></div>
+          <div class="apk-descargar-detalle todas button--aylen">
+								{% set url= view.style_plugin.getField(key, 'field_fichero')|striptags %}
+								<a class="art-link" title={{ 'Download'|t }} href="{{url}}">{{ 'Download'|t|upper }}</a>
+							</div>
+				</div>
+			{% endfor %}
+		</div>
+	</div>
+{% endapply %}
+
+{{ attach_library('etecsa_subtheme/node-aplicacion') }}

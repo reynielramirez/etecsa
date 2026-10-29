@@ -1,0 +1,34 @@
+<?php
+
+use Symfony\Component\PropertyAccess;
+
+/**
+ *Theme hook
+ */
+function etecsa_persona_module_theme($path) {
+  return [
+    'recargas-persona' => [
+      'variables'=> [
+        'titulo'=>'Titulo por defecto',
+        'descripcion'=>'Descripcion por defecto',
+        'data'=>NULL,
+        'path'=>$path,
+        'attached'=>NULL,
+        'visibility' => NULL,
+        ],
+      'template'=>'recargas-persona'
+    ],
+    'utilidades-persona' => [
+      'variables'=> [
+        'titulo'=>'Titulo por defecto',
+        'descripcion'=>'Descripcion por defecto',
+        'data'=>NULL,
+        'path'=>$path,
+        'attached'=>NULL,
+        'visibility' => NULL,
+        ],
+      'template'=>'utilidades-persona'
+    ],
+  ];
+
+}

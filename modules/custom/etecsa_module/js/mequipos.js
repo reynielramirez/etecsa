@@ -1,0 +1,11 @@
+(function ($, Drupal) {
+  "use strict";
+	Drupal.behaviors.mequipos = {
+	  attach: function (context, settings) {
+      $('#menuPersonE').on("change", function () {
+        let url = $(this).val();
+        window.location.href = url;
+      });
+	  }
+	};
+  })(jQuery, Drupal);

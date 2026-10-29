@@ -1,0 +1,53 @@
+{% apply spaceless %}
+	<div class="container pz-content bg-white pb-5">
+		<div class="row ">
+			<div class="ml-4">
+				<div class="page-title azuloscuro">
+					<h2>{{'Places in calls'|t|upper}}</h2>
+				</div>
+			</div>
+
+			<div class="offset-lg-2 offset-md-3  select-enlacetopic">
+				{{ drupal_block('etecsa_menusn_block', wrapper=false) }}
+			</div>
+		</div>
+
+		<div class="row pz-content-data px-2 pl-lg-5 pr-lg-5">
+			<div class="col-12 container-plaza">
+				<h4 class="title-page title-plaza">
+					{{ node.get('title').value }}
+				</h4>
+				<div class="descripcion">
+					{{ node.get('field_descripcion').value|raw }}
+				</div>
+				{% if node.get('field_doc_relacionados')|length > 0 %}
+					<div class="documentos">
+						<h4 class="sesion-title">
+							{{ 'Documents related'|t }}
+						</h4>
+						{% for doc in node.get('field_doc_relacionados') %}
+							{% set arr_name = doc.entity.label|split(".")  %}
+							{% set ext = arr_name[1]|lower %}
+							<div class="doc">
+								{% if ext == 'pdf' and icon_pdf %}
+									<img class="icon-pdf" src="{{ icon_pdf }}" alt="">
+								{% elseif ext in ['doc', 'docx'] and icon_doc %}
+									<img class="icon-doc" src="{{ icon_doc }}" alt="">
+								{% elseif ext in ['xls', 'xlsx'] and icon_xls %}
+									<img class="icon-xls" src="{{ icon_xls }}" alt="">
+								{% elseif ext == 'rar' and icon_rar %}
+									<img class="icon-rar" src="{{ icon_rar }}" alt="">
+								{% elseif icon_generic %}
+									<img class="icon-generic" src="{{ icon_generic }}" alt="">
+								{% endif %}
+								<a href="{{ file_url(doc.entity.uri.value) }}" download>{{ doc.entity.label }}</a>
+							</div>
+						{% endfor %}
+					</div>
+				{% endif %}
+			</div>
+
+		</div>
+	</div>
+</div>
+{{ drupal_view('mas_plazas', 'block_1') }}{% endapply %}{{ attach_library('etecsa_module/plaza-styling') }}

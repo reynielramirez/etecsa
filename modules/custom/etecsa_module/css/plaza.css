@@ -1,0 +1,98 @@
+.item-plaza .btn-more-plaza {
+    text-align: center;
+    width: 147px;
+    background-color:#39c;
+    position: relative;
+    padding: 9px 12px;
+    clip-path: polygon(100% 0,100% 26px,92% 100%,0 100%,0 0);
+    cursor: pointer;
+    display: inline-block;
+}
+.item-plaza .btn-more-plaza a {
+    color: white;
+}
+.item-plaza .button--aylen::before {
+    background: #006;
+  }
+.title-plaza {
+    border-bottom: 2px solid #006; padding-bottom: 10px;
+}
+.item-plaza {
+    border: 1px solid rgb(197, 196, 196);
+    padding: 10px 15px;
+    margin-bottom: 15px;
+}
+.container-plaza {
+    padding-right: 5px !important;
+    padding-left: 5px !important;
+}
+.resumen p, .views-field-field-resumen-largo .field-content p {
+    margin-bottom: 0;
+}
+#prov-form input[type='submit'] {
+    float: none;
+    width: 120px;
+    background: #006;
+    color:#fff;
+    text-transform: uppercase;
+    clip-path: polygon(0 0,100% 0,100% 30px,92% 100%,0 100%,0 100%);
+    padding: .6rem;
+    margin-top: 0;
+    border: none;
+    cursor: pointer;
+    margin-left: 15px;
+}
+#prov-form div.form-item {
+    display: inline-block;
+}
+#prov-form div.form-item label {
+    font-size: 20px;
+    color: #fff;
+    margin-right: 15px;
+}
+.form-item-prov-name select
+{
+  height: 40px;
+  width:225px;
+  border: 1px solid #fff;
+  color: #fff;
+  font-size: 18px;
+  font-style: italic;
+  padding-left: 10px;
+  -moz-appearance: none;
+  /* Firefox */
+  -webkit-appearance: none;
+  /* Safari and Chrome */
+  appearance: none;
+  background-image: url('../images/arrow_blanco.svg');
+  background-repeat: no-repeat;
+  background-position: center right 10px;
+  background-size: cover;
+  background: #09c;
+}
+.container-plaza .sesion-title {
+    color:  rgb(197, 196, 196);;
+    font-style: italic;
+    padding: 20px 5px 20px;
+}
+.container-plaza .descripcion {
+    border-bottom: 2px solid  rgb(197, 196, 196);
+    margin-top: 15px;
+}
+.container-plaza .doc {
+    margin-bottom: 10px;
+    margin-left: 15px;
+}
+.container-plaza .doc img {
+    margin-right: 15px;
+}
+.pz-content-data {
+    margin-top: 3rem;
+}
+body {
+    background-color: #ccc!important;
+}
+.separator-plaza {
+    margin-right: 5px !important;
+    margin-left: 5px !important;
+}

@@ -1,0 +1,21 @@
+{% apply spaceless %}
+<div class="col card-flotante-home  {{cliente}}">
+    {% if data %}
+        <div class="card-flotante">
+        {% for card in data %}
+            {% if  card.field_enlace.0.url.external %}
+                {% set target="_blank" %}
+            {% else %}
+                {% set target=""%}
+            {% endif %}
+            <div class="item">
+                <a target="{{target}}" href="{{ card.field_enlace.0.url }}" class="card-enlace" title="{{ card.title.value }}">
+                    <img src="{{ file_url(card.field_imagen_svg.entity.uri.value) }}" class="img-responsive">
+                    <p style="color: white;">{{ card.title.value }}</p>
+                </a>
+            </div>
+        {% endfor %}
+        </div>
+    {% endif %}
+</div>
+{% endapply %}

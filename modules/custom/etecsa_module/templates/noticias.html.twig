@@ -1,0 +1,234 @@
+{% if data %}
+	{% if language =="es" %}
+		{% set text = "/noticias" %}
+	{% else %}
+		{% set text = "/news" %}
+	{% endif %}
+	{% if cliente =="personas" or  cliente =="people" %}
+		{% set cpath = base_path ~ language ~ text %}
+	{% else %}
+		{% set cpath = base_path ~ language ~"/"~ cliente ~ text %}
+	{% endif %}
+	<div class="container {{ visibility }}" id="block-noticias-persona">
+		<div class="sesion-noticia-home {% if data[0].field_image|length > 0 %} block-1 {% endif %}">
+			<div class="row">
+				<div class="col text-center">
+					<h1 class="block-title-n-custom">{{ 'News'|t|upper }}</h1>
+				</div>
+			</div>
+			<div class="d-none d-xs-none d-sm-none d-md-block d-lg-block">
+				{% if data[0].field_image|length > 0 %}
+					<div class="sesion-noticias row">
+						<div class="n-principal col-xs-12 col-sm-12 col-md-6 col-lg-6">
+							<div class="fecha">
+								{% if data[0].field_promo.value == 1 %}
+									{% set rojo = "rojo"%}
+								{% else %}
+									{% set rojo =""%}
+								{% endif %}
+								<div class="dia {{rojo}}">{{ data[0].field_fecha_publicacion_noti.value|date('d') }}</div>
+								<div class="mes-anno">
+									<span>{{ data[0].field_fecha_publicacion_noti.value|date('m') }}</span>
+									<span>{{ data[0].field_fecha_publicacion_noti.value|date('y') }}</span>
+								</div>
+								<div class="block-compartir-1">
+									<div class="compartir-1">
+										<span class="fa fa-share-alt"></span>
+										<div class="redesocN">
+											<button class="button" data-sharer="facebook" data-title="{{data[0].title.value }}" data-url="{{host}}{{ path('entity.node.canonical', {'node': data[0].nid.value }) }}">
+												<i class="fab fa-facebook-f so2"></i>
+											</button>
+											<button class="button" data-sharer="twitter" data-title="{{data[0].title.value }}" data-url="{{host}}{{ path('entity.node.canonical', {'node': data[0].nid.value }) }}">
+												<i class="fab fa-twitter so2"></i>
+											</button>
+											<button class="button" data-sharer="whatsapp" data-title="{{data[0].title.value }}" data-url="{{host}}{{ path('entity.node.canonical', {'node': data[0].nid.value }) }}">
+												<i class="fab fa-whatsapp so2"></i>
+											</button>
+											<button class="button" data-sharer="telegram" data-title="{{data[0].title.value }}" data-url="{{host}}{{ path('entity.node.canonical', {'node': data[0].nid.value }) }}" data-web="">
+												<i class="fab fa-telegram-plane so2"></i>
+											</button>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="card">
+								{% if data[0].field_image|length > 0 %}
+									<a href="{{ path('entity.node.canonical', {'node': data[0].nid.value }) }}">
+										<img class="col-md-12" src="{{ file_url(data[0].field_image.entity.uri.value) }}" alt="{{ data[0].field_image.entity.alt}}"/>
+									</a>
+								{% endif %}
+								<div class="card-body mt-3">
+									<h5 class="card-title">
+										<a href="{{ path('entity.node.canonical', {'node': data[0].nid.value }) }}">{{ data[0].title.value }}</a>
+									</h5>
+									<p class="small card-source">
+										{{ data[0].field_fuente.value }}
+									</p>
+									<span class="card-text">
+										{{ data[0].field_noticia_resumen.value }}
+									</span>
+								</div>
+							</div>
+						</div>
+					<div class="block-secundaria col-xs-12 col-sm-12 col-md-6 col-lg-6">
+						<div class="n-secundaria">
+							{% for new in data %}
+								{% if loop.index != 1 %}
+									<div class="item">
+										<div class="fecha">
+											{% if new.field_promo.value == 1 %}
+												{% set rojo = "rojo"%}
+											{% else %}
+												{% set rojo =""%}
+											{% endif %}
+											<div class="dia {{rojo}}">{{ new.field_fecha_publicacion_noti.value|date('d') }}</div>
+											<div class="mes-anno">
+												<span>{{ new.field_fecha_publicacion_noti.value|date('m') }}</span>
+												<span>{{ new.field_fecha_publicacion_noti.value|date('y') }}</span>
+											</div>
+											<div class="block-compartir-1">
+												<div class="compartir-1">
+													<span class="fa fa-share-alt"></span>
+													<div class="redesocN df">
+														<button class="button" data-sharer="facebook" data-title="{{new.title.value }}" data-url="{{host}}{{ path('entity.node.canonical', {'node': new.nid.value }) }}">
+															<i class="fab fa-facebook-f so2"></i>
+														</button>
+														<button class="button" data-sharer="twitter" data-title="{{new.title.value }}" data-url="{{host}}{{ path('entity.node.canonical', {'node': new.nid.value }) }}">
+															<i class="fab fa-twitter so2"></i>
+														</button>
+														<button class="button" data-sharer="whatsapp" data-title="{{new.title.value }}" data-url="{{host}}{{ path('entity.node.canonical', {'node': new.nid.value }) }}">
+															<i class="fab fa-whatsapp so2"></i>
+														</button>
+														<button class="button" data-sharer="telegram" data-title="{{new.title.value }}" data-url="{{host}}{{ path('entity.node.canonical', {'node': new.nid.value }) }}" data-web="">
+															<i class="fab fa-telegram-plane so2"></i>
+														</button>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="card">
+											<div class="card-body">
+												<h5 class="card-title">
+													<a href="{{ path('entity.node.canonical', {'node': new.nid.value }) }}">{{ new.title.value }}</a>
+												</h5>
+												<p class="small card-source">{{ new.field_fuente.value }}</p>
+												<div class="card-text">
+													{{ new.field_noticia_resumen.value }}
+												</div>
+											</div>
+										</div>
+									</div>
+								{% endif %}
+							{% endfor %}
+							<div class="mas-noticias col-12">
+								<a href="{{cpath}}" class="btn btn-link">
+									<span>{{ 'More News '|t|upper }}</span>
+									<i class="flaticon-next-1 more"></i>
+								</a>
+							</div>
+						</div>
+					</div>
+
+				</div>
+			{% else %}
+				<div class="sesion-noticias row">
+					{% for new in data %}
+						<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 container-new">
+							<div class="block-secundaria">
+								<div class="item">
+									<div class="fecha">
+										{% if new.field_promo.value== 1 %}
+											{% set rojo = "rojo"%}
+										{% else %}
+											{% set rojo =""%}
+										{% endif %}
+										<div class="dia {{rojo}}">{{ new.field_fecha_publicacion_noti.value|date('d') }}</div>
+										<div class="mes-anno">
+											<span>{{ new.field_fecha_publicacion_noti.value|date('m') }}</span>
+											<span>{{ new.field_fecha_publicacion_noti.value|date('y') }}</span>
+										</div>
+										<div class="block-compartir-1">
+											<div class="compartir-1">
+												<span class="fa fa-share-alt"></span>
+												<div class="redesocN">
+													<button class="button" data-sharer="facebook" data-title="{{new.title.value }}" data-url="{{host}}{{ path('entity.node.canonical', {'node': new.nid.value }) }}">
+														<i class="fab fa-facebook-f"></i>
+													</button>
+													<button class="button" data-sharer="twitter" data-title="{{new.title.value }}" data-url="{{host}}{{ path('entity.node.canonical', {'node': new.nid.value }) }}">
+														<i class="fab fa-twitter"></i>
+													</button>
+													<button class="button" data-sharer="whatsapp" data-title="{{new.title.value }}" data-url="{{host}}{{ path('entity.node.canonical', {'node': new.nid.value }) }}">
+														<i class="fab fa-whatsapp"></i>
+													</button>
+													<button class="button" data-sharer="telegram" data-title="{{new.title.value }}" data-url="{{host}}{{ path('entity.node.canonical', {'node': new.nid.value }) }}" data-web="">
+														<i class="fab fa-telegram-plane"></i>
+													</button>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="card">
+										<div class="card-body">
+											<h5 class="card-title">
+												<a href="{{ path('entity.node.canonical', {'node': new.nid.value }) }}">{{ new.title.value }}</a>
+											</h5>
+											<p class="small card-source">{{ new.field_fuente.value }}</p>
+											<div class="card-text">{{ new.field_noticia_resumen.value }}</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					{% endfor %}
+					<div class="col mas-noticias col-12">
+						<a href="{{cpath}}" class="btn btn-link">
+							<span>{{ 'More News'|t|upper }}</span>
+							<i class="flaticon-next-1 more"></i>
+						</a>
+					</div>
+				</div>
+			</div>
+		{% endif %}
+	</div>
+	<div class="d-block d-xs-block d-sm-block d-md-none d-lg-none">
+		<div class="sesion-noticias row">
+			<div id="carousel-noticias" class="owl-carousel owl-carousel-noticias owl-theme">
+				{% for new in data %}
+					<div class="col">
+						<div class="block-secundaria">
+							<div class="item">
+								<div class="fecha">
+									{% if new.field_promo.value== 1 %}
+										{% set rojo = "rojo"%}
+									{% else %}
+										{% set rojo =""%}
+									{% endif %}
+									<div class="dia {{rojo}}">{{ new.field_fecha_publicacion_noti.value|date('d') }}</div>
+									<div class="mes-anno">
+										<span>{{ new.field_fecha_publicacion_noti.value|date('m') }}</span>
+										<span>{{ new.field_fecha_publicacion_noti.value|date('y') }}</span>
+									</div>
+								</div>
+								<div class="card" style="text-align: left;">
+									<div class="card-body">
+										<h5 class="card-title">
+											<a href="{{ path('entity.node.canonical', {'node': new.nid.value }) }}">{{ new.title.value }}</a>
+										</h5>
+										<p class="small card-source">{{ new.field_fuente.value }}</p>
+										<div class="card-text">{{ new.field_noticia_resumen.value }}</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				{% endfor %}
+			</div>
+			<div class="col mas-noticias col-12">
+				<a href="{{cpath}}" class="btn btn-link">
+					<span>{{ 'More News'|t|upper }}</span>
+					<i class="flaticon-next-1 more"></i>
+				</a>
+			</div>
+		</div>
+	</div>
+</div></div>{% endif %}

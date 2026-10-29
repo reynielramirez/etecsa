@@ -1,0 +1,34 @@
+<?php
+
+/**
+ * @file
+ * Contains accessibility.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+   function accessibility_permission() {
+		return array(
+			'acceso accessibility_block' => array(
+				'title' => t('Acceso al bloque de accesibilidad.'),
+				'description' => t('Acceso al módulo accessibility-block.'),
+			),
+		);
+	}
+	
+	function accessibility_theme($existing, $type, $theme, $path) {
+
+        return array(
+            'accessibility_block'=>[
+                'variables'=>[
+                    'titulo'=>'Block Custom Title',
+                    'descripcion'=>'Block Custom Description',
+                    'result'=>NULL,
+                    'path'=>$path,
+                    'attached'=>NULL
+                ],
+                'template'=>'accessibility_block'
+            ],
+        );
+    }
+

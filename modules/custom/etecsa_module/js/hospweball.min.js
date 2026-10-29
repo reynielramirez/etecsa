@@ -1,0 +1,1 @@
+!function($,Drupal){"use strict";Drupal.behaviors.hospweball={attach:function(context,settings){$("#combo").on("change",(function(){var tipo=$(this).val();$(this).value=tipo,$("[id^='seccion-']").each((function(){$(this).hasClass(tipo)||"todos"==tipo?($(this).show(),$(this).next().show()):($(this).hide(),$(this).next().hide())}))}))}}}(jQuery,Drupal);

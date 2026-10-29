@@ -1,0 +1,29 @@
+.card-flotante {
+	text-align: center; padding-top: 2rem;
+}
+.card-flotante .item {
+	float: left;
+	margin: 0 20px;
+}
+
+.card-flotante-home{
+	height: 120px;
+	border-left: 1px solid white;
+ }
+
+.Personas-card,
+.People-card{
+	background-color: #0099cc;
+ }
+.Empresas-card,
+.Companies-card{
+	background-color: #ff6600;
+ } 
+ .Visitantes-card,
+ .Visitors-card{
+	background-color: #cc66cc;
+ }
+ .Emprendedores-card,
+ .Entrepreneurs-card {
+	background-color:#669900 !important
+ }

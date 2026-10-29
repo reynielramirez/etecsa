@@ -1,0 +1,58 @@
+.recarga-title {
+    color: #999;
+    font-family:  "MyriadPro-Light";
+    word-break: break-word;
+}
+
+
+.color-background {
+    background-color: #666;
+}
+
+.section-heading .text-white {
+    font-family: "MyriadPro-BoldCond";
+}
+
+.utilidades-title{
+    font-family: "MyriadPro-Cond";
+}
+.utilidades-title,
+.utilidades-descrip {
+    color: #fff;
+}
+
+.utilidades-descrip {
+    font-size: 0.875rem;
+    font-family: "MyriadPro-SemiCond";
+}
+
+.utilidad-items {
+    border-right: 1px solid rgb(255, 255, 255, 0.3);
+}
+
+.utilidad-items:nth-last-child(1) {
+    border-right: none;
+}
+
+.enlace-aux img {
+    -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+    filter: grayscale(100%);
+}
+.enlace-aux:hover img {
+    -webkit-filter: grayscale(0%); /* Safari 6.0 - 9.0 */
+    filter: grayscale(0%);
+}
+.sesion-utilidades,
+.sesion-recargas {
+  margin-top: 50px;
+}
+
+.sesion-recargas  .section-heading{
+    margin-bottom: 1.875rem;
+}
+
+@media (max-width : 768px) {
+    .utilidad-items {
+        border-right: none;
+    }
+}

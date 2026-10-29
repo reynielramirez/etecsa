@@ -1,0 +1,271 @@
+{% apply spaceless %}
+	{% if node.field_color_azul[0].getString()=="claro" %}
+		{% set color="azulclaro"%}
+	{% else %}
+		{% set color="azuloscuro"%}
+	{% endif %}
+	{% if content.field_pertenece_a['#items'].getString()=="1" %}
+		{% set offset="offset-lg-4 offset-md-3"%}
+	{% elseif content.field_pertenece_a['#items'].getString()=="2" %}
+		{% set offset="offset-lg-2 pl-lg-4"%}
+	{% endif %}
+	<article{{attributes.addClass(classes)}}>
+		<div class="container page-content bg-white pb-5">
+
+			<div class="row">
+				{% if content.field_pertenece_a|length > 0 %}
+					<div class="ml-1 ml-lg-4">
+						<div class="page-title {{color}}">
+							{% if content.field_pertenece_a['#items'].getString()=="3" %}
+								<h2 class="upper">{{ label }}
+								</h2>
+							{% else %}
+								<h2 class="upper">{{content.field_pertenece_a[0]}}
+								</h2>
+							{% endif %}
+						</div>
+					</div>
+				{% endif %}
+
+				{% if node.field_tipo_imagen.value == 'grande' and node.field_imagen_grande.value|length > 0 %}
+					{% set img = file_url(node.field_imagen_grande.entity.uri.value) %}
+				{% elseif node.field_tipo_imagen.value == 'pequeña' and node.field_imagen_pequena.value|length > 0 %}
+					{% set img = file_url(node.field_imagen_pequena.entity.uri.value) %}
+				{% endif %}
+
+				{% if img %}
+					{% set is_imagen = true %}
+					<div class="cmt">
+						<img class="w-100 mb-3" src="{{ img }}" alt="">
+					</div>
+					{% if node.field_pertenece_a.getString()!="3" %}
+						<div class="sep col-lg-6 col-md-4 ml-5 d-lg-block d-md-block d-none"></div>
+						<div class="offset-lg-7 offset-md-6  select-enlacetopic pb-3">
+							{% if content.field_pertenece_a['#items'].getString()=="1" %}
+								{{ drupal_block('etecsa_menusn_block', wrapper=false) }}
+							{% elseif content.field_pertenece_a['#items'].getString()=="2" %}
+								{{ drupal_block('etecsa_menupc_block', wrapper=false) }}
+							{% endif %}
+						</div>
+					{% endif %}
+				{% elseif node.field_pertenece_a.getString()!="3" %}
+					<div class="{{offset}} select-enlacetopic pb-3">
+						{% if content.field_pertenece_a['#items'].getString()=="1" %}
+							{{ drupal_block('etecsa_menusn_block', wrapper=false) }}
+						{% elseif content.field_pertenece_a['#items'].getString()=="2" %}
+							{{ drupal_block('etecsa_menupc_block', wrapper=false) }}
+						{% endif %}
+					</div>
+				{% endif %}
+
+			</div>
+			<div class="row pb-5 {% if not is_imagen %} pmt {% endif %}">
+				<div class="col-12 px-5 px-xs-2 pt-xs-2 pt-md-4">
+					{% if content.field_pertenece_a['#items'].getString()!="3" %}
+						<h4 class="title-page pl-4 mb-2 mt-4">{{label}}</h4>
+					{% endif %}
+					<h4 class="title-page pl-md-4 pl-lg-4 pl-2 mb-2">{{content.field_subtitulo[0]|raw}}</h4>
+					<div class="word-break pl-md-4 pl-lg-4 pl-2 pb-3">{{ content.body[0]|raw }}</div>
+
+					{% if node.field_galeria_iv[0]|length > 0 %}
+						<div id="carousel-noticias" class="container mb-5 pb-carousel">
+							{% for item in node.get('field_galeria_iv') %}
+								{% set filename = item.entity.getFilename() %}
+								{% set extension = filename|split('.')|last %}
+								{% if extension in ['webm', 'mp4'] %}
+									<img alt="" src="{{ file_url('public://galerias/covervideo.png') }}" data-type="html5video" data-image="{{ file_url('public://galerias/covervideo.png') }}" data-videowebm="{{ file_url(item.entity.uri.value) }}" data-videomp4="{{ file_url(item.entity.uri.value) }}">
+								{% else %}
+									<img src="{{ file_url(item.entity.uri.value) }}" data-image="{{ file_url(item.entity.uri.value) }}" class="img-responsive">
+								{% endif %}
+							{% endfor %}
+						</div>
+					{% endif %}
+				</div>
+			</div>
+			{% if node.field_paquetes[0]|length > 0 %}
+				<div class="row justify-content-center pl-5 pr-5 ">
+					{% for item in node.get('field_paquetes') %}
+						{% if item.entity.hastranslation(language) %}
+							{% set entity = item.entity.translation(language) %}
+						{% else %}
+							{% set entity = item.entity %}
+						{% endif %}
+						<div class="col-lg-4 col-md-4 col-sm-6 mb-2 text-center">
+							<img src="{{ file_url(entity.field_imagen_svg.entity.fileuri) }}" class="img-responsive">
+							{% if entity.field_enlace.0.url|length > 0 %}
+								{% if  entity.field_enlace.0.url.external %}
+									{% set target="_blank" %}
+								{% else %}
+									{% set target="" %}
+								{% endif %}
+								<div class="btn-purchase pbasica">
+									<a href="{{ entity.field_enlace.0.url }}" target="{{target}}">
+										<span>{{ entity.field_enlace.0.title|upper }}</span>
+									</a>
+								</div>
+							{% endif %}
+						</div>
+					{% endfor %}
+				</div>
+			{% endif %}
+			{% if  node.get('field_paquetes').entity.hastranslation(language) %}
+				{% set nodo_categ = node.get('field_paquetes').entity.translation(language) %}
+			{% else %}
+				{% set nodo_categ = node.get('field_paquetes').entity %}
+			{% endif %}
+			{% if  nodo_categ.field_categoria[0]|length > 0 %}
+				<h5 class="subtitle-page col-12 pl-5">{{ 'Something you should know'|t }}</h5>
+				<div class="word-break pb-3 pl-5 col-12">{{ nodo_categ.field_categoria.entity.description.value|raw }}</div>
+			{% endif %}
+			{% if node.field_hospedajes_web[0]|length > 0 %}
+				<div class="row justify-content-center pl-5 pr-5 prelative">
+					{% for item in node.get('field_hospedajes_web') %}
+						{% if item.entity.hastranslation(language) %}
+							{% set entity = item.entity.translation(language) %}
+						{% else %}
+							{% set entity = item.entity %}
+						{% endif %}
+						<div class="col-lg-4 col-md-4 col-sm-6 mb-2 text-center">
+							<img src="{{ file_url(entity.field_imagen_svg.entity.fileuri) }}" class="img-responsive">
+							{% if entity.field_enla.0.url|length > 0 %}
+								{% if  entity.field_enla.0.url.external %}
+									{% set target="_blank" %}
+								{% else %}
+									{% set target="" %}
+								{% endif %}
+								<div class="btn-purchase pbasica">
+									<a href="{{ entity.field_enla.0.url }}" target="{{target}}">
+										<span>{{ entity.field_enla.0.title|upper }}</span>
+									</a>
+								</div>
+							{% endif %}
+						</div>
+					{% endfor %}
+				</div>
+			{% endif %}
+			{% if node.field_planes_moviles_pospagos[0]|length > 0 %}
+				<div class="row justify-content-center pl-5 pr-5 prelative">
+					{% for item in node.get('field_planes_moviles_pospagos') %}
+						{% if item.entity.hastranslation(language) %}
+							{% set entity = item.entity.translation(language) %}
+						{% else %}
+							{% set entity = item.entity %}
+						{% endif %}
+						<div class="col-lg-4 col-md-4 col-sm-6 mb-2 text-center">
+							<img src="{{ file_url(entity.field_imagen_svg.entity.fileuri) }}" class="img-responsive">
+							{% if entity.field_enlace_mp.0.url|length > 0 %}
+								{% if  entity.field_enlace_mp.0.url.external %}
+									{% set target="_blank" %}
+								{% else %}
+									{% set target="" %}
+								{% endif %}
+								<div class="btn-purchase pbasica">
+									<a href="{{ entity.field_enlace_mp.0.url }}" target="{{target}}">
+										<span>{{ entity.field_enlace_mp.0.title|upper }}</span>
+									</a>
+								</div>
+							{% endif %}
+						</div>
+					{% endfor %}
+				</div>
+			{% endif %}
+			{% if node.field_planes_moviles_temporales[0]|length > 0 %}
+				<div class="row justify-content-center pl-5 pr-5 prelative">
+					{% for item in node.get('field_planes_moviles_temporales') %}
+						{% if item.entity.hastranslation(language) %}
+							{% set entity = item.entity.translation(language) %}
+						{% else %}
+							{% set entity = item.entity %}
+						{% endif %}
+						<div class="col-lg-4 col-md-4 col-sm-6 mb-2 text-center">
+							<img src="{{ file_url(entity.field_imagen_svg.entity.fileuri) }}" class="img-responsive">
+							{% if entity.field_enlace_mp.0.url|length > 0 %}
+								{% if  entity.field_enlace_mp.0.url.external %}
+									{% set target="_blank" %}
+								{% else %}
+									{% set target="" %}
+								{% endif %}
+								<div class="btn-purchase pbasica">
+									<a href="{{ entity.field_enlace_mp.0.url }}" target="{{target}}">
+										<span>{{ entity.field_enlace_mp.0.title|upper }}</span>
+									</a>
+								</div>
+							{% endif %}
+						</div>
+					{% endfor %}
+				</div>
+			{% endif %}
+			{% if node.field_faq|length > 0 %}
+				<div class="row faq-page pl-5 pr-5">
+					<div class="btn-purchase button--aylen" style="width: auto;">
+						<a href="{{ path('etecsa.faq', {'faq': node.nid.value }) }}">{{ 'Frequently Asked Questions'|t|upper}}
+						</a>
+					</div>
+				</div>
+			{% endif %}
+			{% if node.field_fichero_s_|length > 0 %}
+				<div class="col-12 offset-1 pb-5 pl-5 pr-5">
+					<div class="row">
+						{% set cant = item|length // 2 %}
+						{% set count = 1 %}
+						{% for doc in node.get('field_fichero_s_') %}
+							{% if count == 1  %}
+								<div class='col-6 docs'>
+								{% endif %}
+								{% if  count <= cant or cant == 0 %}
+									<a href="{{ file_url(doc.entity.uri.value) }}" download>
+										<i class="fa fa-download cicon"></i>
+										{{doc.entity.filename.value}}</a>
+								{% endif %}
+								{% if count == cant %}
+								</div>
+								{% set count = 1 %}
+							{% else %}
+								{% set count = count + 1 %}
+							{% endif %}
+						{% endfor %}
+					</div>
+				</div>
+			{% endif %}
+			{% if node.field_svg_escritorio|length > 0 %}
+				<div class="row d-md-block d-lg-block d-sm-none d-none">
+					<div class="col-12">
+						<img class="img-responsive" src="{{ file_url(node.field_svg_escritorio.entity.fileuri)}}">
+					</div>
+				</div>
+			{% endif %}
+			{% if node.field_svg_movil|length > 0 %}
+				<div class="row d-md-none d-lg-none d-sm-block d-block">
+					<div class="col-12">
+						<img class="img-responsive" src="{{ file_url(node.field_svg_movil.entity.fileuri)}}">
+					</div>
+				</div>
+			{% endif %}
+			{% if node.field_galeria_videos|length > 0 %}
+				<div class="container-fluid px-0 pt-5">
+					<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+						<div class="carousel-inner bg-info" role="listbox">
+						{% for item in node.field_galeria_videos %}
+							<div class="carousel-item {% if loop.first %} active {% endif %}">
+								<div class="d-flex justify-content-center">
+									{{ item.value|raw }}
+								</div>
+							</div>
+						{% endfor %}
+						</div>
+						<a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+							<span>
+								<i class="fa fa-angle-left fa-3x"></i>
+							</span>
+						</a>
+						<a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+							<span>
+							<i class="fa fa-angle-right fa-3x"></i>
+						</span>
+						</a>
+					</div>
+				</div>
+			{% endif %}
+		</div>
+	</div>
+</article>{% endapply %}{{ attach_library('etecsa_subtheme/unitegallery') }}{{ attach_library('etecsa_subtheme/node-noticias') }}{{ attach_library('etecsa_module/preguntasftodas-styling') }}

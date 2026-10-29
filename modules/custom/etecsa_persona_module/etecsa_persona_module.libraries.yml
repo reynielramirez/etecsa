@@ -1,0 +1,14 @@
+   
+recargas-styling:
+  version: VERSION
+  css:
+      theme:
+        css/persona_recargas.min.css: {}
+
+utility-people:
+  version: VERSION
+  css:
+    theme:
+      css/utility-people.min.css: {}
+  js:
+    js/utility-people.min.js: {} 

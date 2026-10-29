@@ -1,0 +1,8 @@
+services:
+  etecsa.etecsa_service:
+    class: Drupal\etecsa_module\Services\EtecsaService
+    arguments: []
+  etecsa.filepermanent:
+    class: Drupal\etecsa_module\Services\FilePermanent
+    arguments: []
+  

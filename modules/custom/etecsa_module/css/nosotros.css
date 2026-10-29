@@ -1,0 +1,107 @@
+.sn-content .page-title {
+	background-color: #006;
+  color: #fff;
+  clip-path: polygon(100% 0, 100% 35px, 96% 100%, 0 100%, 0 0);
+  position: absolute;
+  top: -10px;
+  padding: 5px 10px;
+  left: 2rem;
+}
+.sn-content-data .node-title {
+	margin-top: 1rem;
+	color: #006;
+	font-size: 30px;
+	font-weight: bold;
+}
+.sn-content-data {
+	margin: .5rem 2rem;
+}
+#consejosC .carousel-control-prev {
+  width: 5%;
+}
+#consejosC .carousel-control-next {
+  width: 5%;
+}
+#consejosC .carousel-inner {
+  width: 1024px!important;
+}
+
+#consejosC .carousel-control-prev svg,
+#consejosC .carousel-control-next svg {
+  color: #fff;
+  background-color: #006;
+  width: 40px;
+  height: 40px;
+}
+.enlace-topic {
+	margin-top: 1rem;
+	margin-bottom: 1.5rem;
+}
+.topic-title {
+	background-color: #3399CC;
+	clip-path: polygon(93.84% 0px, 100% 20px, 100% 100%, 0px 100%, 0px 0px);
+  padding: 5px;
+  width: 280px;
+  position: relative;
+  bottom: 25px;
+  /* left: 1.4rem; */
+  /* margin: 0 1.3rem; */
+  display: inline-block;
+  text-align: center;
+}
+.topic-title span {
+	color: #fff;
+  font-size: 1.6rem;
+  font-family: "MyriadPro-BoldCond";
+}
+#consejosC .carousel-indicators {
+	bottom: -30px;
+}
+a.enlace:hover {
+  text-decoration: none !important;
+}
+#carousel-directivos .owl-next {
+  width: 5%;
+  right: -45px;
+  position: absolute;
+  top: 10rem;
+  text-align: right;
+}
+#carousel-directivos .owl-prev {
+  width: 5%;
+  left: -80px;
+  position: absolute;
+  top: 10rem;
+}
+#carousel-directivos .owl-prev svg, #carousel-directivos .owl-next svg {
+  color: #006;
+}
+
+@media (max-width: 768px) {
+  #carousel-directivos .owl-dots,
+  #consejosC .carousel-indicators{
+    display: none;
+  }
+ .line-separador {
+    display: none!important;
+}
+#consejosC .carousel-control-next,
+#consejosC .carousel-control-prev {
+  width: 10%;
+}
+
+.directivos-territoriales{
+  margin: 1.5rem;
+}
+.directivos-territoriales h4{
+  font-size: 18px;
+}
+#carousel-directivos .owl-prev {
+  left: -3rem;
+  bottom: 20rem;
+}
+#carousel-directivos .owl-next {
+  right: -.4rem;
+  bottom: 20rem;
+}
+}

@@ -1,0 +1,170 @@
+<style type="text/css" media="screen">
+	body {
+		background-color: #CCCCCC !important;
+	}
+</style>
+<article{{attributes}}>
+	<div{{content_attributes}} class=" container eq-content pb-5 {% if equiposRecomendados.eq|length == 0 %} mb-5 {% endif %}">
+		<div class="row">
+			<div class="ml-4">
+				<div class="page-title azuloscuro">
+					<h2>{{ 'EQUIPMENT AND ACCESSORIES'|t|upper }}</h2>
+				</div>
+			</div>
+			<div class="offset-lg-3 pl-4 d-lg-block d-none">
+					{{ drupal_block('etecsa_menu_equipos_block', wrapper=false) }}
+			</div>
+		</div>
+		<div class="offset-md-6 offset-sm-4 d-lg-none d-md-block d-sm-block pl-lg-5">
+					{{ drupal_block('etecsa_menu_equipos_block', wrapper=false) }}
+		</div>
+		<div class="row pt-3 pl-3">
+			<div class="col-12 page-subtitle pl-5">
+				<h4>
+					<strong>{{ content.field_tipo_de_equipos[0] }}</strong>
+				</h4>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-12 col-sm-6 col-md-12 col-lg-5 pl-lg-5 ">				
+				<div class="m-m text-center">
+						<strong>{{ content.field_marca[0] }}</strong>
+						{{ content.field_modelo[0] }}
+				</div>
+				<div class="eq-left text-center">
+					{% if node.field_nuevo.value == 1 %}
+						<div class="nuevo princ">
+							<span>{{ 'New'|t|upper }}</span>
+						</div>
+					{% endif %}
+					<div class="gallery">
+						<div class="images">
+							{% for image in node.get('field_galeria_equipos') %}
+								<div class="image {% if loop.first %} active {% endif %}">
+									<img src="{{ file_url(image.entity.fileuri) }}" class="content">
+								</div>
+							{% endfor %}
+							<div id="square"></div>
+						</div>
+						<div class="thumbs">
+							{% for image in node.get('field_galeria_equipos') %}
+								<div class="thumb {% if loop.first %} active {% endif %}" style="background-image: url('{{ file_url(image.entity.fileuri) }}')"></div>
+							{% endfor %}
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-12 col-md-12 col-lg-7 description-eq pl-lg-5">
+				<div id="img-zoom">
+					<img src="">
+				</div>
+				<div id="description">
+					<div class="text-center eq-p">
+						<div>
+							<h4>{{ 'Price:'|t }}</h4>
+						</div>
+						<strong>{{ content.field_precio[0] }}</strong>
+						<strong>{{ content.field_moneda[0]}}</strong>
+						{% if content.field_enlace %}
+						<div class="btn-purchase-e button--aylen enlace-compra">
+							{{ content.field_enlace[0]|raw }}
+						</div>
+						{% endif %}
+						</div>
+							<ul class="nav nav-tabs equipo-info" id="myTabE" role="tablist">
+								<li class="nav-item">
+									<a class="nav-link active" data-toggle="tab" href="#caracteristica" role="tabpanel">{{ 'Characteristics'|t }}</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link " data-toggle="tab" href="#kit" role="tabpanel">{{ 'Sales kit'|t }}</a>
+								</li>							
+							</ul>
+							<div class="tab-content mt-3" id="myTabEquip">
+								<div class="tab-pane fade show active" id="caracteristica" role="tabpanel" aria-labelledby="caracteristica-tab">
+									{{ content.field_car_equipo[0]|raw  }}
+								</div>
+								<div class="tab-pane fade show" id="kit" role="tabpanel" aria-labelledby="kit-tab">
+									{{ content.field_kit_de_venta[0]|raw  }}
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			{% if equiposRecomendados.eq|length > 0 %}
+				<div class="eq-recomendados">
+					<div class="eq-recomendados-title col-12">
+						<span>{{ 'We recommend other equipment'|t }}</span>
+					</div>
+						
+					<div class="d-xs-block d-sm-block d-md-block d-lg-none">
+							<div id="carousel-equipo" class="owl-carousel owl-carousel-eq-mobile owl-theme">
+								{% for eq in equiposRecomendados.eq %}
+									<div class="col-md-10 col-sm-6  text-center equipos-rec mb-5" >
+										<div class="border">
+												{% if eq.nuevo == 1 %}
+													<div class="nuevo">
+														<span>{{ 'New'|t|upper }}</span>
+													</div>
+												{% endif %}
+												<img class="eq-ratio mt-3" src="{{ file_url(eq.imagen) }}">
+												<h5 class="card-title-marca">
+													<span>{{ eq.marca }}</span>
+												</h5>
+												<h5 class="card-title-modelo">
+													<span>{{ eq.modelo }}</span>
+												</h5>
+												<div class="sub"></div>
+												<div class="precio mb-5">
+													<span class="monto">{{ eq.precio }}</span>
+													<span class="moneda">{{ eq.moneda|upper }}</span>
+												</div>
+										</div>
+										<div class="ebtn">
+											<div class="blanco">
+												<a href="{{ path('entity.node.canonical', {'node': eq.nid }) }}">{{ 'See details'|t|upper }}</a>
+											</div>
+											<div class="azul"></div>
+										</div>
+									</div>     
+								{% endfor %}
+							</div>
+					</div>
+					<div class="d-none d-xs-none d-sm-none d-md-none d-lg-block">
+						<div class="row paquetes justify-content-center mt-3 mx-0 px-3">
+							{% for eq in equiposRecomendados.eq %}                         
+								<div class="col-12 col-sm-6 col-md-3 col-lg-3 mb-5  text-center equipos-rec custompad" >
+									<div class="border">
+											{% if eq.nuevo == 1 %}
+												<div class="nuevo">
+													<span>{{ 'New'|t|upper }}</span>
+												</div>
+											{% endif %}
+											<img class="eq-ratio mt-3" src="{{ file_url(eq.imagen) }}">
+											<h5 class="card-title-marca">
+												<span>{{ eq.marca }}</span>
+											</h5>
+											<h5 class="card-title-modelo">
+												<span>{{ eq.modelo }}</span>
+											</h5>
+											<div class="sub"></div>
+											<div class="precio mb-5">
+												<span class="monto">{{ eq.precio }}</span>
+												<span class="moneda">{{ eq.moneda|upper }}</span>
+											</div>
+									</div>
+									<div class="ebtn">
+											<div class="blanco  button--aylen">
+												<a href="{{ path('entity.node.canonical', {'node': eq.nid }) }}">{{ 'See details'|t|upper }}</a>
+											</div>
+											<div class="azul"></div>
+										</div>
+								</div>                                       
+							{% endfor %}
+						</div>
+					</div>
+				</div>
+			{% endif %}
+		</article>
+		{{ attach_library('etecsa_subtheme/node-equipos') }}
+		{{ attach_library('etecsa_subtheme/jquerygallery') }}

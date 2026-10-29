@@ -1,0 +1,49 @@
+{#
+/**
+ * @file
+ * Theme override to display a view of unformatted rows.
+ *
+ * Available variables:
+ * - title: The title of this group of rows. May be empty.
+ * - rows: A list of the view's row items.
+ *   - attributes: The row's HTML attributes.
+ *   - content: The row's content.
+ * - view: The view object.
+ * - default_row_class: A flag indicating whether default classes should be
+ *   used on rows.
+ *
+ * @see template_preprocess_views_view_unformatted()
+ */
+#}
+{% apply spaceless %}
+    <div class="container bg-white py-5" >
+    <div class="row">       
+      {% for key,row in rows %}    
+        <div class="col-12 pl-5 pr-5"> 
+          <div class="revista">              
+              <div class="fecha">
+                <div class="dia"> {{ view.style_plugin.getField(key, 'field_fecha_publicacion')|striptags|date('Y')}}</div>
+                <div class="mes-anno tono">
+                    <span>{{'Edition'|t}}</span>
+                    <span>{{ view.style_plugin.getField(key, 'field_fecha_publicacion')|striptags|date('m')}}</span>
+                </div>
+              </div>
+              <div class="cuerpo mt-1 pl-3">
+                {% if view.style_plugin.getField(key, 'field_image')|length > 0 %}
+                  <div class="img-noti ">{{ view.style_plugin.getField(key, 'field_image') }}</div>
+                {% endif %}                 
+                <h5 class="titulo word-break">{{ view.style_plugin.getField(key, 'title') }}</h5>
+                <div class="small fuentert">{{ view.style_plugin.getField(key, 'field_subtitulo') }}</div>
+                <div class="word-break">{{ view.style_plugin.getField(key, 'field_descripcion')|raw }}</div>                
+              </div>                        
+          </div> 
+        </div>
+        {% if not loop.last  %}
+          <div class="sep-noti col-11 mt-1"></div> 
+        {% endif %}   
+    {% endfor %}
+    </div>    
+    </div>    
+{% endapply %}  
+
+{{ attach_library('etecsa_subtheme/node-aplicacion') }}

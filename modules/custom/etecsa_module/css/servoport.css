@@ -1,0 +1,108 @@
+.section-heading .title-color{
+  margin-bottom: 1.8rem;
+  color:#666!important;
+  text-align: center;
+  font-family: "MyriadPro-BoldCond";
+  margin-bottom: 1.25rem;
+}
+a .servoport-title,
+a .servoport-subtitle,
+.moreOport-link {
+  color: #006;
+  text-align: center;
+  font-size: 1.6rem;
+  margin-bottom: 0;
+}
+a .servoport-text {
+  font-family: "MyriadPro-BoldCond";
+  position: relative;
+  margin-top: -2.4rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  background: rgb(255, 255, 255, 0.9);
+  padding: .5rem;
+  clip-path: polygon(0 0, 92% 0, 100% 25px, 100% 100%, 100% 100%, 0 100%);
+  padding-bottom: 1px;
+}
+.select-servoportunidad::after{
+  right: 1.5rem !important;
+  top: .2rem !important;
+}
+.select-servoportunidadAll::after{
+  right: 1.5rem !important;
+  top: .2rem !important;
+}
+a .servoport-resumen {
+  font-family: "MyriadPro-Cond";
+  text-align: center;
+  color: #666;
+}
+
+.moreOport-link,
+a .servoport-subtitle {
+  font-family: "MyriadPro-Cond";
+  font-size: 1.1rem;
+}
+.cmb {
+  margin-bottom: 3rem;
+  margin-top: 2.5rem;
+  
+}
+a:hover {
+  text-decoration: none !important;
+}
+
+.sesion-servicios-oportunidades {
+  margin-top: 50px;
+}
+.sombra{
+box-shadow: rgb(204, 204, 204) 0px 3px 8px !important;
+margin-left: 1rem;
+margin-right: 1rem;
+border-radius: 0 0 .8rem .8rem;
+}
+.owl-carousel-servoport .owl-dots{
+  bottom: -6px!important;
+}
+.word-break span img{
+  width: 100%;
+}
+.owl-theme .owl-dots .owl-dot span {
+  background: transparent;
+}
+.flaticon-next-1.more::before {
+  font-size: 15px !important;
+  color: #000066;
+  font-weight: bold;
+  margin-left: 4px;
+
+}
+@media (max-width: 991px) {
+  .page-title h2 {
+    font-size: 1.5rem!important;
+  }
+  #edit-servoportunidad,
+  #servoportunidadAll{
+    font-size: 1.2rem!important;
+  }
+}
+
+
+
+@media (max-width: 440px) {
+  .oportunidad .servoport-title,
+  .oportunidad .title
+  .oportunidad .word-break {
+    padding-left: 0!important;
+  }
+  
+
+}
+@media (max-width: 320px) {
+  .servoport-resumen {
+    padding-left: 0;
+    padding-right: 0;
+  }  
+
+}
+

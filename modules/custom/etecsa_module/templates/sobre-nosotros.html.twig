@@ -1,0 +1,147 @@
+{% apply spaceless %}
+	{% if data %}
+		{% set node = data['nosotros'] %}
+		{% set consejos = data['consejos'] %}
+		{% set topics = data['topics'] %}
+		{% set directivos = data['directivos'] %}
+		<div class="container page-content bg-white">
+      		<div class="row">
+          		<div class="ml-4">
+                	<div class="page-title azuloscuro" >
+						<h2 class="upper">{{node.get('title').value|raw}}</h2>
+					</div>
+				</div>
+
+                {% set content = node %}
+				{% if content.field_tipo_imagen.value == 'grande' and content.field_imagen_grande.value|length > 0 %}
+					{% set img = file_url(content.field_imagen_grande.entity.uri.value) %}
+				{% elseif content.field_tipo_imagen.value == 'pequeña' and content.field_imagen_pequena.value|length > 0 %}  
+					{% set img = file_url(content.field_imagen_pequena.entity.uri.value) %}
+				{% endif %} 
+			
+				{% if img %}
+					<div class="cmt">
+						<img  class="w-100" src="{{ img }}" alt="">
+					</div>   
+				{% endif %} 
+
+				{% if data %}
+					<div class="col-12 px-xs-2 mt-2">
+                        <div class="word-break pb-3 mt-2">
+							<div class="sndescrpcion">
+								{{ node.get('field_descripcion').value|raw }}
+							</div>
+						</div>
+					</div>
+					{% if topics %}
+						<div class="row justify-content-center enlace-topic">
+							{% for item in topics %}
+								<div class="col-12 col-sm-9 col-md-6 col-lg-4 text-center">
+								<div class="e-topic">
+									<a href="{{ item.field_enlace.0.url }}" class="enlace">
+										<img src="{{ file_url(item.field_imagen.entity.uri.value) }}">
+										<div class="topic-title">
+											<span>{{ item.title.value }}</span>
+										</div>
+									</a>
+									</div>
+								</div>
+							{% endfor %}
+						</div>
+					{% endif %}
+					{# carrusel #}
+					{% if consejos %}
+					<div class="col-12">
+						<div id="consejosC" class="carousel slide" data-ride="carousel">
+								<!-- Indicators -->
+								<ul class="carousel-indicators">
+									{% set indicator = 0 %}
+									{% for car_image in consejos %}
+										{% if indicator == 0 %}
+											<li data-target="#consejosC" data-slide-to="{{ indicator }}" class="active"></li>
+										{% else %}
+											<li data-target="#consejosC" data-slide-to="{{ indicator }}"></li>
+										{% endif %}
+										{% set indicator = indicator+1 %}
+									{% endfor %}
+								</ul>
+								<!-- Indicators -->
+
+								<!-- The slideshow -->
+								<div class="carousel-inner" role="listbox">
+									{% set first = 0 %}
+									{% for car_image in consejos %}
+										{% if first == 0 %}
+											<div class="carousel-item active">
+												{% set first = 1 %}
+											{% else %}
+												<div class="carousel-item">
+												{% endif %}
+												<a href="{{ car_image.field_en_prot.0.url }}">
+													<img src="{{ file_url(car_image.field_imagen.entity.uri.value) }}">
+												</a>
+											</div>
+										{% endfor %}
+									</div>
+									<!-- Left and right controls -->
+									<a class="carousel-control-prev" href="#consejosC" data-slide="prev">
+										<span>
+											<i class="fa fa-2x fa-angle-left"></i>
+										</span>
+									</a>
+									<a class="carousel-control-next" href="#consejosC" data-slide="next">
+										<span>
+											<i class="fa fa-2x fa-angle-right"></i>
+										</span>
+									</a>
+								</div>
+						</div>
+					</div>
+					{% endif %}
+					
+					{# end carrusel #}
+					{% if directivos %}
+						<div class="row line-separador"></div>
+						<div class="directivos-territoriales row">
+							<h2 class="title col-12">{{'Main Executives'|t}}</h2>
+							<h4 class="col-12">{{'If you have any question, suggestion or concern, please feel free to contact us'|t}}</h4>
+						</div>
+						<div id="carousel-directivos" class="owl-carousel mt-lg-5 mt-sm-3">
+							{% for res in directivos %}
+								<div class="card directivo-item">
+									<div class="directivo-img">
+										<img src="{{ file_url(res.field_imagen_svg.entity.uri.value) }}" alt=""/>
+									</div>
+									<div class="directivos-text">
+										<div class="infor">
+											{% if res.field_telefon|length>0 %}
+												<div><a class="d-lg-inline-block d-none" title="{{ res.field_telefon.value }}">
+													<i class="fa fa-phone-alt custom-icon dir"></i>
+												</a></div>
+            									<div><a class="d-lg-none d-sm-inline-block" href="tel:{{ res.field_telefon.value }}">
+													<i class="fa fa-phone-alt custom-icon dir"></i>
+												</a></div>
+											{% endif %}
+											{% if res.field_correodir|length>0 %}
+												<div><a href="mailto:{{res.field_correodir.value }}" title="{{res.field_correodir.value }}">
+													<i class="fa fa-envelope custom-icon dir"></i>
+												</a></div>
+											{% endif %}
+											{% if res.field_enlacedir|length>0 %}
+												{% for item in res.field_enlacedir %}
+													<div><a href="{{ item.url }}" title="" target="_blank">
+														<i class="fab {{ item.title }} custom-icon dir"></i>
+													</a></div>
+												{% endfor %}
+											{% endif %}
+										</div>
+									</div>
+								</div>
+							{% endfor %}
+						</div>
+					{% endif %}
+				{% endif %}
+			</div>
+		</div>	
+	{% endif %}
+{% endapply %}

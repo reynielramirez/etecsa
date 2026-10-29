@@ -1,0 +1,15 @@
+
+{% apply spaceless %}
+  {% if data %}
+  <div class="enlaces-filtro">
+      <label> {{'Select:'|t}}</label>
+      <select name="enlaces-topics" id="enlaces-topics" class="enlaces-topics">
+        {% for item in data %}
+            <option value="{{item.field_enlace.0.url}}">{{item.title.value}}</option>
+        {% endfor %}
+      </select>
+  </div>
+{% endif %}
+{% endapply %}
+
+

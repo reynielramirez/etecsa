@@ -1,0 +1,19 @@
+.btn-corta{
+  position: relative;
+  top: 50px;
+  height: 35px;
+  background-color: #000066;
+  border: 1px solid #00ccff!important;
+  color: #00ccff;
+  width: 120px;
+  border-radius: 0px !important;
+}
+.btn-corta:hover{
+  background-color: #00ccff;
+  color: #000066;
+  border: 1px solid #000066!important;
+}
+.prom {
+  max-width: 31rem;
+  min-width: 31rem;
+}

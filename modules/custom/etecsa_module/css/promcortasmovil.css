@@ -1,0 +1,69 @@
+.btn-corta{
+  position: relative;
+  top: 50px;
+  height: 35px;
+  background-color: #000066;
+  border: 1px solid #00ccff!important;
+  color: #00ccff;
+  width: 120px;
+  border-radius: 0px !important;
+}
+.btn-corta:hover{
+  background-color: #00ccff;
+  color: #000066;
+  border: 1px solid #000066!important;
+}
+.promcortamovil {
+  background-color: #3399cc;
+  border-radius: 5px 5px 10px 10px;
+  min-height: 68.4px;
+}
+.ebtn3 {
+  position: relative;
+  margin-top: 15px;
+}
+.ebtn3 .azul3 {
+  clip-path: polygon(0px 0px, 100% 0%, 100% 70%, 85% 100.00%, 0px 100%);
+  background: #006;
+  padding: 2px .5rem;
+  position: absolute;
+  top: 1px;
+  left: 1px;
+  width: auto;
+  height: 28.6px;
+  text-align: center;
+  z-index: 1;
+}
+.ebtn3 a {
+  font-size: 10px;
+  color: #fff;
+  padding: 8px;
+}
+.promc-title {
+  color: #006; font-size: 12px; margin-bottom: 0.2rem;font-weight: bold; margin-left: 5px;
+}
+.promc-summary {
+  color: #ffffff; font-style: italic; font-size:11px;margin-bottom: .5rem;position: relative;
+  left: -10px;
+}
+.promc-close-b{
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  background: red;
+  width: 32px;
+  height: 32px;
+  text-align: center;
+  color: #fff !important;
+  font-size: .8rem;
+  border-radius: 5px 0 0 0;
+  clip-path: polygon(0px 0px, 0px 88%, 100% 0);
+}
+.promc-close-b svg{
+  position: relative;
+  margin-top: 3px;
+  margin-left: -14px;
+}
+.promc-close {
+  position: relative;
+}

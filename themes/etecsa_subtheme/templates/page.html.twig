@@ -1,0 +1,231 @@
+{#
+/**
+ * @file
+ * Default theme implementation to display a single page.
+ *
+ * The doctype, html, head and body tags are not in this template. Instead they
+ * can be found in the html.html.twig template in this directory.
+ *
+ * Available variables:
+ *
+ * General utility variables:
+ * - base_path: The base URL path of the Drupal installation. Will usually be
+ *   "/" unless you have installed Drupal in a sub-directory.
+ * - is_front: A flag indicating if the current page is the front page.
+ * - logged_in: A flag indicating if the user is registered and signed in.
+ * - is_admin: A flag indicating if the user has permission to access
+ *   administration pages.
+ *
+ * Site identity:
+ * - front_page: The URL of the front page. Use this instead of base_path when
+ *   linking to the front page. This includes the language domain or prefix.
+ *
+ * Navigation:
+ * - breadcrumb: The breadcrumb trail for the current page.
+ *
+ * Page content (in order of occurrence in the default page.html.twig):
+ * - title_prefix: Additional output populated by modules, intended to be
+ *   displayed in front of the main title tag that appears in the template.
+ * - title: The page title, for use in the actual content.
+ * - title_suffix: Additional output populated by modules, intended to be
+ *   displayed after the main title tag that appears in the template.
+ * - messages: Status and error messages. Should be displayed prominently.
+ * - tabs: Tabs linking to any sub-pages beneath the current page (e.g., the
+ *   view and edit tabs when displaying a node).
+ * - action_links: Actions local to the page, such as "Add menu" on the menu
+ *   administration interface.
+ * - node: Fully loaded node, if there is an automatically-loaded node
+ *   associated with the page and the node ID is the second argument in the
+ *   page's path (e.g. node/12345 and node/12345/revisions, but not
+ *   comment/reply/12345).
+ *
+ * Regions:
+ * - page.top_header: Items for the top header region.
+ * - page.menu_header: Items for the navigation region.
+ * - page.slider_header: Items for the slider region.
+ * - page.content: The main content of the current page.
+ * - page.interest_link: Items for the interest link region.
+ * - page.contact_footer: Items for the contact footer.
+ *
+ * @ingroup templates
+ *
+ * @see template_preprocess_page()
+ * @see html.html.twig
+ */
+#}
+{% if language=="en" %}
+	{% set top="Go up" %}
+	{% set title = "Home" %}
+
+{% else %}
+	{% set top="Ir arriba" %}
+	{% set title = "Inicio" %}
+{% endif %}
+
+<section>
+	<!-- start header -->
+	{% if page.header %}
+		<header>
+			{{page.header}}
+		</header>
+	{%endif%}
+	<!-- end header -->
+
+	<!-- start navigation -->
+	<section id="top-hm" class="session-nevegacion" style="background-color: #000066;"> <div class="container" style="height: 60px;">
+		<div class="row">
+			<div class="col-md-3 col-lg-3 d-none d-sm-none d-md-block d-lg-block">
+				<a href="{{ url('<front>')}}" title="{{ title }}">
+					<i class="logo-header mt-2"></i>
+				</a>
+			</div>
+			<div class="col-md-9 col-lg-9 d-none d-sm-none d-md-block d-lg-block">
+				{% if page.primary_menu %}
+					{{page.primary_menu}}
+				{%endif%}
+			</div>
+		</div>
+		<div class="d-block d-sm-block d-md-none d-lg-none col px-0">
+			<nav class="navbar navbar-expand-md navbar-dark" style="width: 100%">
+				<!-- Brand -->
+				<a href="{{ url('<front>')}}" title="{{ title }}" class="navbar-brand">
+					<i class="logo-header-m mt-2"></i>
+				</a>
+				<span class="menu-et-activo">{{'Personas'|t}}</span>
+				<div class="alternadordeidioma lang-movil">{{ drupal_entity('block', 'alternadordeidioma', check_access=false) }}</div>
+				<a class="search-movil" href="{{ base_path }}{{language}}/search/resultados">
+					<i class="fas fa-search"></i>
+				</a>
+				<div class="sfm">
+					{% if page.primary_menu %}
+						{{page.primary_menu}}
+					{%endif%}
+				</div>
+			</nav>
+		</div>
+	</section>
+	<!-- end navigation -->
+</section>
+
+	<!-- start carousel -->
+	<section id="main-carousel">
+		{% if page.carousel %}
+			{{page.carousel}}
+		{%endif%}
+	</section>
+	<!-- end carousel-->
+
+	<section class="cont-pro-enl-aux">
+		<div class="row no-gutters">
+			<div class="col">
+				<!-- start Promociones cortas -->
+				{% if page.promocortas %}
+					{{page.promocortas}}
+				{%endif%}
+				<!-- end Promociones cortas-->
+			</div>
+			<div class="col">
+				<!-- start Enlaces Auxiliares -->
+				{% if page.enlacesauxiliar %}
+					{{page.enlacesauxiliar}}
+				{%endif%}
+				<!-- end Enlaces Auxiliares -->
+			</div>
+		</div>
+	</section>
+	<section id="breadcrumb-et">
+		<div class="container">
+			<!-- start breadcrumb -->
+			{% if page.breadcrumb %}
+				{{page.breadcrumb}}
+			{% endif %}
+			<!-- end breadcrumb -->
+		</div>
+	</section>
+
+	<!-- start content -->
+	{% if page.content %}	
+		<section id="page-content" class="contsect">
+			<div class="container">
+				{{page.content}}
+			</div>
+		</section>
+	{%endif%}
+	<!-- end content -->
+
+	<!-- start hospedaje -->
+	{% if page.hospedaje %}
+		<section class="main-content">
+			{{page.hospedaje}}
+		</section>
+	{%endif%}
+	<!-- end hospedaje -->
+	<!-- start intermovil -->
+	{% if page.intermovil %}
+		<section class="main-content">
+			{{page.intermovil}}
+		</section>
+	{%endif%}
+	<!-- end intermovil -->
+	<!-- start noticias -->
+	{% if page.noticias_persona %}
+		<section class="main-content">
+			{{page.noticias_persona}}
+		</section>
+	{%endif%}
+	<!-- end noticias -->
+	<!-- start planes -->
+	{% if page.planes %}
+		<section class="main-content">
+			{{page.planes}}
+		</section>
+	{%endif%}
+	<!-- end planes -->
+	<!-- start Equipos y accesorios -->
+	{% if page.equipos %}
+		<section class="main-content">
+			{{page.equipos}}
+		</section>
+	{%endif%}
+	<!-- end equipos -->
+	<!-- start servicios y oportunidades -->
+	{% if page.servicios %}
+		<section class="main-content">
+			{{page.servicios}}
+		</section>
+	{% endif %}
+	<!-- end servicios -->
+	<!-- start noticias -->
+	{% if page.noticias_etecsa %}
+		<section class="main-content">
+			{{page.noticias_etecsa}}
+		</section>
+	{%endif%}
+	<!-- end noticias -->
+	<!-- start utilidades -->
+	{% if page.utilidades %}
+		<section class="main-content">
+			{{page.utilidades}}
+		</section>
+	{% endif %}
+	<!-- end utilidades -->
+	<!-- start recargas -->
+	{% if page.recargas %}
+		<section class="main-content">
+			{{page.recargas}}
+		</section>
+	{% endif %}
+	<!-- end recargas -->
+	
+	<!-- start footer -->
+		{% include '@etecsa_subtheme/footer.html.twig' %}
+	<!-- end footer -->
+	
+	<!-- start bottom-float -->
+	<section id="bottom-float">
+		{% if page.bottom_float %}
+			{{page.bottom_float}}
+		{% endif %}
+	</section>
+	<!-- end bottom-float -->
+														

@@ -1,0 +1,1072 @@
+/* Top-level tabs: default = transparent on navy bar (colors only on active/hover). */
+#superfish-main > li.sf-depth-1 > a.sf-depth-1,
+#superfish-main > li.sf-depth-1 > span.nolink.sf-depth-1 {
+    background-color: transparent !important;
+    color: #fff !important;
+}
+
+/* Tab shape + text only for segment L1 (active or hover), not every top-level item. */
+#superfish-main > li.sf-first.sf-depth-1.sfHover > a[href$='/es'],
+#superfish-main > li.sf-first.sf-depth-1.sfHover > a[href$='/en'],
+#superfish-main > li.sf-depth-1.sfHover > a[href*='empresas'],
+#superfish-main > li.sf-depth-1.sfHover > a[href*='companies'],
+#superfish-main > li.sf-depth-1.sfHover > a[href*='emprendedores'],
+#superfish-main > li.sf-depth-1.sfHover > a[href*='entrepreneurs'],
+#superfish-main > li.sf-depth-1.sfHover > a[href*='visitantes'],
+#superfish-main > li.sf-depth-1.sfHover > a[href*='visitors'],
+#superfish-main > li.sf-depth-1 > a.sf-depth-1.m-active-l0-p,
+#superfish-main > li.sf-depth-1 > a.sf-depth-1.m-active-l0-em,
+#superfish-main > li.sf-depth-1 > a.sf-depth-1.m-active-l0-emp,
+#superfish-main > li.sf-depth-1 > a.sf-depth-1.m-active-l0-vis {
+    color: #006 !important;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 88% 83%, 0 83%);
+    height: 75px !important;
+    font-weight: bold;
+    position: relative;
+    z-index: 500;
+}
+
+/* Secondary /es link (ETECSA) stays on the navy bar when hovered. */
+#superfish-main > li.sf-depth-1:not(.sf-first).sfHover > a.sf-depth-1[href$='/es'],
+#superfish-main > li.sf-depth-1:not(.sf-first).sfHover > a.sf-depth-1[href$='/en'] {
+    background-color: transparent !important;
+    color: #fff !important;
+    clip-path: none;
+    height: 60px !important;
+    font-weight: normal;
+}
+
+.menu-et-activo.m-active-l0-p {
+    background-color: #0cf !important;
+}
+.menu-et-activo.m-active-l0-em {
+    background-color: #f96 !important;
+}
+.menu-et-activo.m-active-l0-vis {
+    background-color: #f9f !important;
+}
+.menu-et-activo.m-active-l0-emp {
+    background-color: #9c3 !important;
+}
+.menu-et-activo.m-active-l0-p,
+.menu-et-activo.m-active-l0-em,
+.menu-et-activo.m-active-l0-vis,
+.menu-et-activo.m-active-l0-emp {
+    color: #006 !important;
+}
+#superfish-main li.sf-depth-1 li.sf-depth-3.menuparent.sfHover a.sf-depth-3 {
+    position: relative;
+    width: 105%;
+    border: none;
+    border-radius: 5px;
+    clip-path: polygon(0 0,100% 0, 100% 75%, 95% 100%, 0 100%);
+    z-index: 500;
+}
+ul.sf-menu li.sf-depth-1 > a, ul.sf-menu li.sf-depth-1 > span.nolink {
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+}
+
+/* Personas (sf-first top-level item; ETECSA may follow as second link to /es) */
+#superfish-main > li.sf-first a[href$='/es'] ~ ul,
+#superfish-main > li.sf-first a[href$='/en'] ~ ul {
+    background-color: #fff;
+    margin-top: 12px;
+    left: -4.4rem;
+    box-shadow: rgb(204 204 204) 0px 3px 8px !important;
+    width: 13.5em !important;
+    
+}
+#superfish-main > li.sf-first.sf-depth-1 > a[href$='/es'],
+#superfish-main > li.sf-first.sf-depth-1 > a[href$='/en'] {
+    padding-top: 1.3rem;
+    text-align: center;
+}
+#superfish-main > li.sf-first.sf-depth-1.sfHover > a[href$='/es'],
+#superfish-main > li.sf-first.sf-depth-1.sfHover > a[href$='/en'],
+#superfish-main > li.sf-first.sf-depth-1 > a.m-active-l0-p {
+    background-color: #0cf !important;
+}
+
+#superfish-main > li.sf-first a[href$='/es'] ~ ul > li.menuparent.sfHover > a,
+#superfish-main > li.sf-first a[href$='/en'] ~ ul > li.menuparent.sfHover a,
+#superfish-main > li.sf-first a[href$='/es'] ~ ul > li.menuparent.sfHover span,
+#superfish-main > li.sf-first a[href$='/en'] ~ ul > li.menuparent.sfHover span 
+{
+    position: relative;
+    width: 106%;
+    border: none;
+    border-radius: 5px;
+    clip-path: polygon(0 0,100% 0, 100% 75%, 95% 100%, 0 100%);
+    z-index: 500;
+}
+#superfish-main > li.sf-first a[href$='/es'] ~ ul li.menuparent.sfHover a,
+#superfish-main > li.sf-first a[href$='/en'] ~ ul li.menuparent.sfHover a,
+#superfish-main > li.sf-first a[href$='/es'] ~ ul li.menuparent.sfHover span,
+#superfish-main > li.sf-first a[href$='/en'] ~ ul li.menuparent.sfHover span,
+#superfish-main > li.sf-first a.m-active-l0-p ~ ul li.menuparent.sfHover a,
+#superfish-main > li.sf-first a.m-active-l0-p ~ ul li.menuparent.sfHover span
+{
+    background-color: #0cf !important;
+}
+
+#superfish-main > li.sf-first a[href$="/es"] ~ ul li.menuparent:not(.sfHover) > a.menuparent,
+#superfish-main > li.sf-first a[href$="/en"] ~ ul li.menuparent:not(.sfHover) > a.menuparent {
+    background-color: #fff;
+}
+#superfish-main > li.sf-first a[href$='/es'] ~ ul li.sf-depth-2.menuparent.sfHover > a,
+#superfish-main > li.sf-first a[href$='/en'] ~ ul li.sf-depth-2.menuparent.sfHover > a,
+#superfish-main > li.sf-first a[href$='/es'] ~ ul li.sf-depth-2.menuparent.sfHover > span,
+#superfish-main > li.sf-first a[href$='/en'] ~ ul li.sf-depth-2.menuparent.sfHover > span,
+#superfish-main > li.sf-first a[href$='/es'] ~ ul li.menuparent.sfHover > a.menuparent,
+#superfish-main > li.sf-first a[href$='/en'] ~ ul li.menuparent.sfHover > a.menuparent {
+    background-color: #0cf !important;
+}
+#superfish-main > li.sf-first a[href$="/es"] ~ ul li.sf-no-children a,
+#superfish-main > li.sf-first a[href$="/en"] ~ ul li.sf-no-children a {
+    background-color: #fff !important;
+}
+#superfish-main > li.sf-first a[href$='/es'] ~ ul li.sfHover > span,
+#superfish-main > li.sf-first a[href$='/en'] ~ ul li.sfHover > span {
+    color: #006;
+    font-weight: bold;
+}
+#superfish-main > li.sf-first a[href$='/es'] ~ ul li.sf-no-children,
+#superfish-main > li.sf-first a[href$='/en'] ~ ul li.sf-no-children {
+    background-color: #fff!important;
+}
+
+#superfish-main > li.sf-first a[href$='/es'] ~ ul li.sf-no-children a:hover,
+#superfish-main > li.sf-first a[href$='/en'] ~ ul li.sf-no-children a:hover,
+#superfish-main > li.sf-first a[href$='/es'] ~ ul li.sf-no-children span:hover,
+#superfish-main > li.sf-first a[href$='/en'] ~ ul li.sf-no-children span:hover,
+#superfish-main > li.sf-first a.m-active-l0-p ~ ul li.sf-no-children a:hover,
+#superfish-main > li.sf-first a.m-active-l0-p ~ ul li.sf-no-children span:hover {
+    background-color: #0cf !important;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    clip-path: polygon(0 0,100% 0, 100% 75%, 95% 100%, 0 100%);
+}
+ul.sf-menu li:nth-child(1).sfHover .aftermenu,
+ul.sf-menu li:nth-child(2).sfHover .aftermenu,
+ul.sf-menu li:nth-child(3).sfHover .aftermenu,
+ul.sf-menu li:nth-child(4).sfHover .aftermenu {
+    display: none;
+}
+#superfish-main .sf-depth-1{
+    height: 60px;
+    color: #fff;
+    text-transform: uppercase;
+}
+.aftermenu {
+    background-color:#003399;
+    /* clip-path: polygon(95% 0, 100% 0, 100% 100%, 20% 100%, 95% 80%); */
+    content: '';
+    width: 1px;
+    height: 36px;
+    top: 15px;
+    position: absolute;
+    right: 0px;
+}
+ul.sf-menu span, 
+ul.sf-menu span.nolink{
+    width: 100%;
+    display: block;
+}
+
+#superfish-main a,
+#superfish-main span {
+    cursor: pointer;
+}
+
+#superfish-main ul ul a,
+#superfish-main ul ul span.nolink {
+    color: #006;
+}
+
+.sf-depth-1 a[href$='/es'] ~ ul li,
+.sf-depth-1 a[href$='/en'] ~ ul li {
+    padding: 0 5px;
+}
+.sf-depth-1 a[href$='/es'] ~ ul li a,
+.sf-depth-1 a[href$='/en'] ~ ul li a,
+.sf-depth-1 a[href$='/es'] ~ ul li span,
+.sf-depth-1 a[href$='/en'] ~ ul li span {
+    border-bottom: 1px solid #ccc;
+}
+.sf-depth-1 a[href$='/es'] ~ ul li:last-child a,
+.sf-depth-1 a[href$='/en'] ~ ul li:last-child a,
+.sf-depth-1 a[href$='/es'] ~ ul li:last-child span,
+.sf-depth-1 a[href$='/en'] ~ ul li:last-child span {
+    /* border-bottom: none; */
+}
+#superfish-main li.sf-depth-1 li.sf-depth-3.menuparent.sfHover,
+#superfish-main li.sf-depth-1 li.sf-depth-3.menuparent.sfHover,
+#superfish-main li.sf-depth-1 li.sf-depth-3.menuparent.sfHover,
+#superfish-main li.sf-depth-1 li.sf-depth-3.menuparent.sfHover {
+    width: 100%;
+}
+
+
+
+#superfish-main > li.sf-first a[href$='/es'] ~ ul li.sf-depth-3.menuparent.sfHover a.sf-depth-3,
+#superfish-main > li.sf-first a[href$='/en'] ~ ul li.sf-depth-3.menuparent.sfHover a.sf-depth-3 {
+    background-color: #0cf !important;
+    font-weight: bold;
+}
+#superfish-main > li.sf-first a[href$='/es'] ~ ul li.sf-depth-4.menuparent.sfHover a.sf-depth-4,
+#superfish-main > li.sf-first a[href$='/en'] ~ ul li.sf-depth-4.menuparent.sfHover a.sf-depth-4 {
+    background-color: #0cf !important;
+    font-weight: bold;
+}
+
+.sf-depth-1 ul li:nth-child(1).menuparent:hover::after{
+    background: transparent;
+}
+
+#superfish-main li[class^='sf-depth-'].sf-no-children a:hover,
+#superfish-main li[class^='sf-depth-'].sf-no-children span:hover,
+#superfish-main li.sf-depth-3.menuparent ul a:hover {
+    width: 101%;
+    color: #006;
+}
+
+#superfish-main li:nth-child(1).sf-depth-3.menuparent li {
+margin-left: 0px;
+width: 100%;
+}
+#superfish-main > li.sf-first a[href$='/es'] ~ ul .sf-depth-2.menuparent ul,
+#superfish-main > li.sf-first a[href$='/en'] ~ ul .sf-depth-2.menuparent ul {
+    background-color: #fff;
+    margin-left: 3px;
+    text-transform: initial;
+    margin-top: 20px;
+    box-shadow: rgb(204 204 204) 0px 3px 8px !important;
+}
+
+/* Empresas*/
+#superfish-main li.sf-depth-1.sfHover > a[href*='empresas'] ~ ul,
+#superfish-main li.sf-depth-1.sfHover > a[href*='companies'] ~ ul {
+    background-color: #fff;
+    margin-top: 12px;
+    left: -4.5rem;
+    box-shadow: rgb(204 204 204) 0px 3px 8px !important;
+    width: 13.5em !important;
+}
+#superfish-main li.sf-depth-1 > a[href*='empresas'],
+#superfish-main li.sf-depth-1 > a[href*='companies'] {
+    padding-top: 1.3rem;
+    text-align: center;
+}
+#superfish-main li.sf-depth-1.sfHover > a[href*='empresas'],
+#superfish-main li.sf-depth-1.sfHover > a[href*='companies'],
+#superfish-main li.sf-depth-1 > a.m-active-l0-em {
+    background-color: #f96 !important;
+}
+
+#superfish-main li.sf-depth-1 a[href*='empresas'] ~ ul > li.menuparent.sfHover > a,
+#superfish-main li.sf-depth-1 a[href*='companies'] ~ ul > li.menuparent.sfHover a,
+#superfish-main li.sf-depth-1 a[href*='empresas'] ~ ul > li.menuparent.sfHover span,
+#superfish-main li.sf-depth-1 a[href*='companies'] ~ ul > li.menuparent.sfHover span 
+{
+    position: relative;
+    width: 105%;
+    border: none;
+    border-radius: 5px;
+    clip-path: polygon(0 0,100% 0, 100% 75%, 95% 100%, 0 100%);
+    z-index: 500;
+}
+#superfish-main li.sf-depth-1 a[href*='empresas'] ~ ul li.menuparent.sfHover a,
+#superfish-main li.sf-depth-1 a[href*='companies'] ~ ul li.menuparent.sfHover a,
+#superfish-main li.sf-depth-1 a[href*='empresas'] ~ ul li.menuparent.sfHover span,
+#superfish-main li.sf-depth-1 a[href*='companies'] ~ ul li.menuparent.sfHover span,
+#superfish-main li.sf-depth-1 > a.m-active-l0-em ~ ul li.menuparent.sfHover a,
+#superfish-main li.sf-depth-1 > a.m-active-l0-em ~ ul li.menuparent.sfHover span
+{
+    background-color: #f96 !important;
+}
+
+#superfish-main li.sf-depth-1 a[href*='empresas'] ~ ul li.menuparent:not(.sfHover) > a.menuparent,
+#superfish-main li.sf-depth-1 a[href*='companies'] ~ ul li.menuparent:not(.sfHover) > a.menuparent {
+    background-color: #fff;
+}
+#superfish-main li.sf-depth-1 a[href*='empresas'] ~ ul li.sf-depth-2.menuparent.sfHover > a,
+#superfish-main li.sf-depth-1 a[href*='companies'] ~ ul li.sf-depth-2.menuparent.sfHover > a,
+#superfish-main li.sf-depth-1 a[href*='empresas'] ~ ul li.sf-depth-2.menuparent.sfHover > span,
+#superfish-main li.sf-depth-1 a[href*='companies'] ~ ul li.sf-depth-2.menuparent.sfHover > span,
+#superfish-main li.sf-depth-1 a[href*='empresas'] ~ ul li.menuparent.sfHover > a.menuparent,
+#superfish-main li.sf-depth-1 a[href*='companies'] ~ ul li.menuparent.sfHover > a.menuparent {
+    background-color: #f96 !important;
+}
+#superfish-main li.sf-depth-1 a[href*='empresas'] ~ ul li.sf-no-children a,
+#superfish-main li.sf-depth-1 a[href*='companies'] ~ ul li.sf-no-children a {
+    background-color: #fff !important;
+}
+#superfish-main li.sf-depth-1 a[href*='empresas'] ~ ul li.sfHover > span,
+#superfish-main li.sf-depth-1 a[href*='companies'] ~ ul li.sfHover > span {
+    color: #006;
+    font-weight: bold;
+}
+#superfish-main li.sf-depth-1 a[href*='empresas'] ~ ul li.sf-no-children,
+#superfish-main li.sf-depth-1 a[href*='companies'] ~ ul li.sf-no-children {
+    background-color: #fff!important;
+}
+
+#superfish-main li.sf-depth-1 a[href*='empresas'] ~ ul li.sf-no-children a:hover,
+#superfish-main li.sf-depth-1 a[href*='companies'] ~ ul li.sf-no-children a:hover,
+#superfish-main li.sf-depth-1 a[href*='empresas'] ~ ul li.sf-no-children span:hover,
+#superfish-main li.sf-depth-1 a[href*='companies'] ~ ul li.sf-no-children span:hover,
+#superfish-main li.sf-depth-1 > a.m-active-l0-em ~ ul li.sf-no-children a:hover,
+#superfish-main li.sf-depth-1 > a.m-active-l0-em ~ ul li.sf-no-children span:hover {
+    background-color: #f96 !important;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    clip-path: polygon(0 0,100% 0, 100% 75%, 95% 100%, 0 100%);
+}
+
+.sf-depth-1 a[href*='empresas'] ~ ul li,
+.sf-depth-1 a[href*='companies'] ~ ul li {
+    padding: 0 5px;
+}
+.sf-depth-1 a[href*='empresas'] ~ ul li a,
+.sf-depth-1 a[href*='companies'] ~ ul li a,
+.sf-depth-1 a[href*='empresas'] ~ ul li span,
+.sf-depth-1 a[href*='companies'] ~ ul li span {
+    border-bottom: 1px solid #ccc;
+}
+.sf-depth-1 a[href*='empresas'] ~ ul li:last-child a,
+.sf-depth-1 a[href*='companies'] ~ ul li:last-child a,
+.sf-depth-1 a[href*='empresas'] ~ ul li:last-child span,
+.sf-depth-1 a[href*='companies'] ~ ul li:last-child span {
+    /* border-bottom: none; */
+}
+
+#superfish-main li.sf-depth-1 a[href*='empresas'] ~ ul li.sf-depth-3.menuparent.sfHover a.sf-depth-3,
+#superfish-main li.sf-depth-1 a[href*='companies'] ~ ul li.sf-depth-3.menuparent.sfHover a.sf-depth-3 {
+    background-color: #f96 !important;
+    font-weight: bold;
+}
+
+#superfish-main li.sf-depth-1 a[href*='empresas'] ~ ul li.sf-depth-4.menuparent.sfHover a.sf-depth-4,
+#superfish-main li.sf-depth-1 a[href*='companies'] ~ ul li.sf-depth-4.menuparent.sfHover a.sf-depth-4 {
+    background-color: #f96 !important;
+    font-weight: bold;
+}
+
+#superfish-main  li.sf-depth-1 a[href*='empresas'] ~ ul .sf-depth-2.menuparent ul,
+#superfish-main  li.sf-depth-1 a[href*='companies'] ~ ul .sf-depth-2.menuparent ul {
+    background-color: #fff;
+    margin-left: 3px;
+    text-transform: initial;
+    margin-top: 20px;
+    box-shadow: rgb(204 204 204) 0px 3px 8px !important;
+}
+
+/* Emprendedores*/
+#superfish-main li.sf-depth-1.sfHover > a[href*='emprendedores'] ~ ul,
+#superfish-main li.sf-depth-1.sfHover > a[href*='entrepreneurs'] ~ ul {
+    background-color: #fff;
+    margin-top: 12px;
+    left: -1.7rem;
+    box-shadow: rgb(204 204 204) 0px 3px 8px !important;
+    width: 13.5em !important;
+}
+#superfish-main li.sf-depth-1 > a[href*='emprendedores'],
+#superfish-main li.sf-depth-1 > a[href*='entrepreneurs'] {
+    padding-top: 1.3rem;
+    text-align: center;
+}
+#superfish-main li.sf-depth-1.sfHover > a[href*='emprendedores'],
+#superfish-main li.sf-depth-1.sfHover > a[href*='entrepreneurs'],
+#superfish-main li.sf-depth-1 > a.m-active-l0-emp {
+    background-color: #9c3 !important;
+}
+
+#superfish-main li.sf-depth-1 a[href*='emprendedores'] ~ ul > li.menuparent.sfHover > a,
+#superfish-main li.sf-depth-1 a[href*='entrepreneurs'] ~ ul > li.menuparent.sfHover a,
+#superfish-main li.sf-depth-1 a[href*='emprendedores'] ~ ul > li.menuparent.sfHover span,
+#superfish-main li.sf-depth-1 a[href*='entrepreneurs'] ~ ul > li.menuparent.sfHover span 
+{
+    position: relative;
+    width: 105%;
+    border: none;
+    border-radius: 5px;
+    clip-path: polygon(0 0,100% 0, 100% 75%, 95% 100%, 0 100%);
+    z-index: 500;
+}
+#superfish-main li.sf-depth-1 a[href*='emprendedores'] ~ ul li.menuparent.sfHover a,
+#superfish-main li.sf-depth-1 a[href*='entrepreneurs'] ~ ul li.menuparent.sfHover a,
+#superfish-main li.sf-depth-1 a[href*='emprendedores'] ~ ul li.menuparent.sfHover span,
+#superfish-main li.sf-depth-1 a[href*='entrepreneurs'] ~ ul li.menuparent.sfHover span,
+#superfish-main li.sf-depth-1 > a.m-active-l0-emp ~ ul li.menuparent.sfHover a,
+#superfish-main li.sf-depth-1 > a.m-active-l0-emp ~ ul li.menuparent.sfHover span
+{
+    background-color: #9c3 !important;
+}
+
+#superfish-main li.sf-depth-1 a[href*='emprendedores'] ~ ul li.menuparent:not(.sfHover) > a.menuparent,
+#superfish-main li.sf-depth-1 a[href*='entrepreneurs'] ~ ul li.menuparent:not(.sfHover) > a.menuparent {
+    background-color: #fff;
+}
+#superfish-main li.sf-depth-1 a[href*='emprendedores'] ~ ul li.sf-depth-2.menuparent.sfHover > a,
+#superfish-main li.sf-depth-1 a[href*='entrepreneurs'] ~ ul li.sf-depth-2.menuparent.sfHover > a,
+#superfish-main li.sf-depth-1 a[href*='emprendedores'] ~ ul li.sf-depth-2.menuparent.sfHover > span,
+#superfish-main li.sf-depth-1 a[href*='entrepreneurs'] ~ ul li.sf-depth-2.menuparent.sfHover > span,
+#superfish-main li.sf-depth-1 a[href*='emprendedores'] ~ ul li.menuparent.sfHover > a.menuparent,
+#superfish-main li.sf-depth-1 a[href*='entrepreneurs'] ~ ul li.menuparent.sfHover > a.menuparent {
+    background-color: #9c3 !important;
+}
+#superfish-main li.sf-depth-1 a[href*='emprendedores'] ~ ul li.sf-no-children a,
+#superfish-main li.sf-depth-1 a[href*='entrepreneurs'] ~ ul li.sf-no-children a {
+    background-color: #fff !important;
+}
+#superfish-main li.sf-depth-1 a[href*='emprendedores'] ~ ul li.sfHover > span,
+#superfish-main li.sf-depth-1 a[href*='entrepreneurs'] ~ ul li.sfHover > span {
+    color: #006;
+    font-weight: bold;
+}
+#superfish-main li.sf-depth-1 a[href*='emprendedores'] ~ ul li.sf-no-children,
+#superfish-main li.sf-depth-1 a[href*='entrepreneurs'] ~ ul li.sf-no-children {
+    background-color: #fff!important;
+}
+
+#superfish-main li.sf-depth-1 a[href*='emprendedores'] ~ ul li.sf-no-children a:hover,
+#superfish-main li.sf-depth-1 a[href*='entrepreneurs'] ~ ul li.sf-no-children a:hover,
+#superfish-main li.sf-depth-1 a[href*='emprendedores'] ~ ul li.sf-no-children span:hover,
+#superfish-main li.sf-depth-1 a[href*='entrepreneurs'] ~ ul li.sf-no-children span:hover,
+#superfish-main li.sf-depth-1 > a.m-active-l0-emp ~ ul li.sf-no-children a:hover,
+#superfish-main li.sf-depth-1 > a.m-active-l0-emp ~ ul li.sf-no-children span:hover {
+    background-color: #9c3 !important;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    clip-path: polygon(0 0,100% 0, 100% 75%, 95% 100%, 0 100%);
+}
+
+.sf-depth-1 a[href*='emprendedores'] ~ ul li,
+.sf-depth-1 a[href*='entrepreneurs'] ~ ul li {
+    padding: 0 5px;
+}
+.sf-depth-1 a[href*='emprendedores'] ~ ul li a,
+.sf-depth-1 a[href*='entrepreneurs'] ~ ul li a,
+.sf-depth-1 a[href*='emprendedores'] ~ ul li span,
+.sf-depth-1 a[href*='entrepreneurs'] ~ ul li span {
+    border-bottom: 1px solid #ccc;
+}
+.sf-depth-1 a[href*='emprendedores'] ~ ul li:last-child a,
+.sf-depth-1 a[href*='entrepreneurs'] ~ ul li:last-child a,
+.sf-depth-1 a[href*='emprendedores'] ~ ul li:last-child span,
+.sf-depth-1 a[href*='entrepreneurs'] ~ ul li:last-child span {
+    /* border-bottom: none; */
+}
+
+#superfish-main li.sf-depth-1 a[href*='emprendedores'] ~ ul li.sf-depth-3.menuparent.sfHover a.sf-depth-3,
+#superfish-main li.sf-depth-1 a[href*='entrepreneurs'] ~ ul li.sf-depth-3.menuparent.sfHover a.sf-depth-3 {
+    background-color: #9c3 !important;
+    font-weight: bold;
+}
+#superfish-main li.sf-depth-1 a[href*='emprendedores'] ~ ul li.sf-depth-4.menuparent.sfHover a.sf-depth-4,
+#superfish-main li.sf-depth-1 a[href*='entrepreneurs'] ~ ul li.sf-depth-4.menuparent.sfHover a.sf-depth-4 {
+    background-color: #9c3 !important;
+    font-weight: bold;
+}
+
+#superfish-main  li.sf-depth-1 a[href*='emprendedores'] ~ ul .sf-depth-2.menuparent ul,
+#superfish-main  li.sf-depth-1 a[href*='entrepreneurs'] ~ ul .sf-depth-2.menuparent ul {
+    background-color: #fff;
+    margin-left: 3px;
+    text-transform: initial;
+    margin-top: 20px;
+    box-shadow: rgb(204 204 204) 0px 3px 8px !important;
+}
+
+/* Visitantes*/
+#superfish-main li.sf-depth-1.sfHover > a[href*='visitantes'] ~ ul,
+#superfish-main li.sf-depth-1.sfHover > a[href*='visitors'] ~ ul {
+    background-color: #fff;
+    margin-top: 12px;
+    left: -4.2rem;
+    box-shadow: rgb(204 204 204) 0px 3px 8px !important;
+    width: 13.5em !important;
+}
+#superfish-main li.sf-depth-1 > a[href*='visitantes'],
+#superfish-main li.sf-depth-1 > a[href*='visitors'] {
+    padding-top: 1.3rem;
+    text-align: center;
+}
+#superfish-main li.sf-depth-1.sfHover > a[href*='visitantes'],
+#superfish-main li.sf-depth-1.sfHover > a[href*='visitors'],
+#superfish-main li.sf-depth-1 > a.m-active-l0-vis {
+    background-color: #f9f !important;
+}
+
+#superfish-main li.sf-depth-1 a[href*='visitantes'] ~ ul > li.menuparent.sfHover > a,
+#superfish-main li.sf-depth-1 a[href*='visitors'] ~ ul > li.menuparent.sfHover a,
+#superfish-main li.sf-depth-1 a[href*='visitantes'] ~ ul > li.menuparent.sfHover span,
+#superfish-main li.sf-depth-1 a[href*='visitors'] ~ ul > li.menuparent.sfHover span 
+{
+    position: relative;
+    width: 106%;
+    border: none;
+    border-radius: 5px;
+    clip-path: polygon(0 0,100% 0, 100% 75%, 95% 100%, 0 100%);
+    z-index: 500;
+}
+#superfish-main li.sf-depth-1 a[href*='visitantes'] ~ ul li.menuparent.sfHover a,
+#superfish-main li.sf-depth-1 a[href*='visitors'] ~ ul li.menuparent.sfHover a,
+#superfish-main li.sf-depth-1 a[href*='visitantes'] ~ ul li.menuparent.sfHover span,
+#superfish-main li.sf-depth-1 a[href*='visitors'] ~ ul li.menuparent.sfHover span,
+#superfish-main li.sf-depth-1 > a.m-active-l0-vis ~ ul li.menuparent.sfHover a,
+#superfish-main li.sf-depth-1 > a.m-active-l0-vis ~ ul li.menuparent.sfHover span
+{
+    background-color: #f9f !important;
+}
+
+#superfish-main li.sf-depth-1 a[href*='visitantes'] ~ ul li.menuparent:not(.sfHover) > a.menuparent,
+#superfish-main li.sf-depth-1 a[href*='visitors'] ~ ul li.menuparent:not(.sfHover) > a.menuparent {
+    background-color: #fff;
+}
+#superfish-main li.sf-depth-1 a[href*='visitantes'] ~ ul li.sf-depth-2.menuparent.sfHover > a,
+#superfish-main li.sf-depth-1 a[href*='visitors'] ~ ul li.sf-depth-2.menuparent.sfHover > a,
+#superfish-main li.sf-depth-1 a[href*='visitantes'] ~ ul li.sf-depth-2.menuparent.sfHover > span,
+#superfish-main li.sf-depth-1 a[href*='visitors'] ~ ul li.sf-depth-2.menuparent.sfHover > span,
+#superfish-main li.sf-depth-1 a[href*='visitantes'] ~ ul li.menuparent.sfHover > a.menuparent,
+#superfish-main li.sf-depth-1 a[href*='visitors'] ~ ul li.menuparent.sfHover > a.menuparent {
+    background-color: #f9f !important;
+}
+#superfish-main li.sf-depth-1 a[href*='visitantes'] ~ ul li.sf-no-children a,
+#superfish-main li.sf-depth-1 a[href*='visitors'] ~ ul li.sf-no-children a {
+    background-color: #fff !important;
+}
+#superfish-main li.sf-depth-1 a[href*='visitantes'] ~ ul li.sfHover > span,
+#superfish-main li.sf-depth-1 a[href*='visitors'] ~ ul li.sfHover > span {
+    color: #006;
+    font-weight: bold;
+}
+#superfish-main li.sf-depth-1 a[href*='visitantes'] ~ ul li.sf-no-children,
+#superfish-main li.sf-depth-1 a[href*='visitors'] ~ ul li.sf-no-children {
+    background-color: #fff!important;
+}
+
+#superfish-main li.sf-depth-1 a[href*='visitantes'] ~ ul li.sf-no-children a:hover,
+#superfish-main li.sf-depth-1 a[href*='visitors'] ~ ul li.sf-no-children a:hover,
+#superfish-main li.sf-depth-1 a[href*='visitantes'] ~ ul li.sf-no-children span:hover,
+#superfish-main li.sf-depth-1 a[href*='visitors'] ~ ul li.sf-no-children span:hover,
+#superfish-main li.sf-depth-1 > a.m-active-l0-vis ~ ul li.sf-no-children a:hover,
+#superfish-main li.sf-depth-1 > a.m-active-l0-vis ~ ul li.sf-no-children span:hover {
+    background-color: #f9f !important;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    clip-path: polygon(0 0,100% 0, 100% 75%, 95% 100%, 0 100%);
+}
+
+.sf-depth-1 a[href*='visitantes'] ~ ul li,
+.sf-depth-1 a[href*='visitors'] ~ ul li {
+    padding: 0 5px;
+}
+.sf-depth-1 a[href*='visitantes'] ~ ul li a,
+.sf-depth-1 a[href*='visitors'] ~ ul li a,
+.sf-depth-1 a[href*='visitantes'] ~ ul li span,
+.sf-depth-1 a[href*='visitors'] ~ ul li span {
+    border-bottom: 1px solid #ccc;
+}
+.sf-depth-1 a[href*='visitantes'] ~ ul li:last-child a,
+.sf-depth-1 a[href*='visitors'] ~ ul li:last-child a,
+.sf-depth-1 a[href*='visitantes'] ~ ul li:last-child span,
+.sf-depth-1 a[href*='visitors'] ~ ul li:last-child span {
+    /* border-bottom: none; */
+}
+
+#superfish-main li.sf-depth-1 a[href*='visitantes'] ~ ul li.sf-depth-3.menuparent.sfHover a.sf-depth-3,
+#superfish-main li.sf-depth-1 a[href*='visitors'] ~ ul li.sf-depth-3.menuparent.sfHover a.sf-depth-3 {
+    background-color: #f9f !important;
+    font-weight: bold;
+}
+#superfish-main li.sf-depth-1 a[href*='visitantes'] ~ ul li.sf-depth-4.menuparent.sfHover a.sf-depth-4,
+#superfish-main li.sf-depth-1 a[href*='visitors'] ~ ul li.sf-depth-4.menuparent.sfHover a.sf-depth-4 {
+    background-color: #f9f !important;
+    font-weight: bold;
+}
+
+#superfish-main  li.sf-depth-1 a[href*='visitantes'] ~ ul .sf-depth-2.menuparent ul,
+#superfish-main  li.sf-depth-1 a[href*='visitors'] ~ ul .sf-depth-2.menuparent ul {
+    background-color: #fff;
+    margin-left: 3px;
+    text-transform: initial;
+    margin-top: 20px;
+    box-shadow: rgb(204 204 204) 0px 3px 8px !important;
+}
+
+@media (max-width: 991px) {
+    /* Desktop menu block is hidden on small screens; do not show its accordion toggle. */
+    .d-none.d-md-block .sf-accordion-toggle {
+        display: none !important;
+    }
+
+    /* Superfish default style adds lavender bg + "≡" on ::after; we use Bootstrap toggler icon only. */
+    .sfm div.sf-accordion-toggle.sf-style-default > a,
+    #superfish-main--2-toggle {
+        background: transparent !important;
+        color: #fff !important;
+        padding: 0.5rem 0.6rem !important;
+        border: none;
+        font-weight: normal;
+    }
+    .sfm div.sf-accordion-toggle.sf-style-default > a:after,
+    #superfish-main--2-toggle:after {
+        content: none !important;
+        display: none !important;
+    }
+    #superfish-main--2-toggle,
+    .sfm .sf-accordion-toggle > a {
+        min-width: 2.75rem !important;
+        min-height: 2.75rem !important;
+        width: 2.75rem !important;
+        height: 2.75rem !important;
+        text-align: center;
+        background-repeat: no-repeat !important;
+        background-position: center center !important;
+        background-size: 1.75rem 1.75rem !important;
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 1%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
+    }
+    #superfish-main--2-toggle.sf-expanded,
+    .sfm .sf-accordion-toggle > a.sf-expanded {
+        background-image: none !important;
+    }
+    /* Visually hide label text; keep it for screen readers via aria-label on the link. */
+    #superfish-main--2-toggle > span,
+    .sfm .sf-accordion-toggle > a > span {
+        position: absolute !important;
+        width: 1px !important;
+        height: 1px !important;
+        padding: 0 !important;
+        margin: -1px !important;
+        overflow: hidden !important;
+        clip: rect(0, 0, 0, 0) !important;
+        white-space: nowrap !important;
+        border: 0 !important;
+    }
+    .sf-accordion-toggle > a.sf-expanded > span {
+        position: relative !important;
+        width: 28px !important;
+        height: 28px !important;
+        margin: 0 !important;
+        clip: auto !important;
+        overflow: visible !important;
+    }
+    .sfm .sf-accordion-toggle .navbar-toggler-icon {
+        width: 1.75rem !important;
+        height: 1.75rem !important;
+        filter: none;
+    }
+
+    ul.sf-menu.sf-accordion.sf-expanded {
+        background-color: #fff;
+    }
+    .sfm .sf-depth-1 a[href$='/es'] ~ ul li.menuparent:after,
+    .sfm .sf-depth-1 a[href$='/en'] ~ ul li.menuparent:after{
+        background: transparent;
+    }
+    .sfm .sf-depth-1 a[href*='empresas'] ~ ul li.menuparent:after,
+    .sfm .sf-depth-1 a[href*='companies'] ~ ul li.menuparent:after{
+        background: transparent;
+    }
+    .sfm .sf-depth-1 a[href*='emprendedores'] ~ ul li.menuparent:after,
+    .sfm .sf-depth-1 a[href*='entrepreneurs'] ~ ul li.menuparent:after{
+        background: transparent;
+    }
+    .sfm .sf-depth-1 a[href*='visitantes'] ~ ul li.menuparent:after,
+    .sfm .sf-depth-1 a[href*='visitors'] ~ ul li.menuparent:after{
+        background: transparent;
+    }
+    #superfish-main--2-accordion li.sf-depth-1 > a {
+        text-transform: uppercase;
+        padding-left: 0.5em;
+        color: #000066;
+        border-bottom: #000066 1px solid;
+        margin-left: 10px;
+        margin-right: 40px;
+    }
+    #superfish-main--2-accordion li.sf-depth-1:last-child > a{
+        border-bottom: none;
+    }
+    #superfish-main--2-accordion {
+        box-shadow: rgb(204 204 204) 0px 3px 8px;
+    }
+    #undefined-accordion a {
+        font-size: 20px;
+        margin: 0 15px;
+        padding-left: 0;
+    }
+    #undefined-accordion a::after {
+        width: 260px;
+        left: -10px;
+    }
+    #superfish-main--2-accordion li {
+        margin-left: 5px ;
+    }
+    /* Persona */
+    .sf-depth-1 a[href$="/es"] ~ ul li a, .sf-depth-1 a[href$="/en"] ~ ul li a, .sf-depth-1 a[href$="/es"] ~ ul li span, .sf-depth-1 a[href$="/en"] ~ ul li span {
+        color: #000066;
+        font-family: "MyriadPro-Cond";
+    }
+    .sf-depth-1 a[href$="/es"] ~ ul li a, .sf-depth-1 a[href$="/en"] ~ ul li a, .sf-depth-1 a[href$="/es"] ~ ul li span, .sf-depth-1 a[href$="/en"] ~ ul li span {
+        border: none;
+        font-size: 18px;
+    }
+    .sf-depth-1 a[href$="/es"] ~ ul li a::after,
+    .sf-depth-1 a[href$="/en"] ~ ul li a::after,
+    .sf-depth-1 a[href$="/es"] ~ ul li span::after,
+    .sf-depth-1 a[href$="/en"] ~ ul li span::after {
+        content: '';
+        height: 0.7px;
+        width: 230px;
+        background-color: #ccc;
+        display: block;
+        margin-top: 16px;
+        position: absolute;
+        left: 10px;
+    }
+    #superfish-main--2-accordion li a[href$='/es'] ~ ul li,
+    #superfish-main--2-accordion li a[href$='/en'] ~ ul li {
+        padding-left: 25px;
+    }
+    #superfish-main--2-accordion li a[href$='/es'] ~ ul li#undefined-accordion,
+    #superfish-main--2-accordion li a[href$='/en'] ~ ul li#undefined-accordion {
+        padding-left: 0;
+    }
+    #superfish-main--2-accordion li a[href$='/es'] ~ ul li.sf-depth-2.sf-expanded,
+    #superfish-main--2-accordion li a[href$='/en'] ~ ul li.sf-depth-2.sf-expanded {
+        background-color: #00CCFF;
+        clip-path: polygon(0px 0px, 100% 0px, 100% 100%, 20px 100%, 0px 90%);
+        border-radius: 10px;
+        
+    }
+    #superfish-main--2-accordion li a[href$='/es'] ~ ul li.sf-depth-2.sf-expanded span,
+    #superfish-main--2-accordion li a[href$='/en'] ~ ul li.sf-depth-2.sf-expanded span{
+        color: #000066;
+        border-bottom: none;
+    }
+    #superfish-main--2-accordion li a[href$='/es'] ~ ul li.sf-depth-2.sf-expanded span::after,
+    #superfish-main--2-accordion li a[href$='/en'] ~ ul li.sf-depth-2.sf-expanded span::after{
+        content: '';
+        height: 0.7px;
+        width: 230px;
+        background-color: white;
+        display: block;
+        margin-top: 16px;
+        position: absolute;
+        left: 10px;
+    }
+    #superfish-main--2-accordion li a[href$='/es'] ~ ul li.sf-depth-2.sf-expanded span.sf-depth-3::after,
+    #superfish-main--2-accordion li a[href$='/en'] ~ ul li.sf-depth-2.sf-expanded span.sf-depth-3::after{
+        width: 205px;
+    }
+    #superfish-main--2-accordion li a[href$='/es'] ~ ul li.sf-depth-2.sf-expanded ul li a,
+    #superfish-main--2-accordion li a[href$='/en'] ~ ul li.sf-depth-2.sf-expanded ul li a {
+        color: #000066;
+        font-style: italic;
+        border-bottom: none;
+    }
+    #superfish-main--2-accordion li a[href$='/es'] ~ ul li.sf-depth-2.sf-expanded ul li a::after,
+    #superfish-main--2-accordion li a[href$='/en'] ~ ul li.sf-depth-2.sf-expanded ul li a::after {
+        display: none;
+    }
+    #superfish-main--2-accordion li a[href$='/es'] ~ ul li.sf-depth-2.sf-expanded ul li,
+    #superfish-main--2-accordion li a[href$='/en'] ~ ul li.sf-depth-2.sf-expanded ul li {
+        margin: 0;
+    }
+    /* Empresa */
+    .sf-depth-1 a[href*="empresas"] ~ ul li a, .sf-depth-1 a[href*="companies"] ~ ul li a, .sf-depth-1 a[href*="empresas"] ~ ul li span, .sf-depth-1 a[href*="companies"] ~ ul li span {
+        color: #000066;
+        font-family: "MyriadPro-Cond";
+    }
+    .sf-depth-1 a[href*="empresas"] ~ ul li a, .sf-depth-1 a[href*="companies"] ~ ul li a, .sf-depth-1 a[href*="empresas"] ~ ul li span, .sf-depth-1 a[href*="companies"] ~ ul li span {
+        border: none;        
+        font-size: 18px;
+    }
+    .sf-depth-1 a[href*="empresas"] ~ ul li a::after,
+    .sf-depth-1 a[href*="companies"] ~ ul li a::after,
+    .sf-depth-1 a[href*="empresas"] ~ ul li span::after,
+    .sf-depth-1 a[href*="companies"] ~ ul li span::after {
+        content: '';
+        height: 0.7px;
+        width: 230px;
+        background-color: #ccc;
+        display: block;
+        margin-top: 16px;
+        position: absolute;
+        left: 10px;
+    }
+    #superfish-main--2-accordion li a[href*='empresas'] ~ ul li,
+    #superfish-main--2-accordion li a[href*='companies'] ~ ul li {
+        padding-left: 25px;
+    }
+    #superfish-main--2-accordion li a[href*='empresas'] ~ ul li#undefined-accordion,
+    #superfish-main--2-accordion li a[href*='companies'] ~ ul li#undefined-accordion {
+        padding-left: 0;
+    }
+    #superfish-main--2-accordion li a[href*='empresas'] ~ ul li.sf-depth-2.sf-expanded,
+    #superfish-main--2-accordion li a[href*='companies'] ~ ul li.sf-depth-2.sf-expanded {
+        background-color: #ff9966;
+        clip-path: polygon(0px 0px, 100% 0px, 100% 100%, 20px 100%, 0px 90%);
+        border-radius: 10px;
+        
+    }
+    #superfish-main--2-accordion li a[href*='empresas'] ~ ul li.sf-depth-2.sf-expanded span,
+    #superfish-main--2-accordion li a[href*='companies'] ~ ul li.sf-depth-2.sf-expanded span{
+        color: #000066;
+        border-bottom: none;
+    }
+    #superfish-main--2-accordion li a[href*='empresas'] ~ ul li.sf-depth-2.sf-expanded span::after,
+    #superfish-main--2-accordion li a[href*='companies'] ~ ul li.sf-depth-2.sf-expanded span::after{
+        content: '';
+        height: 0.7px;
+        width: 230px;
+        background-color: white;
+        display: block;
+        margin-top: 16px;
+        position: absolute;
+        left: 10px;
+    }
+    #superfish-main--2-accordion li a[href*='empresas'] ~ ul li.sf-depth-2.sf-expanded span.sf-depth-3::after,
+    #superfish-main--2-accordion li a[href*='companies'] ~ ul li.sf-depth-2.sf-expanded span.sf-depth-3::after{
+        width: 205px;
+    }
+    #superfish-main--2-accordion li a[href*='empresas'] ~ ul li.sf-depth-2.sf-expanded ul li a,
+    #superfish-main--2-accordion li a[href*='companies'] ~ ul li.sf-depth-2.sf-expanded ul li a {
+        color: #000066;
+        font-style: italic;
+        border-bottom: none;
+    }
+    #superfish-main--2-accordion li a[href*='empresas'] ~ ul li.sf-depth-2.sf-expanded ul li a::after,
+    #superfish-main--2-accordion li a[href*='companies'] ~ ul li.sf-depth-2.sf-expanded ul li a::after {
+        display: none;
+    }
+    #superfish-main--2-accordion li a[href*='empresas'] ~ ul li.sf-depth-2.sf-expanded ul li,
+    #superfish-main--2-accordion li a[href*='companies'] ~ ul li.sf-depth-2.sf-expanded ul li {
+        margin: 0;
+    }
+    /* Emprendedores */
+    .sf-depth-1 a[href*="emprendedores"] ~ ul li a, .sf-depth-1 a[href*="entrepreneurs"] ~ ul li a, .sf-depth-1 a[href*="emprendedores"] ~ ul li span, .sf-depth-1 a[href*="entrepreneurs"] ~ ul li span {
+        color: #000066;
+        font-family: "MyriadPro-Cond";
+    }
+    .sf-depth-1 a[href*="emprendedores"] ~ ul li a, .sf-depth-1 a[href*="entrepreneurs"] ~ ul li a, .sf-depth-1 a[href*="emprendedores"] ~ ul li span, .sf-depth-1 a[href*="entrepreneurs"] ~ ul li span {
+        border: none;
+        font-size: 18px;
+    }
+    .sf-depth-1 a[href*="emprendedores"] ~ ul li a::after,
+    .sf-depth-1 a[href*="entrepreneurs"] ~ ul li a::after,
+    .sf-depth-1 a[href*="emprendedores"] ~ ul li span::after,
+    .sf-depth-1 a[href*="entrepreneurs"] ~ ul li span::after {
+        content: '';
+        height: 0.7px;
+        width: 230px;
+        background-color: #ccc;
+        display: block;
+        margin-top: 16px;
+        position: absolute;
+        left: 10px;
+    }
+    #superfish-main--2-accordion li a[href*='emprendedores'] ~ ul li,
+    #superfish-main--2-accordion li a[href*='entrepreneurs'] ~ ul li {
+        padding-left: 25px;
+    }
+    #superfish-main--2-accordion li a[href*='emprendedores'] ~ ul li#undefined-accordion,
+    #superfish-main--2-accordion li a[href*='entrepreneurs'] ~ ul li#undefined-accordion {
+        padding-left: 0;
+    }
+    #superfish-main--2-accordion li a[href*='emprendedores'] ~ ul li.sf-depth-2.sf-expanded,
+    #superfish-main--2-accordion li a[href*='entrepreneurs'] ~ ul li.sf-depth-2.sf-expanded {
+        background-color: #99cc33;
+        clip-path: polygon(0px 0px, 100% 0px, 100% 100%, 20px 100%, 0px 90%);
+        border-radius: 10px;
+        
+    }
+    #superfish-main--2-accordion li a[href*='emprendedores'] ~ ul li.sf-depth-2.sf-expanded span,
+    #superfish-main--2-accordion li a[href*='entrepreneurs'] ~ ul li.sf-depth-2.sf-expanded span{
+        color: #000066;
+        border-bottom: none;
+    }
+    #superfish-main--2-accordion li a[href*='emprendedores'] ~ ul li.sf-depth-2.sf-expanded span::after,
+    #superfish-main--2-accordion li a[href*='entrepreneurs'] ~ ul li.sf-depth-2.sf-expanded span::after{
+        content: '';
+        height: 0.7px;
+        width: 230px;
+        background-color: white;
+        display: block;
+        margin-top: 16px;
+        position: absolute;
+        left: 10px;
+    }
+    #superfish-main--2-accordion li a[href*='emprendedores'] ~ ul li.sf-depth-2.sf-expanded ul li a,
+    #superfish-main--2-accordion li a[href*='entrepreneurs'] ~ ul li.sf-depth-2.sf-expanded ul li a {
+        color: #000066;
+        font-style: italic;
+        border-bottom: none;
+    }
+    #superfish-main--2-accordion li a[href*='emprendedores'] ~ ul li.sf-depth-2.sf-expanded ul li a::after,
+    #superfish-main--2-accordion li a[href*='entrepreneurs'] ~ ul li.sf-depth-2.sf-expanded ul li a::after {
+        display: none;
+    }
+    #superfish-main--2-accordion li a[href*='emprendedores'] ~ ul li.sf-depth-2.sf-expanded ul li,
+    #superfish-main--2-accordion li a[href*='entrepreneurs'] ~ ul li.sf-depth-2.sf-expanded ul li {
+        margin: 0;
+    }
+    /* Visitantes */
+    .sf-depth-1 a[href*="visitantes"] ~ ul li a, .sf-depth-1 a[href*="visitors"] ~ ul li a, .sf-depth-1 a[href*="visitantes"] ~ ul li span, .sf-depth-1 a[href*="visitors"] ~ ul li span {
+        color: #000066;
+        font-family: "MyriadPro-Cond";
+    }
+    .sf-depth-1 a[href*="visitantes"] ~ ul li a, .sf-depth-1 a[href*="visitors"] ~ ul li a, .sf-depth-1 a[href*="visitantes"] ~ ul li span, .sf-depth-1 a[href*="visitors"] ~ ul li span {
+        border: none;
+        font-size: 18px;
+    }
+    .sf-depth-1 a[href*="visitantes"] ~ ul li a::after,
+    .sf-depth-1 a[href*="visitors"] ~ ul li a::after,
+    .sf-depth-1 a[href*="visitantes"] ~ ul li span::after,
+    .sf-depth-1 a[href*="visitors"] ~ ul li span::after {
+        content: '';
+        height: 0.7px;
+        width: 230px;
+        background-color: #ccc;
+        display: block;
+        margin-top: 16px;
+        position: absolute;
+        left: 10px;
+    }
+    #superfish-main--2-accordion li a[href*='visitantes'] ~ ul li,
+    #superfish-main--2-accordion li a[href*='visitors'] ~ ul li {
+        padding-left: 25px;
+    }
+    #superfish-main--2-accordion li a[href*='visitantes'] ~ ul li#undefined-accordion,
+    #superfish-main--2-accordion li a[href*='visitors'] ~ ul li#undefined-accordion {
+        padding-left: 0;
+    }
+    #superfish-main--2-accordion li a[href*='visitantes'] ~ ul li.sf-depth-2.sf-expanded,
+    #superfish-main--2-accordion li a[href*='visitors'] ~ ul li.sf-depth-2.sf-expanded {
+        background-color: #ff99ff;
+        clip-path: polygon(0px 0px, 100% 0px, 100% 100%, 20px 100%, 0px 90%);
+        border-radius: 10px;
+        
+    }
+    #superfish-main--2-accordion li a[href*='visitantes'] ~ ul li.sf-depth-2.sf-expanded span,
+    #superfish-main--2-accordion li a[href*='visitors'] ~ ul li.sf-depth-2.sf-expanded span{
+        color: #000066;
+        border-bottom: none;
+    }
+    #superfish-main--2-accordion li a[href*='visitantes'] ~ ul li.sf-depth-2.sf-expanded span::after,
+    #superfish-main--2-accordion li a[href*='visitors'] ~ ul li.sf-depth-2.sf-expanded span::after{
+        content: '';
+        height: 0.7px;
+        width: 230px;
+        background-color: white;
+        display: block;
+        margin-top: 16px;
+        position: absolute;
+        left: 10px;
+    }
+    #superfish-main--2-accordion li a[href*='visitantes'] ~ ul li.sf-depth-2.sf-expanded span.sf-depth-3::after,
+    #superfish-main--2-accordion li a[href*='visitors'] ~ ul li.sf-depth-2.sf-expanded span.sf-depth-3::after{
+        width: 205px;
+    }
+    #superfish-main--2-accordion li a[href*='visitantes'] ~ ul li.sf-depth-2.sf-expanded ul li a,
+    #superfish-main--2-accordion li a[href*='visitors'] ~ ul li.sf-depth-2.sf-expanded ul li a {
+        color: #000066;
+        font-style: italic;
+        border-bottom: none;
+    }
+    #superfish-main--2-accordion li a[href*='visitantes'] ~ ul li.sf-depth-2.sf-expanded ul li a::after,
+    #superfish-main--2-accordion li a[href*='visitors'] ~ ul li.sf-depth-2.sf-expanded ul li a::after {
+        display: none;
+    }
+    #superfish-main--2-accordion li a[href*='visitantes'] ~ ul li.sf-depth-2.sf-expanded ul li,
+    #superfish-main--2-accordion li a[href*='visitors'] ~ ul li.sf-depth-2.sf-expanded ul li {
+        margin: 0;
+    }
+
+    .menu-et-activo {
+        position: absolute;
+        right: 130px;
+        top: 14px;
+        color: #000066;
+        font-family: "MyriadPro-Cond";
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 88% 83%, 0 83%);
+        height: 55px !important;
+        padding: 10px 30px;
+        z-index: 2;
+        text-transform: uppercase;
+    }
+
+    .hw .paquete-filtro label {
+        float: left;
+        padding-left: 15px;
+    }
+
+    .sf-accordion-toggle > a.sf-expanded {
+        background-color: white;
+        padding: 10px 8px !important;
+    }
+    .sf-accordion-toggle > a.sf-expanded span::after {
+        content: "";
+        height: 2px;
+        width: 28px;
+        background-color: gray;
+        -webkit-transform: rotate(45deg);
+        -moz-transform: rotate(45deg);
+        display: block;
+        position: absolute;
+        top: 20px;        
+    }
+    .sf-accordion-toggle > a.sf-expanded span::before {
+        content: "";
+        height: 2px;
+        width: 28px;
+        background-color: gray; 
+        -webkit-transform: rotate(-45deg);
+        -moz-transform: rotate(-45deg);
+        display: block;
+        position: absolute;
+        top: 20px;       
+    }
+    .sf-expanded .navbar-toggler-icon {
+        right: 2px;
+        position: relative;
+        bottom: 10px;
+    }
+    .navbar-toggler-icon {
+        background-size: 140% 140% !important; 
+    }
+
+}
+@media (max-width: 767px) {
+    .m-active-l0-p, .m-active-l0-em, .m-active-l0-vis, .m-active-l0-emp {
+        height: 55px !important;
+    }
+}
+@media (max-width: 992px) {
+    ul.sf-menu li.sf-depth-1 > a, ul.sf-menu li.sf-depth-1 > span.nolink {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+    }
+}
+@media (min-width: 992px) {
+    #superfish-main li.sf-depth-1 > a[href$='/es'],
+    #superfish-main li.sf-depth-1 > a[href$='/en'],
+    #superfish-main li.sf-depth-1 > a[href*='empresas'],
+    #superfish-main li.sf-depth-1 > a[href*='companies'] {
+        width: 145px;
+    }
+    #superfish-main li.sf-depth-1 > a[href*='emprendedores'],
+    #superfish-main li.sf-depth-1 > a[href*='entrepreneurs'] {
+        width: 190px;
+    }
+    #superfish-main li.sf-depth-1 > a[href*='visitantes'],
+    #superfish-main li.sf-depth-1 > a[href*='visitors'] {
+        width: 150px;
+    }
+}

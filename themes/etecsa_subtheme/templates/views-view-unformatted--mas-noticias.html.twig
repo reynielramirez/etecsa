@@ -1,0 +1,71 @@
+{#
+/**
+ * @file
+ * Theme override to display a view of unformatted rows.
+ *
+ * Available variables:
+ * - title: The title of this group of rows. May be empty.
+ * - rows: A list of the view's row items.
+ *   - attributes: The row's HTML attributes.
+ *   - content: The row's content.
+ * - view: The view object.
+ * - default_row_class: A flag indicating whether default classes should be
+ *   used on rows.
+ *
+ * @see template_preprocess_views_view_unformatted()
+ */
+#}
+{% apply spaceless %}
+ 
+    <div class="container bg-white" >       
+        <div class="row pb-5">
+            <div class="ml-4 noticia">  
+                <div class="page-title azulclaro">
+                    <h2>{{'More News'|t}}</h2>
+                </div>
+            </div>        
+            {% for key,row in rows %}    
+              <div class="col-12  pl-lg-5 pr-lg-5 pl-2 pr-2 my-3"> 
+                <div class="noticia">              
+                    <div class="fecha">
+                    {% set promo = view.style_plugin.getField(key, 'field_promo')|striptags %} 
+                    {% if promo == 1 %}
+                        {% set rojo = "rojo"%}
+                    {% else %}    
+                        {% set rojo =""%} 
+                    {% endif %}  
+                      <div class="dia pl-2 pr-2 {{rojo}}"> {{ view.style_plugin.getField(key, 'field_fecha_publicacion_noti')|striptags|date('d')}}</div>
+                      <div class="mes-anno pb-2 pt-1">
+                        <span>{{ view.style_plugin.getField(key, 'field_fecha_publicacion_noti')|striptags|date('m')}}</span>
+                        <span>{{ view.style_plugin.getField(key, 'field_fecha_publicacion_noti')|striptags|date('y')}}</span>
+                      </div>
+                      <div class="compartir">
+                        <span class="fa fa-share-alt"></span>
+                         <div class="redesocN">
+                            {% set nid = row.content['#row']._entity.nid.value %} 
+                            <button data-sharer="facebook" data-title="{{ view.style_plugin.getField(key, 'title')|striptags }}" data-url="{{host}}{{ path('entity.node.canonical', {'node': nid }) }}"><i class="fab fa-facebook-f"></i></button>
+                            <button data-sharer="twitter"  data-title="{{ view.style_plugin.getField(key, 'title')|striptags }}"  data-url="{{host}}{{ path('entity.node.canonical', {'node': nid }) }}"><i class="fab fa-twitter"></i></button>
+                            <button data-sharer="whatsapp" data-title="{{ view.style_plugin.getField(key, 'title')|striptags}}"  data-url="{{host}}{{ path('entity.node.canonical', {'node': nid }) }}"><i class="fab fa-whatsapp"></i></button>
+                            <button data-sharer="telegram" data-title="{{ view.style_plugin.getField(key, 'title')|striptags }}"  data-url="{{host}}{{ path('entity.node.canonical', {'node': nid }) }}" data-web=""><i class="fab fa-telegram-plane"></i></button>
+                         </div>
+                    </div>
+                    </div>
+                     
+                    <div class="cuerpo" style="margin-left: 3rem;">
+                      {% if view.style_plugin.getField(key, 'field_image')|length > 0 %}
+                          <div class="img-noti ">{{ view.style_plugin.getField(key, 'field_image') }}</div>
+                      {% endif %} 
+                      <h5 class="titulo word-break ">{{ view.style_plugin.getField(key, 'title') }}</h5>
+                      <div class="small fuente word-break ">{{ view.style_plugin.getField(key, 'field_fuente') }}</div>
+                      <div class="word-break descrip">{{ view.style_plugin.getField(key, 'field_noticia_resumen')|striptags }}</div>                
+                    </div>                        
+                </div> 
+              </div>
+              {% if not loop.last  %}
+                <div class="sep-noti col-11"></div> 
+              {% endif %}   
+            {% endfor %}
+        </div>    
+{% endapply %}  
+
+{{ attach_library('etecsa_subtheme/node-noticias') }}

@@ -1,0 +1,3 @@
+configure open accessibility:
+  title: 'Accessibility Configuration'
+  description: 'Administration configuration access for the Accessibility.'

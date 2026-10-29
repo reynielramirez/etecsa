@@ -1,0 +1,7 @@
+parameters:
+  autocomplete_list.hooks_converted: true
+
+services:
+  Drupal\autocomplete_list\Hook\AutocompleteListHooks:
+    class: Drupal\autocomplete_list\Hook\AutocompleteListHooks
+    autowire: true

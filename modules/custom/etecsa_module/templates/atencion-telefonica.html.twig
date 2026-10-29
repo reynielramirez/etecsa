@@ -1,0 +1,67 @@
+{% apply spaceless %}  
+ 
+<div class="container bg-white mb-5">
+    <div class="row">
+      <div class="ml-4">
+          <div class="page-title  azuloscuro">
+              <h2>{{ 'About us'|t|upper }}</h2>
+          </div>
+        </div> 
+
+		{% set content = data.centro.0 %}
+	    {% if content.field_tipo_imagen.value == 'grande' and content.field_imagen_grande.entity.uri.value|length > 0 %}
+		  {% set img = file_url(content.field_imagen_grande.entity.uri.value) %}
+	    {% elseif content.field_tipo_imagen.value == 'pequeña' and content.field_imagen_pequena.entity.uri.value|length > 0 %}  
+		  {% set img = file_url(content.field_imagen_pequena.entity.uri.value) %}
+	    {% endif %} 
+		
+		{% if img %}
+			<div class="cmt">
+				<img  class="w-100" src="{{ img }}" alt="">
+			</div>   
+			<div class="sep col-lg-5 col-md-4 ml-5 d-lg-block d-md-block d-none"></div>        
+			<div class="offset-lg-7 offset-md-6  select-enlacetopic pb-3">
+			  {{ drupal_block('etecsa_menusn_block', wrapper=false) }}
+			</div>
+		{% else %}
+			<div class="offset-lg-4 offset-md-3  select-enlacetopic">
+			  {{ drupal_block('etecsa_menusn_block', wrapper=false) }}
+			</div>	
+		{% endif %} 
+
+        <div class="col-12 px-0">  
+           
+            {% if data|length >0 %}  
+           <div class="col-12 mt-3 pl-5 pr-5 px-xs-2">
+               <h4 class="title pl-4">{{data.centro.0.get('title').value}}</h4>
+              <div class="word-break pl-4">{{data.centro.0.get('field_descripcion_espacios').value|raw }}</div> 
+           </div>
+           
+           {% if data.servicios|length > 0 %}
+              <div class="preguntas-frecuentes pt-3 pb-5 px-5 px-xs-2">
+                <h5 class="title pl-4">{{'Services provided'|t}}</h5>                    
+                <div id="accordionExample" class="accordion pl-4 pr-4 px-xs-2">
+                   {% for key, item in data.servicios %}   
+                    <div class="card{{key}} faq mt-3 mb-3">
+                      <div id="heading{{key}}" class="card-header bg-white " data-toggle="collapse" data-target="#collapse{{key}}" aria-controls="collapse{{key}}">                                            
+                        <div class="position-relative collapsible-link">
+                            <p class="py-2 px-3 d-lg-block d-none numTelf">{{item.get('field_n').value|raw}}</p>
+                            <div class="py-2 px-3 d-lg-none d-sm-block "><a class="numTelf"  href="tel:{{ item.get('field_n').value|raw }}">{{ item.get('field_n').value|raw }}</a></div>
+                            <p class="py-2 mx-3 mx-md-0 word-break"> {{ item.get('title').value|raw }}</p>                                                  
+                        </div>                                       
+                      </div>
+                      <div id="collapse{{ key }}" aria-labelledby="heading{{ key }}" data-parent="#accordionExample" class="collapse {{show}}">
+                          <div class="card-body">
+                            <div class="font-weight-light m-0">{{item.get('field_descripcion_at').value|raw}}</div>
+                          </div>
+                     </div>
+                    </div>
+                  {% endfor %}
+                </div>                  
+              </div>  
+            {% endif %} 
+        </div> 
+    </div>
+</div>     
+  {% endif %}      
+{% endapply %}  

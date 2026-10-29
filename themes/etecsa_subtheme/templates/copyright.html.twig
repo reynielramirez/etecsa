@@ -1,0 +1,19 @@
+<div class="copyright">
+    <div class="copyright-logo">
+        <div class="logo-footer mt-4"></div>
+    </div>
+    <div class="copyright-text">
+        <p class="copy-e"> &copy; {{ fecha | date ('Y') }}</p>
+        <div class="col-12 pl-0 copyfont">
+            {% if page.footer_copyright %}
+                {{page.footer_copyright}}
+            {% endif %}
+            <div class="col-12 pl-0 pt-3">
+                <p class="desoft">{{ "Developed by" |t }}
+                    <a href="https://www.desoft.cu/es" target="_blank"> DESOFT</a>
+                </p>
+                <p>{{ "Designed by ETECSA" |t}}</p>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,19 @@
+langcode: es
+status: true
+dependencies:
+  module:
+    - help
+  theme:
+    - seven_desoft
+id: seven_desoft_help
+theme: seven_desoft
+region: help
+weight: 0
+provider: null
+plugin: help_block
+settings:
+  id: help_block
+  label: Ayuda
+  provider: help
+  label_display: '0'
+visibility: {  }

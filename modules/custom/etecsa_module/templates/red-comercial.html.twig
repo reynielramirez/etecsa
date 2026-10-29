@@ -1,0 +1,120 @@
+{% apply spaceless %}
+{% if data %}
+{% set redcomercial = data['redcomercial'] %}
+{% set estab = data['establecimientos'] %}
+<style type="text/css" media="screen">
+  body {
+    background-color: #CCCCCC !important;
+  }
+</style>
+<div class="container rc-content bg-white">
+    <div class="row ">
+		<div class="ml-4">
+		  <div class="page-title azuloscuro">
+			<h2>{{'About us'|t|upper}}</h2>
+		  </div>
+		</div>
+		
+		{% set content = redcomercial.0 %}
+		{% if content.field_tipo_imagen.value == 'grande' and content.field_imagen_grande.value|length > 0 %}
+		  {% set img = file_url(content.field_imagen_grande.entity.uri.value) %}
+		{% elseif content.field_tipo_imagen.value == 'pequeña' and content.field_imagen_pequena.value|length > 0 %}  
+		  {% set img = file_url(content.field_imagen_pequena.entity.uri.value) %}
+		{% endif %} 
+		
+		{% if img %}
+			<div class="cmt">
+				<img  class="w-100" src="{{ img }}" alt="">
+			</div>   
+			<div class="sep col-lg-5 col-md-4 ml-5 d-lg-block d-md-block d-none"></div>        
+			<div class="offset-lg-7 offset-md-6  select-enlacetopic pb-3">
+			  {{ drupal_block('etecsa_menusn_block', wrapper=false) }}
+			</div>
+		{% else %}
+			<div class="offset-lg-4 offset-md-3  select-enlacetopic">
+			  {{ drupal_block('etecsa_menusn_block', wrapper=false) }}
+			</div>	
+		{% endif %} 
+		
+    </div>
+        
+        <div class="row rc-content-data px-2 pl-lg-5 pr-lg-5">
+          <h3 class="col-12 node-title">{{ redcomercial.0.get('title').value }}</h3>
+          <div class="col-12 rcdescrpcion word-break pb-3">
+            {{ redcomercial.0.get('field_descripcion_espacios').value|raw }}
+          </div>
+          <div class="col-12 select-provmun mb-3">
+            {{form}}
+            </div>
+            {% if estab %}
+            <div class="col-12"> 
+              <div class="item-provincia">
+                <div id="redComercial" class="accordion">
+                    {% set num = 0 %}
+                    {% set count = 0 %}
+                    {% if bandera %}
+                        {% set expanded = "true"%}
+                        {% set show = "show"%}
+                    {% else %}  
+                        {% set expanded = "false"%} 
+                        {% set show = ""%}
+                    {% endif %}  
+                  {% for key,pro in estab %}  
+                  <div class="card-{{ num }} mt-3 mb-3">
+                    <div id="heading-{{ num }}"
+                         class="card-header bg-white py-2 px-3 {{show}}" data-toggle="collapse"
+                         data-target="#collapse-{{ num }}" aria-expanded="{{expanded}}"
+                         aria-controls="collapse{{ num }}">
+                      <div class="position-relative collapsible-link word-break">
+                        <span class="titleProv">{{ key }}</span>
+                      </div>
+                    </div>
+                    <div id="collapse-{{ num }}"
+                         aria-labelledby="heading-{{ num }}" data-parent="#redComercial"
+                         class="collapse {{ show }} ">
+                      <div class="card-body py-2 px-3 px-md-4 px-lg-4">
+                      
+                       {% for k, items in pro %}
+                        <div class="title pl-4 cardMun">
+                          <h5 class="titleMun">{{ k }} <span
+                                    class="float-right">{{ items['estab']|length }}</span></h5>
+                        </div>
+                        <div class="my-2">
+                           {% for item in items.estab %}
+                                  <div class="item row py-3 mx-1">
+                                    <div class="col-lg-5 col-sm-12 ml-md-4 ml-lg-4">
+                                      <h5 class="titleTipo">{{ item.tipo  ~ " " ~  item.nombre}}</h5>
+                                      <p>{{ item.direccion}}</p>
+                                    </div>
+                                    <div class="col-lg-5 col-sm-12 offset-lg-1 ml-md-4 ml-lg-4">
+                                      <p>{{ item.horario }}</p>
+                                    </div>
+                                  </div>
+                                    {% if not loop.last %}
+                                      <div class="cborderEsp"></div>
+                                    {% endif %}
+                                   
+                            {% endfor %}
+                        </div>
+                        {% endfor %}
+                      </div>
+                    </div>
+                  </div>
+                  {% set num = num + 1 %}
+                  {% endfor %}  
+                    
+                </div>
+              </div>
+                        
+          </div>
+          {% else %}
+                    <p class="pl-5 py-4">{{"There are not items to display"|t}}</p>
+            {% endif %} 
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endif %}
+{% endapply %}
+{{ attach_library('etecsa_module/pconsumidor-styling') }}

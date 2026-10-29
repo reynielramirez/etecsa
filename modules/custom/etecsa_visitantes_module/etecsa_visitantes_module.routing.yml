@@ -1,0 +1,8 @@
+
+etecsa.roaming:
+  path: '/visitantes/roaming'
+  defaults:
+    _controller: 'Drupal\etecsa_visitantes_module\Controller\VisitanteController::getRoaming'
+    _title: 'Roaming'
+  requirements:
+    _permission: 'access content' 

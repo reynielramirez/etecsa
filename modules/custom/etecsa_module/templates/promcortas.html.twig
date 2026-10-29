@@ -1,0 +1,30 @@
+{% apply spaceless %}
+<div style="background-color: #000066; height: 120px;">
+        {% if data %}
+            {% for d in data %}
+            
+            <div class="prom pl-0 {% if loop.index != 1 %} pdesactive {% endif %}" style="float:right;" >
+                <div class="row">
+                <div class="col-lg-8 col-md-7 pt-3 no-gutters">
+                    <p style="color: #39c; font-size: 18px; margin-bottom: 0.5rem;">{{ d.title.value }}</p>
+                    <p style="color: #ffffff; font-style: italic;">{{ d.resumen }}</p>
+                </div>
+                <div class="col-2 col-xl-2">
+                    <div class="ebtn2">
+                        <div class="azul3">
+                            {% if  d.field_enlace.0.url.external %}
+                                {% set target="_blank" %}
+                            {% else %}
+                                {% set target="" %}
+                            {% endif %}    
+                            <a href="{{ d.field_enlace.0.url }}" target="{{target}}"><span>{{ d.field_enlace.0.title|upper }}</span></a>
+                        </div>
+                        <div class="azul2"></div>
+                    </div>
+                </div>
+            </div>
+            </div>
+        {% endfor %}
+        {% endif %}
+</div>
+{% endapply %}

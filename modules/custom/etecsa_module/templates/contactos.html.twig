@@ -1,0 +1,31 @@
+{% apply spaceless %}
+{% if data %}
+  <div>
+    <div class="section-heading-footer pt-2 cpl pl-0">
+        <h3>{{ 'Contacts' |t }}</h3>
+    </div>
+    <div class="row">
+		<div class="contacto-info col-12 pl-2 mt-3">
+            <i class="contact-icon direccion-img"></i> 
+            <div class="contact-text">
+                <p class="">{{data.0.get('field_direcc').value }}</p>
+            </div>    
+        </div> 
+		<div class="contacto-info col-12 pl-2">
+            <i class="contact-icon telefono-img"></i> 
+            <div class="contact-text">
+                <p class="tel-num telsize font-weight-bold d-lg-block d-none">{{data.0.get('field_tel_et').value }}</p>
+                <a class="telsize font-weight-bold d-lg-none d-sm-block" href="tel:{{data.0.get('field_tel_et').value }}">{{data.0.get('field_tel_et').value }}</a>
+                <p class=""> {{'Commercial information and claims'|t}}</p> 
+            </div>         
+        </div>  
+        <div class="contacto-info col-12 pl-2">
+            <i class="contact-icon correo-img"></i> 
+            <div class="contact-text">
+                <a class="email font-weight-bold" href="mailto:{{data.0.get('field_correo_etecsa').value }}">{{data.0.get('field_correo_etecsa').value }}</a>
+            </div>
+        </div>		
+    </div>
+  </div>    
+{% endif %}
+{% endapply %}

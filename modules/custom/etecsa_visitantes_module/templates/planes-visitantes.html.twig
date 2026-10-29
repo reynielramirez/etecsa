@@ -1,0 +1,32 @@
+{% apply spaceless %}
+  {% if data %}
+    <div class="sesion-recargas mt-5 {{ visiblility }}">
+      <div class="container white">
+          <div class="row">
+              <div class="col-md-12 section-heading pb-2">
+              <h2>{{ 'Where to purchase plans?'|t }}</h2>
+            </div>
+          </div>
+        <div class= "my-2 pb-2">
+          <div class="row no-gutters">
+            {% for res in data %}
+                <div class="col-12 col-md-6">
+                  <div class="enlace-aux text-center">
+                      <img class="img-fluid" src="{{ file_url(res.get('field_image').entity.uri.value) }}"
+                          alt="{{ res.get('field_image').alt }}"/>
+                      {% if  res.get('field_enlace').0.url.external %}
+                          {% set target="_blank" %}
+                      {% else %}
+                             {% set target=""%}
+                      {% endif %}     
+                      <a class="recarga-title mt-2" href="{{ res.get('field_enlace').0.url }}"
+                        target="{{target}}">{{ res.get('field_enlace').0.title }}</a>
+                  </div>
+                </div>                 
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+  {% endif %}
+{% endapply %}

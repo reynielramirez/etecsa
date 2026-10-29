@@ -1,0 +1,6 @@
+name: Validaciones
+description: Módulo para validar los datos.
+package: Sitio Web
+type: module
+core: 8.x
+core_version_requirement: ^9 || ^10

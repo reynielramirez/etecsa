@@ -1,0 +1,56 @@
+{% spaceless %}
+	{% if data|length > 0 %}
+		<div class="container {{ visibility }}">
+			<div class="row justify-content-center">
+				<div class="col-md-12 text-center">
+					<h1 class="block-title-custom">{{ 'Postpaid Mobile Plans'|t|upper }}</h1>
+					<p class="block-subtitle-custom">{{ 'Check about our combined offers'|t }}</p>
+				</div>
+				<div class="planesmov col-12 col-sm-12 col-md-10 col-lg-10">
+                    <ul class="nav nav-tabs planesmovpos" id="myTab" role="tablist">                        
+                        {% for keys,items in data %}
+                            {% if loop.first %}
+                                {% set active = "active"%}
+                            {% endif %}
+                        {% for key,cat in items.categorias %}
+                            <li class="nav-item">
+								<a class="nav-link {{active}}" id="{{cat.name_value}}-tab" data-toggle="tab" href="#{{cat.name_value}}" role="tab" aria-controls="{{cat.name_value}}" aria-selected="true">{{cat.name}}</a>
+							</li>
+                            {% set active = ""%}
+						{% endfor %}
+						{% endfor %}
+                        <li class="nav-item">
+							<a class="nav-link" id="todos-tab" href="{{ path('empresa.pmpall') }}">{{ 'all'|t|upper }}</a>
+						</li>
+                    </ul>
+                    <div class="tab-content" id="myTabContentpmp">    
+                        {% for keys,items in data %} 
+                        {% if loop.first %}
+                            {% set active = "active" %}
+                        {% endif %}                  
+                        {% for key,cat in items.categorias %}
+                              
+                            <div class="tab-pane fade show {{active}}" id="{{cat.name_value}}" role="tabpanel" aria-labelledby="{{cat.name_value}}-tab">
+                                <div id="carousel-pmp-{{cat.name_value}}" class="owl-carousel owl-carousel-hw mt-5">
+                                        {% for key, pmp in cat.planes %}
+                                        <div class="element position-relative">
+                                        <img src="{{ file_url(pmp.svg) }}">
+                                         {% if pmp.enlace|length > 0 %}
+                                         <div class="btn-purchase button--aylen">
+                                            <a target="_blank" href="{{pmp.enlace|replace({'internal:':''})}}">{{pmp.enlaceText}}</a>
+                                        </div>
+                                         {% endif %} 
+                                         </div>    
+                                        {% endfor %} 
+                                </div>
+                            </div>
+                            {% set active = ""%}    
+                        {% endfor %}    
+                        {% endfor %}    
+                            
+                    </div>    
+				</div>	
+			</div>
+        </div>    		
+	{% endif %}
+{% endspaceless %}

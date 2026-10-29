@@ -1,0 +1,20 @@
+
+(function ($, Drupal) {
+	"use strict";
+	Drupal.behaviors.cardmovil = {
+		attach: function (context, settings) {
+
+            let asistente = $('#block-bloqueparaelasistentevirtual');
+
+			$('.cardmobile .open-accessibility-expand-button').click(function () {
+                asistente.css({"display":"none"});
+            });
+
+            $('.cardmobile .open-accessibility-close-button').click(function () {
+                asistente.css({"display":"block"});  
+            });
+            
+		
+        }
+	}
+})(jQuery, Drupal);

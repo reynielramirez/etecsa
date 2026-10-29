@@ -1,0 +1,215 @@
+{% apply spaceless %}
+	{% if oportunidades|length>0 or servicios|length>0 %}
+		<div class="container bg-white pb-5">
+			<div class="row">
+				<div class="ml-1 ml-lg-4">
+					<div class="page-title nodeso azulclaro   mb-2">
+					{% if cliente =="personas" or cliente =="people" %}
+						<h2>{{'Services and opportunities'|t|upper}}</h2>
+					{% else %}
+						<h2>{{'Opportunities'|t|upper}}</h2>	
+					{% endif %}	
+					</div>
+				</div>
+				{% if cliente =="personas" or cliente =="people" %}
+					<div class="offset-lg-2 pl-3 select-servoportunidadAll pt-3">
+						<label>{{"Seleccionar:"|t}}</label>					
+						<select name="servoportunidad" id="edit-servoportunidad">
+							{% if servicios|length >0 and oportunidades|length >0 %}
+								<option value="todos">{{"All"|t}}</option>
+							{% endif %}
+							{% if servicios|length >0  %}
+								<option value="servicio">{{"Services"|t}}</option>
+							{% endif %}	
+							{% if oportunidades|length >0 %}
+								<option value="oportunidad">{{"Opportunities"|t}}</option>
+							{% endif %}
+						</select>
+					</div>
+				{% endif %}
+			</div>				
+				{% if oportunidades|length >0  %}
+					<div>
+						<div class=" items oportunidad">
+						{% if cliente =="personas" or cliente =="people" %}
+							<div class="title pl-3 ">						
+								<h4>{{'Opportunities'|t|upper}}</h4>
+							</div>						
+						{% endif %}		
+							 <div class="d-xs-block d-sm-block d-md-none d-lg-none">
+								<div id="carousel-oport" class="owl-carousel owl-carousel-servoport owl-theme">
+									{% for res in oportunidades %}
+										<div class="col-md-4 mb-3 ccol">
+										    {% set content = res %}
+											{% set btn_text = null %}
+											{% if content.field_clasif_enlace_descrip.value == 'descripcion' and content.field_descripcion.value|length > 0 %}
+											  {% set link = path('entity.node.canonical', {'node': content.get('nid').value }) %}
+											  {% set btn_text = content.get('field_texto_boton').value %}
+										    {% elseif content.field_clasif_enlace_descrip.value == 'enlace' and content.field_enlace.value|length > 0 %}  
+											  {% set link = content.field_enlace.uri %}
+											  {% set btn_text = content.get('field_texto_boton').value %}
+										    {% endif %} 
+											<a href="{{ link }}" class"{{ label }} parte1">
+												<div class="servoport-item">
+													<div class="servoport-img-item">
+														<img class="col-md-12" src="{{ file_url(res.get('field_image').entity.uri.value) }}" alt="{{ res.get('field_image').alt}}"/>
+													</div>
+													<div class="servoport-text">
+														<h2 class="servoport-title todas">{{ res.get('title').value}}</h2>
+													</div>
+													<div class="sombra pb-4  mb-1">
+														<h3 class="servoport-subtitle">{{ res.get('field_subtitulo').value }}</h3>
+														<div class="servoport-resumen pl-4 pr-4 word-break">{{ res.get('field_resumen_largo').value|raw  }}</div>
+													    {% if btn_text %}
+														  <div class="btn-inside-content button--aylen">
+															<a href="{{ link }}">
+															  {{ btn_text }}
+															</a>
+														  </div>
+														{% endif %}
+													</div>
+												</div>
+											</a>
+										</div>
+									{% endfor %}
+								</div>
+							</div>
+							<div class="d-none d-xs-none d-sm-none d-md-block d-lg-block">
+								<div class="row no-gutters px-3 text-center justify-content-center">
+									{% for res in oportunidades %}
+										<div class="col-12 col-sm-12 col-md-4 col-lg-4 mb-4">
+										    {% set content = res %}
+											{% set btn_text = null %}
+											{% if content.field_clasif_enlace_descrip.value == 'descripcion' and content.field_descripcion.value|length > 0 %}
+											  {% set link = path('entity.node.canonical', {'node': content.get('nid').value }) %}
+											  {% set btn_text = content.get('field_texto_boton').value %}
+										    {% elseif content.field_clasif_enlace_descrip.value == 'enlace' and content.field_enlace.value|length > 0 %}  
+											  {% set link = content.field_enlace.uri %}
+											  {% set btn_text = content.get('field_texto_boton').value %}
+										    {% endif %} 
+											<pre>
+												{{ dump(res.field_enlace.0.entity.label) }}
+											</pre>
+											<a href="{{ link }}">
+												<div class="servoport-item">
+													<div class="servoport-img-item">
+														<img src="{{ file_url(res.get('field_image').entity.uri.value) }}" alt="{{ res.get('field_image').alt }}"/>
+													</div>
+													<div class="servoport-text">
+														<h2 class="servoport-title">{{ res.get('title').value }}</h2>													
+													</div>
+													<div class="sombra pb-4 mb-1">
+														<h3 class="servoport-subtitle">{{ res.get('field_subtitulo').value }}</h3>
+														<div class="servoport-resumen pl-4 pr-4 word-break">{{ res.get('field_resumen_largo').value|raw  }}</div>
+														{% if btn_text %}
+														  <div class="btn-inside-content button--aylen">
+															<a href="{{ link }}">
+															  {{ btn_text }}
+															</a>
+														  </div>
+														{% endif %}
+													</div>
+												</div>
+											</a>
+										</div>
+									{% endfor %}
+								</div>
+							</div>	
+						</div>					
+					</div>
+				{% endif %}
+				{% if servicios|length >0 and oportunidades|length >0  %}
+					<div class="items col-12 todos mb-4">
+						<div class="sep   my-2"></div>
+					</div>
+				{% endif %}
+				{% if servicios|length >0 %}
+						<div class="items servicio">
+							<div class="title pl-3 pb-2 pt-4">
+								<h4>{{'Services'|t|upper}}</h4>
+							</div>
+							<div class="d-xs-block d-sm-block d-md-none d-lg-none">
+								<div id="carousel-servr" class="owl-carousel owl-carousel-servoport owl-theme">
+									{% for reserv in servicios %}
+										<div class="col-md-4 mb-3 ccol">
+										    {% set content = reserv %}
+												{% set btn_text = null %}
+												{% if content.field_clasif_enlace_descrip.value == 'ninguno' %}  
+													{% set link = ""  %}
+												{% elseif content.field_clasif_enlace_descrip.value == 'descripcion' and content.field_descripcion.value|length > 0 %}
+													{% set link = "href="~path('entity.node.canonical', {'node': content.get('nid').value }) %}
+													{% set btn_text = content.get('field_texto_boton').value %}
+												{% elseif content.field_clasif_enlace_descrip.value == 'enlace' and content.field_enlace.value|length > 0 %}  
+													{% set link = "href="~content.field_enlace.uri %}
+													{% set btn_text = content.get('field_texto_boton').value %}
+												{% endif %}
+											<a {{ link }}>
+												<div class="servoport-item">
+													<div class="servoport-img-item">
+														<img class="col-md-12" src="{{ file_url(reserv.get('field_image').entity.uri.value) }}" alt="{{ reserv.get('field_image').alt}}"/>
+													</div>
+													<div class="servoport-text">
+														<h2 class="servoport-title todas">{{ reserv.get('title').value}}</h2>
+													</div>
+													<div class="sombra pb-4 mb-1">
+														<h3 class="servoport-subtitle">{{ reserv.get('field_subtitulo').value }}</h3>
+														<div class="servoport-resumen pl-4 pr-4 word-break">{{ reserv.get('field_resumen_largo').valu|raw }}</div>
+													    {% if btn_text %}
+														  <div class="btn-inside-content button--aylen">
+															<a {{ link }}>
+															  {{ btn_text }}
+															</a>
+														  </div>
+														{% endif %}
+													</div>
+												</div>
+											</a>
+										</div>
+									{% endfor %}
+								</div>
+							</div> 
+							<div class="d-none d-xs-none d-sm-none d-md-block d-lg-block">
+								<div class="row no-gutters px-4 text-center justify-content-center">
+									{% for reserv in servicios %}
+										<div class="col-12 col-sm-12 col-md-4 col-lg-4 mb-3">
+											{% set content = reserv %}
+											{% set btn_text = null %}
+											{% if content.field_clasif_enlace_descrip.value == 'ninguno' %}  
+												{% set link = ""  %}
+											{% elseif content.field_clasif_enlace_descrip.value == 'descripcion' and content.field_descripcion.value|length > 0 %}
+												{% set link = "href="~path('entity.node.canonical', {'node': content.get('nid').value }) %}
+												{% set btn_text = content.get('field_texto_boton').value %}
+											{% elseif content.field_clasif_enlace_descrip.value == 'enlace' and content.field_enlace.value|length > 0 %}  
+												{% set link = "href="~content.field_enlace.uri %}
+												{% set btn_text = content.get('field_texto_boton').value %}
+											{% endif %}											
+											<a {{ link }}>
+												<div class="servoport-item">
+													<div class="servoport-img-item">
+														<img src="{{ file_url(reserv.get('field_image').entity.uri.value) }}" alt="{{ reserv.get('field_image').alt }}"/>
+													</div>
+													<div class="servoport-text">
+														<h2 class="servoport-title">{{ reserv.get('title').value}}</h2>
+													</div>
+													<div class="sombra pb-4 mb-1">
+														<h3 class="servoport-subtitle">{{ reserv.get('field_subtitulo').value }}</h3>
+														<div class="servoport-resumen pl-4 pr-4 word-break">{{ reserv.get('field_resumen_largo').value|raw  }}</div>
+														{% if btn_text %}
+														  <div class="btn-inside-content button--aylen">
+															<a {{ link }}>
+															  {{ btn_text }}
+															</a>
+														  </div>
+														{% endif %}
+													</div>
+												</div>
+											</a>
+										</div>
+									{% endfor %}
+								</div>
+							</div>
+						</div>
+				{% endif %}
+		</div>
+	{% endif %}
+{% endapply %}

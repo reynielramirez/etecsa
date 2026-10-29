@@ -1,0 +1,9 @@
+accessibility.settings:
+  path: '/admin/config/user-interface/accessibility'
+  defaults:
+    _form: '\Drupal\accessibility\Form\AccessibilityConfigForm'
+    _title: 'Accessibility Config'
+  requirements:
+    _permission: 'configure accessibility'
+  options:
+    _admin_route: TRUE

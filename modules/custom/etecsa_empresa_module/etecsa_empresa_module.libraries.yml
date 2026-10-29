@@ -1,0 +1,7 @@
+planesmovilesp-styling:
+  version: VERSION
+  css:
+      theme:
+        css/planesmovilesp.min.css: {}
+  js:
+    js/planesmovp.min.js: {}

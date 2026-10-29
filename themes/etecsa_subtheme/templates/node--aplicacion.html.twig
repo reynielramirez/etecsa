@@ -1,0 +1,86 @@
+{% apply spaceless %}
+
+<article{{ attributes.addClass(classes) }}>
+    <div class="container bg-white" >       
+        <div class="row">
+            <div class="ml-4">  
+                <div class="page-title apk azuloscuro px-4">
+                    <h2>{{'Applications'|t|upper}}</h2>
+                </div>    
+            </div> 
+        </div>
+        <div class="row pl-3 pr-3 mb-5 mt-2">       
+            <div class="col-12 ml-4 pr-5 mb-3">
+               <h3 class="title-apk">{{label}}</h3>
+            </div>
+            <div class="col-12 col-md-3 col-lg-3 pb-2 mt-2 ml-md-4 ">
+                <img class="img-apk" src="{{ file_url(node.field_image.entity.uri.value) }}" alt="{{ node.field_image.entity.alt.value}}"/>
+                {% if node.field_nueva.value == "1" %}
+                    <div class="nuevo nuevo-apk">
+                        <span>{{ 'New version'|t|upper }}</span>
+                    </div>
+                {% endif %}
+            </div>            
+            <div class="col-12 col-md-5 col-lg-5 pb-2 mt-4">
+                <div class="datos-apk">
+                    <h6 class="encabezado">{{ 'author:'|t|upper }} </h6> 
+                    <p>{{node.field_autor.value}}</p>
+                </div>
+                <div class="datos-apk">
+                    <h6 class="encabezado">{{ 'version:'|t|upper }} </h6> 
+                    <p>{{node.field_version.value}}</p>
+                </div>                        
+                <div class="datos-apk">
+                    <h6 class="encabezado">{{ 'last updated:'|t|upper }} </h6> 
+                    <p>{{ content.field_ult_act[0] }}</p>
+                </div>
+                <div class="datos-apk">
+                    <h6 class="encabezado">{{ 'size:'|t|upper }} </h6> 
+                    <p>{{size}}</p>
+                </div>
+            </div>
+            <div class="col-12 col-md-2 col-lg-2 mt-2">
+            {% if node.field_imagen[0]|length > 0 %}
+                <img class="qr" src="{{ file_url(node.field_imagen.entity.uri.value) }}" alt="{{ node.field_imagen.entity.alt.value}}"/>
+            {% endif %}   
+                <div class="apk-descargar-detalle">
+                    <a class="art-link" title="{{ 'Download'|t }}" href="{{file_url(node.field_fichero.entity.uri.value)}}">{{ 'Download'|t|upper }}</a>              
+                </div>
+            </div>
+            <div class="col-12 mt-3 cborder">
+                <h5 class="ml-md-4" >{{ 'Description'|t }} </h5> 
+                <div class="word-break mt-2 ml-4">{{ node.field_resumen_y_descripcion.summary|raw }}</div> 
+            </div>     
+            {% if node.field_galeria[0]|length > 0 %}
+            <div class="carousel-container px-5 py-4 mt-2 mb-2">
+              <div id ="carousel-apk" class="carousel slide carousel-fade" data-ride="carousel">              
+                <div class="carousel-inner" role="listbox">
+                  {% set first = 0 %}
+                  {% for image in node.get('field_galeria') %}
+                    {% if first == 0 %}
+                      <div class="carousel-item active">
+                        {% set first = 1 %}
+                    {% else %}
+                        <div class="carousel-item">
+                    {% endif %}
+                    <img src="{{ file_url(image.entity.fileuri) }}" alt="{{ image.entity.alt}}">
+                    </div>
+                  {% endfor %}
+                </div>
+                <a class="carousel-control-prev" href="#carousel-apk" data-slide="prev">
+                  <span><i class="fa fa-2x fa-angle-left"></i></span>
+                </a>
+                <a class="carousel-control-next" href="#carousel-apk" data-slide="next">
+                  <span><i class="fa fa-2x fa-angle-right"></i></span>
+                </a>
+              </div>
+            </div>  
+            {% endif %}
+            <div class="mt-3 ml-md-4 mb-2 pb-5 px-3">
+                <div class="word-break ">{{ node.field_resumen_y_descripcion.value|raw }}</div> 
+            </div>
+        </div>       
+    </div>   
+</article>
+{% endapply %}  
+{{ attach_library('etecsa_subtheme/node-aplicacion') }}

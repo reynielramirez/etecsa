@@ -1,0 +1,50 @@
+{% if data %}
+    <style>
+        .card-flotante-interno {
+            position: fixed;
+            right: 0;
+            top: 9.5rem;
+            text-align: left;
+            z-index:9;
+        }
+        .itemcard {
+            border-bottom: 1px solid rgba(255,255,255,.5);
+            position: relative;
+            right: -4.8rem;
+            transition: right 1s;
+            border-radius: 5px 0px 0px 5px;
+        }
+        .itemcard:hover{
+            right: 0;
+        }
+        .itemcard span {
+            word-break: inherit;
+            width: 70px;
+            display: inline-block;
+            vertical-align: middle;
+            color: #fff;
+        }
+        .itemcard:last-child {
+            border-bottom: none;
+        }
+        .itemcard img {
+            height: 50px;
+            width: 50px;
+        }
+    </style>
+    <div class="card-flotante-interno">
+        {% for card in data %}
+          {% if  card.field_enlace.0.url.external %}
+            {% set target="_blank" %}
+          {% else %}
+            {% set target=""%}
+          {% endif %}
+            <div class="itemcard {{cliente}}-card d-none d-sm-none d-md-block d-lg-block">
+                <a href="{{ card.field_enlace.0.url }}" class="card-enlace" title="{{ card.title.value }} " target="{{target}}">
+                    <img src="{{ file_url(card.field_imagen_svg.entity.uri.value) }}" class="img-responsive p-2">
+                    <span>{{ card.title.value }}</span>
+                </a>
+            </div>
+        {% endfor %}
+    </div>
+{% endif %}

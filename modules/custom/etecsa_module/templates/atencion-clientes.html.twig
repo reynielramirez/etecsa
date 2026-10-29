@@ -1,0 +1,38 @@
+<style type="text/css" media="screen">
+	body {
+		background-color: #CCCCCC !important;
+	}
+</style>
+{% apply spaceless %} 
+<div class="container bg-white pb-5">
+    <div class="row">
+        <div class="ml-4">
+          	<div class="page-title azuloscuro py-2 px-3">
+              <h2>{{ 'Customer Care'|t|upper }}</h2>
+            </div>
+        </div>
+		
+		{% set content = data.0 %}
+	    {% if content.field_tipo_imagen.value == 'grande' and content.field_imagen_grande.value|length > 0 %}
+		    {% set img = file_url(content.field_imagen_grande.entity.uri.value) %}
+	    {% elseif content.field_tipo_imagen.value == 'pequeña' and content.field_imagen_pequena.value|length > 0 %}  
+		    {% set img = file_url(content.field_imagen_pequena.entity.uri.value) %}
+	    {% endif %} 
+	
+	    {% if img %}
+		    <div class="cmt">
+		  	    <img  class="w-100" src="{{ img }}" alt="">
+		    </div>   
+	    {% endif %} 
+		
+		{% if data %}
+			<div class="col-12 px-xs-2 mt-2">	
+				<div class="word-break pl-4 pb-3 mt-2">{{ data.0.field_descripcion_espacios.value|raw }}</div>
+			</div>
+		{% endif %}	
+		<div class="col-12 col-md-10 col-lg-10 px-xs-2 mt-3 offset-0 offset-sm-0 offset-md-1 offset-lg-1">
+			{{ form }}
+		</div>
+	</div>
+</div>	
+{% endapply %}

@@ -1,0 +1,93 @@
+global-styling:
+  version: 2026.10.29.5
+  css:
+    component:
+      css/etecsa-style.min.css: {}
+      css/etecsa-footer.min.css: {}
+      css/etecsa-menu-blank.min.css: {}
+      css/accesibilidad.min.css: {}
+      fonts/fontawesome/css/all.min.css: {}
+      fonts/flaticon/font/flaticon.css: {}      
+      includes/owl.carousel/css/owl.carousel.css: {}
+      includes/owl.carousel/css/owl.theme.default.css: {}      
+  js:    
+    fonts/fontawesome/js/all.min.js: {}    
+    includes/owl.carousel/js/owl.carousel.js: {}
+    includes/owl.carousel/js/jquery.mousewheel.min.js: {}
+    includes/sharer/sharer.min.js: {}
+    js/accesibilidad.min.js: {}
+    js/footer.min.js: {}
+    js/imagen-zoom.min.js: {}
+    js/global.min.js: {} 
+
+jquery-custom:
+  js:
+    includes/jquery-3.5.1.min.js: {weight: -20}
+
+unitegallery:
+  css:
+    component:
+      includes/unitegallery/css/unite-gallery.css: {}
+      includes/unitegallery/css/ug-theme-default.css: {}  
+  js:
+    includes/unitegallery/js/unitegallery.min.js: {}    
+    includes/unitegallery/js/ug-theme-carousel.js: {}
+    includes/unitegallery/js/ug-theme-compact.js: {}  
+  dependencies:
+    - core/jquery
+    - core/jquery.once 
+bootstrap:
+  js:
+    includes/bootstrap/dist/js/bootstrap.bundle.min.js: {}
+  css:
+    component:
+      includes/bootstrap/dist/css/bootstrap.min.css: {}
+      includes/bootstrap/dist/css/bootstrap.min.css.map: {}  
+      
+  dependencies:
+    - core/jquery
+    - core/jquery.once  
+
+node-equipos:
+  version: VERSION
+  js:     
+     js/galeria_eq.min.js: {}
+     
+node-noticias:
+  version: VERSION
+  css:
+    theme:      
+      css/noticias.min.css: {}
+  js:     
+     js/noticias.min.js: {}    
+
+node-aplicacion:
+  version: VERSION
+  css:
+    theme:
+      css/aplicacion.min.css: {}
+
+node-sedes:
+  version: VERSION
+  css:
+    theme:      
+      css/sedes.min.css: {}
+
+node-proteccion-consumidor:
+  version: VERSION
+  css:
+    theme:      
+      css/sedes.min.css: {}
+
+jquerygallery:
+  version: VERSION
+  css:
+    theme:
+      includes/jquerygallery/css/gallery.css: {}
+  js:
+    includes/jquerygallery/js/hammer.min.js: {}
+    includes/jquerygallery/js/gallery.js: {}
+    includes/jquerygallery/js/main.js: {}
+  dependencies:
+    - core/jquery
+    - core/jquery.once

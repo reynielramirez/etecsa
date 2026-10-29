@@ -1,0 +1,106 @@
+{% apply spaceless %}
+	{% set consejos = data['consejos'] %}
+	{% set topics = node.field_enl_topics_pro %}
+	{% set directivos = data['directivos'] %}
+	<div class="container page-content bg-white">
+		<div class="row">
+			<div class="ml-4">
+				<div class="page-title azuloscuro">
+					<h2 class="upper">{{label}}</h2>
+				</div>
+			</div>
+
+			{% if content.field_imagen_grande|render is not empty %}
+				{% set img = file_url(content.field_imagen_grande.0['#item'].entity.uri.value) %}
+			{% elseif content.field_imagen_pequena|render is not empty %}  
+				{% set img = file_url(content.field_imagen_pequena.0['#item'].entity.uri.value) %}
+			{% endif%}
+
+			{% if img %}
+				<div class="cmt">
+					<img  class="w-100" src="{{ img }}" alt="">
+				</div>   
+			{% endif %} 
+
+			<div class="col-12  {% if node.get('field_imagen')|length > 0 %} mt-3 {% else %} mt-4 {% endif %}">
+				<div class="word-break pb-3 pl-3 pr-3">{{ content.field_descripcion[0]|raw }}</div>
+			</div>
+		</div>
+		{% if node.field_carrusel_cons %}
+			<div class="row">
+				<div class="col-12 mb-2">
+					<div id="carousel-proteccion" class="carousel slide" data-ride="carousel">
+						<ul class="carousel-indicators">
+							{% set indicator = 0 %}
+							{% for res in node.field_carrusel_cons  %}
+								{% if indicator == 0 %}
+									<li data-target="#carousel-proteccion" data-slide-to="{{ indicator }}" class="active"></li>
+								{% else %}
+									<li data-target="#carousel-proteccion" data-slide-to="{{ indicator }}"></li>
+									{% endif%}
+									{% set indicator = indicator+1  %}
+								{% endfor %}
+							</ul>
+							<div class="carousel-inner" role="listbox">
+								{% set first = 0 %}
+								{% for res in node.field_carrusel_cons %}
+									{% if res.entity.hastranslation(language) %}
+										{% set entity = res.entity.translation(language) %}
+									{% else %}
+										{% set entity = res.entity %}
+									{% endif %}
+									{% if first == 0 %}
+										<div class="carousel-item active">
+											{% set first = 1 %}
+										{% else %}
+											<div class="carousel-item">
+											{% endif %}
+											<a href="{{ entity.field_en_prot.0.url }}">
+												<img src="{{ file_url(entity.field_imagen.entity.fileuri) }}" alt="{{entity.field_imagen.entity.alt}}">
+											</a>
+										</div>
+									{% endfor %}
+								</div>
+								<a class="carousel-control-prev" href="#carousel-proteccion" data-slide="prev">
+									<span>
+										<i class="fa fa-2x fa-angle-left"></i>
+									</span>
+								</a>
+								<a class="carousel-control-next" href="#carousel-proteccion" data-slide="next">
+									<span>
+										<i class="fa fa-2x fa-angle-right"></i>
+									</span>
+								</a>
+							</div>
+						</div>
+					</div>
+				{% endif %}
+				{% if topics %}
+					<div class="row justify-content-center enlace-topic pt-3">
+						{% if  item.entity.title.value|length >27 %}
+							{% set class = 'large' %}
+						{% else %}
+							{% set class = '' %}
+						{% endif %}
+						{% for item in topics %}
+							{% if item.entity.hastranslation(language) %}
+								{% set entity = item.entity.translation(language) %}
+							{% else %}
+								{% set entity = item.entity %}
+							{% endif %}
+							<div class="col-12 col-sm-12 col-md-4 col-lg-4 text-center">
+								<div class="e-topic">
+									<a href="{{ entity.field_enlace.0.url }}" class="enlace">
+										<img src="{{ file_url(entity.field_imagen.entity.fileuri) }}">
+										<div class="topic-title">
+											<span>{{ entity.title.value }}</span>
+										</div>
+									</a>
+								</div>
+							</div>
+						{% endfor %}
+					</div>
+				{% endif %}
+			</div>
+		{% endapply %}
+		{{ attach_library('etecsa_module/nosotros-styling') }}

@@ -1,0 +1,6 @@
+name: ETECSA Persona Module
+type: module
+description: Modulo persona para el sitio de etecsa.
+package: etecsa
+core: 8.x
+core_version_requirement: ^9 || ^10

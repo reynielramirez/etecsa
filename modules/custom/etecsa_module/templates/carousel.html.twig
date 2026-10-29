@@ -1,0 +1,87 @@
+{% apply spaceless %}
+	{% if data %}
+		<div class="d-none d-sm-none d-md-block d-lg-block">
+			<div id="carousel-d" class="carousel slide animated" data-ride="carousel">
+				<!-- Indicators -->
+				<ul class="carousel-indicators">
+					{% set indicator = 0 %}
+					{% for car_image in data %}
+						{% if indicator==0 %}
+							<li data-target="#carousel-d" data-slide-to="{{ indicator }}" class="active"></li>
+						{% else %}
+							<li data-target="#carousel-d" data-slide-to="{{ indicator }}"></li>
+						{% endif %}
+						{% set indicator=indicator+1 %}
+					{% endfor %}
+				</ul>
+				<!-- Indicators -->
+
+				<!-- The slideshow -->
+				<div class="carousel-inner" role="listbox">
+					{% set first = 0 %}
+					{% for car_image in data %}
+						{% if first==0 %}
+							<div class="carousel-item active">
+								{% set first=1 %}
+							{% else %}
+								<div class="carousel-item">
+								{% endif %}
+								<div style="background: url('{{ file_url(car_image.field_imagen.entity.uri.value) }}');
+																		                        background-position: center; background-repeat: no-repeat; background-size: cover; width: 100%;
+																		                        height: 412px;"></div>
+								<div class="mipromocion">
+									<div class="mipromocion-contenido">
+										<img src="{{ file_url(car_image.field_imagen_overview_svg.entity.uri.value) }}">
+										{% if car_image.field_enlace|length > 0 %}
+											<a href="{{ car_image.field_enlace.0.url }}" class="btn" style="color: {{ car_image.field_color.value }}; text-transform: uppercase;">{{ car_image.field_enlace.0.title }}
+												<i class="fa fa-angle-right"></i>
+											</a>
+										{% endif %}
+										{% if car_image.field_en_prot|length > 0 %}
+											<a href="{{ car_image.field_en_prot.0.url }}" class="btn comprar" style="text-transform: uppercase; color: white; background-color: {{ car_image.field_color.value }};">{{ car_image.field_en_prot.0.title }}</a>
+										{% endif %}
+									</div>
+								</div>
+							</div>
+						{% endfor %}
+					</div>
+					<!-- Left and right controls -->
+					<a class="carousel-control-prev" href="#carousel-d" data-slide="prev">
+						<span>
+							<i class="fa fa-angle-left"></i>
+						</span>
+					</a>
+					<a class="carousel-control-next" href="#carousel-d" data-slide="next">
+						<span>
+							<i class="fa fa-angle-right"></i>
+						</span>
+					</a>
+				</div>
+			</div>
+		</div>
+		<div class="d-block d-xs-block d-sm-block d-md-none d-lg-none">
+			<div id="carousel-dm" class="owl-carousel slide">
+				{% for car_image in data %}
+					<div class="{% if loop.first %} active {% endif %}">
+						<img src="{{ file_url(car_image.field_image.entity.uri.value) }}">
+						<div class="mipromocion-movil">
+							<div class="mipromocion-contenido-movil">
+								<img src="{{ file_url(car_image.field_imagen_overview_svg.entity.uri.value) }}">
+								<div class="mipromocion-contenido-movil-botones">
+									{% if car_image.field_enlace|length > 0 %}
+										<a href="{{ car_image.field_enlace.0.url }}" class="btn" style="color: {{ car_image.field_color.value }}; text-transform: uppercase; font-size: 10px;">{{ car_image.field_enlace.0.title }}
+											<i class="fa fa-angle-right"></i>
+										</a>
+									{% endif %}
+									{% if car_image.field_en_prot|length > 0 %}
+										<a href="{{ car_image.field_en_prot.0.url }}" class="btn comprar-mv" style="background-color: {{ car_image.field_color.value }};">{{ car_image.field_en_prot.0.title }}</a>
+									{% endif %}
+								</div>
+							</div>
+						</div>
+					</div>
+				{% endfor %}
+			</div>
+
+		{% endif %}
+	{% endapply %}

@@ -1,0 +1,585 @@
+<?php
+
+use Symfony\Component\PropertyAccess;
+use \Drupal\views\ViewExecutable;
+use \Drupal\node\Entity\Node;
+use \Drupal\Core\StreamWrapper\PublicStream;
+/**
+ *Theme hook
+ */
+  function etecsa_module_theme($path) 
+  {
+    return [
+      'carousel' => [
+        'variables'=> [
+            'titulo'=>'Titulo por defecto',
+            'descripcion'=>'Descripcion por defecto',
+            'data'=>NULL,
+            'path'=>$path,
+            'attached'=>NULL,
+            ],
+        'template'=>'carousel'
+      ],
+      'promcortas' => [
+          'variables'=> [
+            'titulo'=>'Titulo por defecto',
+            'descripcion'=>'Descripcion por defecto',
+            'data'=>NULL,
+            'path'=>$path,
+            'attached'=>NULL,
+            ],
+          'template'=>'promcortas'
+      ],
+      'promcortasmovil' => [
+          'variables'=> [
+            'titulo'=>'Titulo por defecto',
+            'descripcion'=>'Descripcion por defecto',
+            'data'=>NULL,
+            'path'=>$path,
+            'attached'=>NULL,
+            ],
+          'template'=>'promcortasmovil'
+      ],
+      'noticias' => [
+        'variables'=> [
+          'titulo'=>'Titulo por defecto',
+          'descripcion'=>'Descripcion por defecto',
+          'data'=>NULL,
+          'cliente'=>NULL,
+          'path'=>$path,
+          'attached'=>NULL,
+          'visibility' => NULL,
+          ],
+        'template'=>'noticias'
+      ],    
+      'equipos_accesorios' => [
+        'variables'=> [
+          'titulo'=>'Titulo por defecto',
+          'descripcion'=>'Descripcion por defecto',
+          'data'=>NULL,
+          'cliente'=>NULL,
+          'path'=>$path,
+          'attached'=>NULL,
+          'visibility' => NULL,
+          ],
+        'template'=>'equipos-accesorios'
+      ],    
+      'card' => [
+        'variables' => [
+          'titulo' => 'Titulo por defecto',
+          'descripcion' => 'Descripcion por defecto',
+          'data' => NULL,
+          'cliente' => NULL,
+          'path' => $path,
+          'attached' => NULL,
+          ],
+        'template' => 'card'
+      ],    
+      'card_interno' => [
+        'variables' => [
+          'titulo' => 'Titulo por defecto',
+          'descripcion' => 'Descripcion por defecto',
+          'data' => NULL,
+          'cliente' => NULL,
+          'path' => $path,
+        ],
+        'template' => 'card-interno'
+      ],
+      'contactos' => [
+        'variables'=> [
+            'titulo'=>'Titulo por defecto',
+            'descripcion'=>'Descripcion por defecto',
+            'data'=>NULL,
+            'path'=>$path,
+            'attached'=>NULL,
+            ],
+        'template'=>'contactos'
+      ],
+      'redes-footer' => [
+        'variables'=> [
+            'titulo'=>'Titulo por defecto',
+            'descripcion'=>'Descripcion por defecto',
+            'data'=>NULL,
+            'path'=>$path,
+            'attached'=>NULL,
+            ],
+        'template'=>'redes-footer'
+      ],
+      'preguntas-frecuentes' => [
+        'variables'=> [
+            'titulo'=>'Titulo por defecto',
+            'descripcion'=>'Descripcion por defecto',
+            'data'=>NULL,
+            'form' => NULL,
+            'path'=>$path,
+            'attached'=>NULL,
+            ],
+        'template'=>'preguntas-frecuentes'
+      ],
+      'preguntas-frecuentes-todas' => [
+        'variables'=> [
+            'titulo'=>'Titulo por defecto',
+            'descripcion'=>'Descripcion por defecto',
+            'data'=>NULL,
+            'form' => NULL,
+            'bandera'=>NULL,
+            'path'=>$path,
+            'attached'=>NULL,
+            ],
+        'template'=>'preguntas-frecuentes-todas'
+      ],
+      'etecsa_sobre_nosotros' => [
+        'variables'=> [
+            'titulo'=>'Titulo por defecto',
+            'descripcion'=>'Descripcion por defecto',
+            'data'=>NULL,
+            'path'=>$path,
+            'attached'=>NULL,
+            ],
+        'template'=>'sobre-nosotros'
+      ],
+      'etecsa_red_comercial' => [
+        'variables'=> [
+            'titulo'=>'Titulo por defecto',
+            'descripcion'=>'Descripcion por defecto',
+            'data'=>NULL,
+            'form'=>NULL,
+            'bandera'=>NULL,
+            'path'=>$path,
+            'attached'=>NULL,
+            ],
+        'template'=>'red-comercial'
+      ],
+      'menu-enlaces-topics' => [
+        'variables'=> [
+            'titulo'=>'Titulo por defecto',
+            'descripcion'=>'Descripcion por defecto',
+            'data'=>NULL,
+            'path'=>$path,
+            'attached'=>NULL,
+            ],
+        'template'=>'menu-enlaces-topics'
+      ],
+      'salas-espacios' => [
+        'variables'=> [
+            'titulo'=>'Titulo por defecto',
+            'descripcion_block'=>'Descripcion por defecto',
+            'data'=>NULL,
+            'path'=>$path,          
+            'form'=>NULL,
+            'descripcion'=>NULL,
+            'attached'=>NULL,
+            ],
+        'template'=>'salas-espacios'
+      ],
+      '404page'=>[
+        'variables'=>[
+            'titulo'=>'Titulo por defecto',
+            'descripcion'=>'Descripción por defecto',
+            'result'=>NULL,
+            'path'=>$path,
+            'attached'=>NULL
+        ],
+        'template'=>'404page'
+    ],
+    '403page'=>[
+        'variables'=>[
+            'titulo'=>'Titulo por defecto',
+            'descripcion'=>'Descripción por defecto',
+            'result'=>NULL,
+            'path'=>$path,
+            'attached'=>NULL
+        ],
+        'template'=>'403page'
+    ],
+      'etecsa_p_consumidor' => [
+        'variables'=> [
+          'titulo'=>'Titulo por defecto',
+          'descripcion'=>'Descripcion por defecto',
+          'data'=>NULL,
+          'form'=>NULL,
+          'bandera'=>NULL,
+          'path'=>$path,
+          'attached'=>NULL,
+        ],
+        'template'=>'p-consumidor'
+      ],
+      'hospweb' => [
+        'variables' => [
+          'titulo' => 'Titulo por defecto',
+          'descripcion' => 'Descripcion por defecto',
+          'data' => NULL,
+          'cliente' => NULL,
+          'so' => NULL,
+          'path' => $path,
+          'attached' => NULL,
+          'visibility' => NULL,
+          ],
+        'template' => 'hospweb'
+      ], 
+      'solucionestec' => [
+        'variables' => [
+          'titulo' => 'Titulo por defecto',
+          'descripcion' => 'Descripcion por defecto',
+          'data' => NULL,        
+          'cliente' => NULL,
+          'path' => $path,
+          'attached' => NULL,
+          'visibility' => NULL,
+          ],
+        'template' => 'solucionestec'
+      ],  
+      'solucionestecall' => [
+        'variables' => [
+          'titulo' => 'Titulo por defecto',
+          'descripcion' => 'Descripcion por defecto',
+          'data' => NULL,
+          'path' => $path,
+          'attached' => NULL,
+          ],
+        'template' => 'solucionestecall'
+      ],
+      'menu-equipos' => [
+        'variables' => [
+          'titulo' => 'Titulo por defecto',
+          'descripcion' => 'Descripcion por defecto',
+          'data' => NULL,
+          'path' => $path,
+          'cliente' => NULL,
+          'attached' => NULL,
+          ],
+        'template' => 'menu-equipos'
+      ], 
+      'hospweball' => [
+        'variables' => [
+          'titulo' => 'Titulo por defecto',
+          'descripcion' => 'Descripcion por defecto',
+          'data' => NULL,
+          'cliente' => NULL,
+          'pregunta' => NULL,
+          'so'=>NULL,
+          'path' => $path,
+          'attached' => NULL,
+          ],
+        'template' => 'hospweball'
+      ],     
+      'servoportunidades' => [
+        'variables'=> [
+          'titulo_block'=>'Titulo por defecto',
+          'descripcion'=>'Descripcion por defecto',
+          'data'=>NULL,
+          'titulo'=>NULL,
+          'cliente'=>NULL,
+          'path'=>$path,
+          'attached'=>NULL,
+          'visibility' => NULL,
+          ],
+        'template'=>'servoportunidades'
+      ],
+      'servoportall' => [
+        'variables'=> [
+          'titulo'=>'Titulo por defecto',
+          'descripcion'=>'Descripcion por defecto',
+          'servicios' => NULL,
+          'cliente' => NULL,
+          'oportunidades' => NULL,
+          'path'=>$path,
+          'attached'=>NULL,
+          ],
+        'template'=>'servoportall'
+      ],    
+      'paquetes_bolsas' => [
+        'variables'=> [
+          'titulo'=>'Titulo por defecto',
+          'descripcion'=>'Descripcion por defecto',
+          'data' => NULL,
+          'cliente' => NULL,
+          'so'=>NULL,
+          'path' => $path,
+          'attached' => NULL,
+          ],
+        'template' => 'paquetes-bolsas'
+      ],        
+      'internet_movil' => [
+        'variables'=> [
+          'titulo'=>'Titulo por defecto',
+          'descripcion'=>'Descripcion por defecto',
+          'data' => NULL,
+          'cliente' => NULL,
+          'pqtes' => NULL,
+          'path' => $path,
+          'attached'=>NULL,
+          'visibility' => NULL,
+          ],
+        'template'=>'internet-movil'
+      ],
+      'revista-tono' => [
+        'variables'=> [
+          'titulo'=>'Titulo por defecto',
+          'descripcion'=>'Descripcion por defecto',
+          'data' => NULL,
+          'path' => $path,
+          'attached'=>NULL,
+          ],
+        'template'=>'revista-tono'
+      ],
+      'atencion-telefonica' => [
+        'variables'=> [
+          'titulo'=>'Titulo por defecto',
+          'descripcion'=>'Descripcion por defecto',
+          'data' => NULL,
+          'path' => $path,
+          'attached'=>NULL,
+          ],
+        'template'=>'atencion-telefonica'
+      ],
+      'asistente' => [
+        'variables'=> [
+          'titulo'=>'Titulo por defecto',
+          'descripcion'=>'Descripcion por defecto',
+          'data' => NULL,
+          'behaviour' => NULL,
+          'path' => $path,
+          'attached'=>NULL,
+          ],
+        'template'=>'asistente'
+      ],
+      'atencion-clientes' => [
+        'variables' => [
+          'titulo' => 'Titulo por defecto',
+          'descripcion' => 'Descripcion por defecto',
+          'data' => NULL,
+          'path' => $path,
+          'attached' => NULL,
+          'form' => NULL,
+          ],
+        'template' => 'atencion-clientes'
+      ],     
+      'compartir' => [
+        'variables'=> [
+          'titulo'=>'Titulo por defecto',
+          'descripcion'=>'Descripcion por defecto',
+          'title'=>NULL,         
+          'url'=>NULL,
+          'path' => $path,
+          'attached'=>NULL,
+          ],
+        'template'=>'compartir'
+      ],
+      'directivos' => [
+        'variables'=> [
+          'titulo'=>'Titulo por defecto',
+          'descripcion'=>'Descripcion por defecto',
+          'data'=>NULL,          
+          'texto'=>NULL,
+          'path' => $path,
+          'attached'=>NULL,
+          ],
+        'template'=>'directivos'
+      ],
+      'cardmovil' => [
+        'variables' => [
+          'titulo' => 'Titulo por defecto',
+          'descripcion' => 'Descripcion por defecto',
+          'data' => NULL,
+          'cliente' => NULL,
+          'path' => $path,
+          'attached' => NULL,
+          ],
+        'template' => 'cardmovil'
+      ],
+      'plazas' => [
+        'variables' => [
+          'titulo' => 'Titulo por defecto',
+          'descripcion' => 'Descripcion por defecto',
+          'plazas' => NULL,
+          'cliente' => NULL,
+          'path' => $path,
+          'attached' => NULL,
+          'form' => NULL,
+          ],
+        'template' => 'plazas'
+      ],
+      'hitos' => [
+        'variables' => [
+          'titulo' => 'Titulo por defecto',
+          'descripcion' => 'Descripcion por defecto',
+          'hitos' => NULL,
+          'cliente' => NULL,
+          'path' => $path,
+          'attached' => NULL,
+          ],
+        'template' => 'hitos'
+      ],
+      'digital-certificate' => [
+        'variables' => [
+          'titulo' => 'Titulo por defecto',
+          'descripcion' => 'Descripcion por defecto',
+          'data' => NULL,
+          'form' => NULL,
+          'path' => $path,
+          'attached' => NULL,
+          'icon_generic' => NULL,
+          ],
+        'template' => 'digital-certificate'
+      ],
+    ];
+  }
+  
+  function etecsa_module_mail_alter(&$message)
+  {
+    
+        if (!empty($message['id']) && $message['id'] == 'contact_page_mail') {
+          if ($message['params']['contact_form']->id() == 'quejas_y_reclamaciones') {
+        
+            $contact_message = $message['params']['contact_message'];           
+            $contactmessage = $contact_message->getMessage();
+            $message['body'] = [];
+            /*sending html formatted email*/
+            $message['headers']['Content-Type'] = 'text/plain; charset=UTF-8; format=flowed; delsp=yes';
+            $subject= $contact_message->get('field_tipo_de_asunto')->value;
+           
+            if($contact_message->get('field_archivos_adjuntos')->getValue()){
+              $fileId = $contact_message->get('field_archivos_adjuntos')->getValue()[0]['target_id'];
+                          
+              if (!empty($fileId)) {
+                $file = \Drupal\file\Entity\File::load($fileId);
+                $attachment=array(
+                  'filecontent' =>file_get_contents($file->getFileUri()),
+                  'filename' => $file->getFilename(),                
+                  'filemime' => $file->getMimeType(),
+                );              
+            }
+            $message['params']['attachments'][] =$attachment; 
+          }
+            $message['subject'] = $subject;
+
+            $etecsaService = \Drupal::service('etecsa.etecsa_service');
+            $Idpais=$contact_message->get('field_pais_qr')->target_id;
+            $pais = $etecsaService->getTaxTermById($Idpais);
+            $prov="";
+            if($contact_message->get('field_provincia')->value){
+              $prov='Provincia: '." ".$contact_message->get('field_provincia')->value;
+              
+            }
+            
+            $new_body = 'Nombre: ' . $contact_message->get('field_nombre_qr')->value  . PHP_EOL . 
+                        'Primer Apellido: ' .  $contact_message->get('field_primer_apellido_qr')->value  . PHP_EOL . 
+                        'Segundo Apellido: ' . $contact_message->get('field_segundo_apellido')->value  . PHP_EOL . 
+                        'País: ' . $pais->name->value. PHP_EOL . 
+                        $prov . PHP_EOL . 
+                        'Dirección postal: ' . $contact_message->get('field_direccion_postal_qr')->value  . PHP_EOL . 
+                        'Correo electrónico: ' . $contact_message->get('field_correo_electronico_qr')->value. PHP_EOL . 
+                        'Servicio telefónico de localización: ' .$contact_message->get('field_servicio_telefonico_de_loc')->value . PHP_EOL . 
+                        'Tipo de asunto: ' . $contact_message->get('field_tipo_de_asunto')->value . PHP_EOL . 
+                        'Tipo de servicio: ' . $contact_message->get('field_tipo_de_servicio')->value    . PHP_EOL.
+                        'Servicio afectado: ' . $contact_message->get('field_servicio_afectado')->value    . PHP_EOL.
+                        'Descripción: ' . $contact_message->get('field_descripcion')->value  . PHP_EOL;
+      
+            $message['body'][] = $new_body;
+          }
+          if ($message['params']['contact_form']->id() == 'feedback') {
+        
+            $contact_message = $message['params']['contact_message'];
+           
+            $contactmessage = $contact_message->getMessage();
+            $subject = $contact_message->get('field_nombre')->value  . '-' .
+            $contact_message->get('field_correo_electronico')->value;
+            $message['subject'] = $subject;
+            $message['body'] = [];
+            /*sending html formatted email*/
+            $message['headers']['Content-Type'] = 'text/plain; charset=UTF-8; format=flowed; delsp=yes';
+            
+            $new_body = 'Nombre: ' . $contact_message->get('field_nombre')->value  . PHP_EOL .
+                        'Correo electrónico: ' . $contact_message->get('field_correo_electronico')->value. PHP_EOL . 
+                        'Teléfono: ' .$contact_message->get('field_telefono')->value . PHP_EOL . 
+                        'Mensaje: ' . $contact_message->get('message')->value  . PHP_EOL;
+      
+            $message['body'][] = $new_body;
+          }
+          
+        }
+        
+        
+  }
+  function etecsa_module_pathauto_alias_alter(&$alias, array &$context) 
+  {
+  
+    // Check if the content is node and the bundle is an article. 
+    if ($context['module'] === 'node') {
+     if($context['bundle'] === 'noticia'||$context['bundle'] === 'equipo'||$context['bundle'] === 'oportunidad'){ 
+      /** @var \Drupal\node\Entity\Node $node */
+      $node = $context['data']['node'];
+
+      // Clean string service.
+        $clean_string_service = \Drupal::service('pathauto.alias_cleaner');
+
+      // Get the field value.
+        $cliente = $node->get('field_tipo_de_clientes')->getValue();
+        $lan=$node->get('langcode')->value;
+
+        $term= $cliente[0]['target_id'];   
+        if($context['bundle'] === 'noticia' && $term==='116'){
+          $titulo=$node->get('title')->getValue();
+          $lan=="es"?$text="/noticias/":$text="/news/";
+          
+          $alias=$text.$clean_string_service->cleanString($titulo[0]['value']);
+        }
+        elseif($context['bundle'] === 'equipo' && $term==='116'){
+          $etecsaService = \Drupal::service('etecsa.etecsa_service');
+          $IdTipoEquipo=$node->get('field_tipo_de_equipos')->getValue();
+          $Idmarca=$node->get('field_marca')->getValue();        
+          $Idmodelo=$node->get('field_modelo')->getValue();
+          $marca = $etecsaService->getTaxTermById($Idmarca[0]['target_id']);
+          $modelo = $etecsaService->getTaxTermById($Idmodelo[0]['target_id']);
+          $tipoequipo=$etecsaService->getTaxTermById($IdTipoEquipo[0]['target_id']);
+          $tipoequipo_trans= \Drupal::service('entity.repository')->getTranslationFromContext($tipoequipo,$lan);
+          $marca=$marca->name->value;
+          $modelo=$modelo->name->value;
+          $tipoequipo=$tipoequipo_trans->name->value;
+          $lan=="es"?$text="/equipos-accesorios/":$text="/equipment-accessories/";
+          $alias=$text.$clean_string_service->cleanString($tipoequipo)."/".$clean_string_service->cleanString($marca."-".$modelo);
+        }
+        elseif($context['bundle'] === 'oportunidad' && $term==='116'){  
+          $titulo=$node->get('title')->getValue();  
+          $lan=="es"?$text="/servicios-oportunidades/":$text="/services-opportunities/";
+          $alias=$text.$clean_string_service->cleanString($titulo[0]['value']);
+        }
+      }
+    }
+  }
+
+  function etecsa_module_cron() {
+    $etecsaSettings = \Drupal::config('etecsa_module.etecsasettings');
+    $watchdog_options = (object) $etecsaSettings->get("watchdog");
+    $database = \Drupal::database();
+
+    if ($watchdog_options->not_found === 1) {
+      $database->delete('watchdog')
+      ->condition('type', 'page not found')
+      ->execute();
+    }
+
+    $fecha_actual = date('Y-m-d');
+    $query = \Drupal::entityQuery('node')->accessCheck(FALSE)      ->condition('type', 'promocion')
+      ->condition('field_fecha_fin', $fecha_actual, '<')
+      ->condition('status', 1)
+      ->execute();
+  
+    if (!empty($query)) {
+      foreach ($query as $uid) {
+        $database->update('node_field_data')
+        ->fields([
+          'status' => 0,
+        ])
+        ->condition('nid', $uid)
+        ->execute();
+        $database->update('content_moderation_state_field_data')
+        ->fields([
+          'moderation_state' => 'archivado',
+        ])
+        ->condition('content_entity_id', $uid)
+        ->execute();
+      }
+    }
+  }
